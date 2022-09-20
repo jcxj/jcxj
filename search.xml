@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>ssti</title>
+      <link href="/jcxj/2022/09/20/ssti/"/>
+      <url>/jcxj/2022/09/20/ssti/</url>
+      
+        <content type="html"><![CDATA[<p>总结SSTI题目的流程(以python3为例)<br>类的下标会因为python版本的不同(python2,python3)而不同</p><p>1.找到object类,通过__mro__或__bases__来找<br> //针对不同的网站需要对索引进行修改，直到返回的类为object</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#x27;.__class__.__mro__[1]</span><br><span class="line">&#123;&#125;.__class__.__bases__[0]</span><br><span class="line">().__class__.__bases__[0]</span><br><span class="line">[].__class__.__bases__[0]</span><br><span class="line">request.__class__.__mro__[11]</span><br></pre></td></tr></table></figure><p>如下： </p><p><img src="https://img-blog.csdnimg.cn/7117aaeb87f44d5798d97536b3a504e8.png" alt="img"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
