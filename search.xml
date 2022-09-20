@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>docker常用命令</title>
+      <link href="/jcxj/2022/09/20/docker-chang-yong-ming-ling/"/>
+      <url>/jcxj/2022/09/20/docker-chang-yong-ming-ling/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-docker-run-创建容器并暴露端口"><a href="#1-docker-run-创建容器并暴露端口" class="headerlink" title="1.docker run 创建容器并暴露端口"></a>1.docker run 创建容器并暴露端口</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 10001:80 -d nginx:latest</span><br></pre></td></tr></table></figure><h1 id="2-停止全部运行的容器，删除全部容器，删除全部镜像"><a href="#2-停止全部运行的容器，删除全部容器，删除全部镜像" class="headerlink" title="2.停止全部运行的容器，删除全部容器，删除全部镜像"></a>2.停止全部运行的容器，删除全部容器，删除全部镜像</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a | awk &#x27;&#123;if(NR&gt;=2)&#123;print $1&#125;&#125;&#x27; | xargs docker stop</span><br><span class="line">docker ps -a | awk &#x27;&#123;if(NR&gt;=2)&#123;print $1&#125;&#125;&#x27; | xargs docker rm</span><br><span class="line">docker images -a | awk &#x27;&#123;if(NR&gt;=2)&#123;print $1&#125;&#125;&#x27; | xargs docker rmi</span><br></pre></td></tr></table></figure><h1 id="3-根据Dockerfile生成镜像"><a href="#3-根据Dockerfile生成镜像" class="headerlink" title="3.根据Dockerfile生成镜像"></a>3.根据Dockerfile生成镜像</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t centos7-nginx:v1 .</span><br></pre></td></tr></table></figure><p>根据当前目录下的Dockerfile文件生成镜像，repository为 centos7-nginx,tag为v1</p><h1 id="4-nginx首页位置"><a href="#4-nginx首页位置" class="headerlink" title="4.nginx首页位置"></a>4.nginx首页位置</h1><p>容器名为nginx-server</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;nginx is working&quot; &gt; /opt/nginx-server/index.html</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ssti</title>
       <link href="/jcxj/2022/09/20/ssti/"/>
       <url>/jcxj/2022/09/20/ssti/</url>

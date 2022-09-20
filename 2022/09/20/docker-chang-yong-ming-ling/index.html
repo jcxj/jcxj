@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="friends, Hexo">
+    <meta name="keywords" content="docker常用命令, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>friends | Hexo</title>
+    <title>docker常用命令 | Hexo</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">friends</h1>
+                    <h1 class="description center-align post-title">docker常用命令</h1>
                 </div>
             </div>
         </div>
@@ -366,9 +366,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
+                                <span class="chip bg-color">总结</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -394,7 +398,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    154
                 </div>
                 
 
@@ -416,7 +420,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="1-docker-run-创建容器并暴露端口"><a href="#1-docker-run-创建容器并暴露端口" class="headerlink" title="1.docker run 创建容器并暴露端口"></a>1.docker run 创建容器并暴露端口</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 10001:80 -d nginx:latest</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-停止全部运行的容器，删除全部容器，删除全部镜像"><a href="#2-停止全部运行的容器，删除全部容器，删除全部镜像" class="headerlink" title="2.停止全部运行的容器，删除全部容器，删除全部镜像"></a>2.停止全部运行的容器，删除全部容器，删除全部镜像</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a | awk &#x27;&#123;if(NR&gt;=2)&#123;print $1&#125;&#125;&#x27; | xargs docker stop</span><br><span class="line">docker ps -a | awk &#x27;&#123;if(NR&gt;=2)&#123;print $1&#125;&#125;&#x27; | xargs docker rm</span><br><span class="line">docker images -a | awk &#x27;&#123;if(NR&gt;=2)&#123;print $1&#125;&#125;&#x27; | xargs docker rmi</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-根据Dockerfile生成镜像"><a href="#3-根据Dockerfile生成镜像" class="headerlink" title="3.根据Dockerfile生成镜像"></a>3.根据Dockerfile生成镜像</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t centos7-nginx:v1 .</span><br></pre></td></tr></table></figure>
+
+<p>根据当前目录下的Dockerfile文件生成镜像，repository为 centos7-nginx,tag为v1</p>
+<h1 id="4-nginx首页位置"><a href="#4-nginx首页位置" class="headerlink" title="4.nginx首页位置"></a>4.nginx首页位置</h1><p>容器名为nginx-server</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;nginx is working&quot; &gt; /opt/nginx-server/index.html</span><br></pre></td></tr></table></figure>
+
+
+
                 
             </div>
             <hr/>
@@ -432,7 +447,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/jcxj/about" rel="external nofollow noreferrer">John Doe</a>
+                    <a href="/jcxj/about" rel="external nofollow noreferrer">jcxj</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -442,7 +457,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/friends/index.html">https://jcxj.github.io/jcxj/jcxj/friends/index.html</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/20/docker-chang-yong-ming-ling/">https://jcxj.github.io/jcxj/jcxj/2022/09/20/docker-chang-yong-ming-ling/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -455,7 +470,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint polocy. If reproduced, please indicate source
-                    <a href="/jcxj/about" target="_blank">John Doe</a>
+                    <a href="/jcxj/about" target="_blank">jcxj</a>
                     !
                 </span>
             </div>
@@ -479,7 +494,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
+                                    <span class="chip bg-color">总结</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -548,13 +567,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/jcxj/friends/index.html">
+                <a href="/jcxj/2022/09/20/docker-chang-yong-ming-ling/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="friends">
+                        <img src="/jcxj/medias/featureimages/1.jpg" class="responsive-img" alt="docker常用命令">
                         
-                        <span class="card-title">friends</span>
+                        <span class="card-title">docker常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -570,12 +589,20 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            jcxj
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">总结</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -583,16 +610,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/jcxj/friends/index.html">
+                <a href="/jcxj/2022/09/20/ssti/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="friends">
+                        <img src="/jcxj/medias/featureimages/13.jpg" class="responsive-img" alt="ssti">
                         
-                        <span class="card-title">friends</span>
+                        <span class="card-title">ssti</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -608,12 +635,11 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            jcxj
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
