@@ -4,52 +4,19 @@
   
     
     <entry>
-      <title>test18</title>
-      <link href="/jcxj/2022/09/21/test18/"/>
-      <url>/jcxj/2022/09/21/test18/</url>
+      <title>hexo+github本地和线上图片不显示问题</title>
+      <link href="/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/"/>
+      <url>/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/</url>
       
-        <content type="html"><![CDATA[<p>18:26</p><img src="/jcxj/2022/09/21/test18/image-20220921182703038.png" class="" title="image-20220921182703038">]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>testz</title>
-      <link href="/jcxj/2022/09/21/testz/"/>
-      <url>/jcxj/2022/09/21/testz/</url>
-      
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>原文链接：<a href="https://codeantenna.com/a/DBakKFeSq9">https://codeantenna.com/a/DBakKFeSq9</a></p><p>非常感谢原文的作者！！！！！</p><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在搭载好hexo(butterfly)+github博客后，新建博客无法图片问题，多方寻找网上的解决办法仍未解决，大多安装了hexo-asset-image插件来解决，但是本人多项测试后，均为无效，<strong>唯一有效的需要将图片格式转换为这样**，但是以一个一个去转换非常麻烦，因此继续寻求解决办法，最终找到如下帖子：<a href="https://moeci.com/posts/hexo-typora/%EF%BC%8C">https://moeci.com/posts/hexo-typora/，</a></strong>这位大佬开发的插件是hexo-asset-img**，而非hexo-asset-image</p><h1 id="教程："><a href="#教程：" class="headerlink" title="教程："></a>教程：</h1><p>配置 Typora 偏好设置，如下图更改</p><img src="/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/image-20220921183656674.png" class="" title="image-20220921183656674"><p>2.修改_config.yml中的post_asset_folder，false 改为 true</p><p>效果：每次 ‘hexo new page’ 生成新文章，都会在文章文件同级目录创建一个与文章文件名同名的文件夹</p><p>3.安装插件</p><pre class="line-numbers language-none"><code class="language-none">npm install hexo-asset-img --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
       
       
       
-    </entry>
-    
-    
-    
-    <entry>
-      <title>asdf</title>
-      <link href="/jcxj/2022/09/21/asdf/"/>
-      <url>/jcxj/2022/09/21/asdf/</url>
-      
-        <content type="html"><![CDATA[<p>asdfasdfasdf</p><img src="/jcxj/2022/09/21/asdf/image-20220921175026571.png" class="" title="image-20220921175026571"><img src="/jcxj/2022/09/21/asdf/image-20220921181157322.png" class="" title="image-20220921181157322">]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>a</title>
-      <link href="/jcxj/2022/09/21/a/"/>
-      <url>/jcxj/2022/09/21/a/</url>
-      
-        <content type="html"><![CDATA[<p>aaaaaaa</p><p>11111</p>]]></content>
-      
-      
+        <tags>
+            
+            <tag> 解决问题 </tag>
+            
+        </tags>
       
     </entry>
     
