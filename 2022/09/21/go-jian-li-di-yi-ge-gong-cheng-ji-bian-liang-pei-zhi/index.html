@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="About, Made by jcxj">
+    <meta name="keywords" content="go建立第一个工程及变量配置, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>About | Made by jcxj</title>
+    <title>go建立第一个工程及变量配置 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -137,12 +137,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">about</h1>
+                    <h1 class="description center-align post-title">go建立第一个工程及变量配置</h1>
                 </div>
             </div>
         </div>
@@ -256,9 +256,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
+                                <span class="chip bg-color">解决问题</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -270,21 +274,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-09-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-09-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    102
                 </div>
                 
 
@@ -314,7 +318,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="1-环境变量问题"><a href="#1-环境变量问题" class="headerlink" title="1.环境变量问题"></a>1.环境变量问题</h1><p>在安装go编译器和goland的时候随手勾选添加到环境变量的选项即可</p>
+<p>效果长这样</p>
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921204933709.png" class="" title="image-20220921204933709">
+
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921204823272.png" class="" title="image-20220921204823272">
+
+<p>Path中的</p>
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921204854303.png" class="" title="image-20220921204854303">
+
+<h1 id="2-goland创建一个工程"><a href="#2-goland创建一个工程" class="headerlink" title="2.goland创建一个工程"></a>2.goland创建一个工程</h1><p><strong>file-setting</strong></p>
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205126572.png" class="" title="image-20220921205126572">
+
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205144053.png" class="" title="image-20220921205144053">
+
+<p>在右上角 edit configuration或者 addconfiguration中配置下</p>
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205343563.png" class="" title="image-20220921205343563">
+
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205314924.png" class="" title="image-20220921205314924">
+
+<p>正常new一个project然后在project目录下建立三个文件夹</p>
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205103980.png" class="" title="image-20220921205103980">
+
+<h3 id="写一个代码"><a href="#写一个代码" class="headerlink" title="写一个代码"></a>写一个代码</h3><p>注意的是package需要些main而不是src</p>
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205403275.png" class="" title="image-20220921205403275">
+
+<p><strong>成功运行</strong></p>
+<img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205430038.png" class="" title="image-20220921205430038">
+
                 
             </div>
             <hr/>
@@ -340,7 +371,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/about/index.html">https://jcxj.github.io/jcxj/jcxj/about/index.html</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/">https://jcxj.github.io/jcxj/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -377,7 +408,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
+                                    <span class="chip bg-color">解决问题</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -572,13 +607,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/jcxj/about/index.html">
+                <a href="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/5.jpg" class="responsive-img" alt="about">
+                        <img src="/jcxj/medias/featureimages/9.jpg" class="responsive-img" alt="go建立第一个工程及变量配置">
                         
-                        <span class="card-title">about</span>
+                        <span class="card-title">go建立第一个工程及变量配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -589,7 +624,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-21
                             </span>
                         <span class="publish-author">
                             
@@ -601,22 +636,30 @@
                 </div>
 
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">解决问题</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/jcxj/about/index.html">
+                <a href="/jcxj/2022/09/21/onion-pei-zhi-wang-qiao/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/5.jpg" class="responsive-img" alt="about">
+                        <img src="/jcxj/medias/featureimages/18.jpg" class="responsive-img" alt="onion配置网桥">
                         
-                        <span class="card-title">about</span>
+                        <span class="card-title">onion配置网桥</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -627,7 +670,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-21
                             </span>
                         <span class="publish-author">
                             
@@ -637,7 +680,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/onion/">
+                        <span class="chip bg-color">onion</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>

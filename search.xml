@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>go建立第一个工程及变量配置</title>
+      <link href="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/"/>
+      <url>/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-环境变量问题"><a href="#1-环境变量问题" class="headerlink" title="1.环境变量问题"></a>1.环境变量问题</h1><p>在安装go编译器和goland的时候随手勾选添加到环境变量的选项即可</p><p>效果长这样</p><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921204933709.png" class="" title="image-20220921204933709"><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921204823272.png" class="" title="image-20220921204823272"><p>Path中的</p><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921204854303.png" class="" title="image-20220921204854303"><h1 id="2-goland创建一个工程"><a href="#2-goland创建一个工程" class="headerlink" title="2.goland创建一个工程"></a>2.goland创建一个工程</h1><p><strong>file-setting</strong></p><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205126572.png" class="" title="image-20220921205126572"><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205144053.png" class="" title="image-20220921205144053"><p>在右上角 edit configuration或者 addconfiguration中配置下</p><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205343563.png" class="" title="image-20220921205343563"><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205314924.png" class="" title="image-20220921205314924"><p>正常new一个project然后在project目录下建立三个文件夹</p><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205103980.png" class="" title="image-20220921205103980"><h3 id="写一个代码"><a href="#写一个代码" class="headerlink" title="写一个代码"></a>写一个代码</h3><p>注意的是package需要些main而不是src</p><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205403275.png" class="" title="image-20220921205403275"><p><strong>成功运行</strong></p><img src="/jcxj/2022/09/21/go-jian-li-di-yi-ge-gong-cheng-ji-bian-liang-pei-zhi/image-20220921205430038.png" class="" title="image-20220921205430038">]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 解决问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>onion配置网桥</title>
+      <link href="/jcxj/2022/09/21/onion-pei-zhi-wang-qiao/"/>
+      <url>/jcxj/2022/09/21/onion-pei-zhi-wang-qiao/</url>
+      
+        <content type="html"><![CDATA[<h3 id="网桥链接："><a href="#网桥链接：" class="headerlink" title="网桥链接："></a>网桥链接：</h3><p><a href="https://bridges.torproject.org/bridges?transport=obfs4">Tor Project | Bridges</a></p><img src="/jcxj/2022/09/21/onion-pei-zhi-wang-qiao/image-20220921205614826.png" class="" title="image-20220921205614826">]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> onion </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo+github本地和线上图片不显示问题</title>
       <link href="/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/"/>
       <url>/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/</url>
