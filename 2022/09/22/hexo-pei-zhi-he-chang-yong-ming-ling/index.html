@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="docker常用命令, Made by jcxj">
+    <meta name="keywords" content="hexo配置和常用命令, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>docker常用命令 | Made by jcxj</title>
+    <title>hexo配置和常用命令 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">docker常用命令</h1>
+                    <h1 class="description center-align post-title">hexo配置和常用命令</h1>
                 </div>
             </div>
         </div>
@@ -324,8 +324,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
-                                <span class="chip bg-color">总结</span>
+                            <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
+                                <span class="chip bg-color">解决问题</span>
                             </a>
                         
                     </div>
@@ -336,8 +336,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/jcxj/categories/Docker/" class="post-category">
-                                Docker
+                            <a href="/jcxj/categories/hexo%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="post-category">
+                                hexo常见问题
                             </a>
                         
                     </div>
@@ -349,28 +349,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-09-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-09-21
+                    2022-09-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    162
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    5 Min
                 </div>
                 
 
@@ -393,20 +393,220 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-docker-run-创建容器并暴露端口"><a href="#1-docker-run-创建容器并暴露端口" class="headerlink" title="1.docker run 创建容器并暴露端口"></a>1.docker run 创建容器并暴露端口</h1><pre class="line-numbers language-none"><code class="language-none">docker run -p 10001:80 -d nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="1-config-yml配置"><a href="#1-config-yml配置" class="headerlink" title="1._config.yml配置"></a>1._config.yml配置</h1><p>要注意的是</p>
+<pre class="line-numbers language-none"><code class="language-none">url: https:&#x2F;&#x2F;jcxj.github.io&#x2F;jcxj&#x2F;
+root: &#x2F;jcxj&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h1 id="2-停止全部运行的容器，删除全部容器，删除全部镜像"><a href="#2-停止全部运行的容器，删除全部容器，删除全部镜像" class="headerlink" title="2.停止全部运行的容器，删除全部容器，删除全部镜像"></a>2.停止全部运行的容器，删除全部容器，删除全部镜像</h1><pre class="line-numbers language-none"><code class="language-none">docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker stop
-docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker rm
-docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker rmi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这两行没配置好会出现css渲染问题，也就是<strong>只有文字，没有颜色，而且页面排版是乱的</strong></p>
+<p><strong>改变主题就去改</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">theme: landscape<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p><strong>还有一点要注意:所有的冒号后面都得有一个空格如 theme: landscape</strong>,没有空格的话会报错</p>
+<pre class="line-numbers language-none"><code class="language-none"># Hexo Configuration
+## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;configuration.html
+## Source: https:&#x2F;&#x2F;github.com&#x2F;hexojs&#x2F;hexo&#x2F;
 
+# Site
+title: Made by jcxj
+subtitle: &#39;今天你学了吗?&#39;
+description: 
+keywords:
+author: jcxj
+language: en
+timezone: &#39;&#39;
 
-<h1 id="3-根据Dockerfile生成镜像"><a href="#3-根据Dockerfile生成镜像" class="headerlink" title="3.根据Dockerfile生成镜像"></a>3.根据Dockerfile生成镜像</h1><pre class="line-numbers language-none"><code class="language-none">docker build -t centos7-nginx:v1 .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+# URL
+## If your site is put in a subdirectory, set url as &#39;http:&#x2F;&#x2F;example.com&#x2F;child&#39; and root as &#39;&#x2F;child&#x2F;&#39;
+url: https:&#x2F;&#x2F;jcxj.github.io&#x2F;jcxj&#x2F;
+root: &#x2F;jcxj&#x2F;
+permalink: :year&#x2F;:month&#x2F;:day&#x2F;:title&#x2F;
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing &#39;index.html&#39; from permalinks
+  trailing_html: true # Set to false to remove trailing &#39;.html&#39; from permalinks
 
-<p>根据当前目录下的Dockerfile文件生成镜像，repository为 centos7-nginx,tag为v1</p>
-<h1 id="4-nginx首页位置"><a href="#4-nginx首页位置" class="headerlink" title="4.nginx首页位置"></a>4.nginx首页位置</h1><p>容器名为nginx-server</p>
-<pre class="line-numbers language-none"><code class="language-none">echo &quot;nginx is working&quot; &gt; &#x2F;opt&#x2F;nginx-server&#x2F;index.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads&#x2F;code
+i18n_dir: :lang
+skip_render:
 
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: &#39;&#39;
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+highlight:
+  enable: false
+  line_number: true
+  auto_detect: false
+  tab_replace: &#39;&#39;
+  wrap: true
+  hljs: false
+prismjs:
+  enable: true
+  preprocess: true
+  line_number: true
+  tab_replace: &#39;&#39;
+
+# Home page setting
+# path: Root path for your blogs index page. (default &#x3D; &#39;&#39;)
+# per_page: Posts displayed per page. (0 &#x3D; disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: &#39;&#39;
+  per_page: 6
+  order_by: -dat
+
+# Category &amp; Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+## https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;HTML&#x2F;Element&#x2F;meta
+meta_generator: true
+
+# Date &#x2F; Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http:&#x2F;&#x2F;momentjs.com&#x2F;docs&#x2F;#&#x2F;displaying&#x2F;format&#x2F;
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## updated_option supports &#39;mtime&#39;, &#39;date&#39;, &#39;empty&#39;
+updated_option: &#39;mtime&#39;
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Include &#x2F; Exclude file(s)
+## include:&#x2F;exclude: options only apply to the &#39;source&#x2F;&#39; folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https:&#x2F;&#x2F;hexo.io&#x2F;plugins&#x2F;
+## Themes: https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F;
+#theme: landscape
+theme: Matery
+# Deployment
+## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;one-command-deployment
+deploy:
+  type: git
+  repository: https:&#x2F;&#x2F;github.com&#x2F;jcxj&#x2F;jcxj
+search:
+  path: search.xml
+  field: post
+permalink_pinyin:
+  enable: true
+  separator: &#39;-&#39; # default: &#39;-&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="2-常用hexo命令"><a href="#2-常用hexo命令" class="headerlink" title="2.常用hexo命令"></a>2.常用hexo命令</h1><pre class="line-numbers language-none"><code class="language-none">hexo clean: 清除渲染过的html页面，具体表现为在根目录下删除public文件夹
+hexo generate &#x2F; hexo g : 根据md文件,渲染html页面,在根目录下生成public文件夹
+hexo d &#x2F; hexo deploy : 将本地渲染好的html页面推送到github网站,需要注意的是,即使推送成功了,也得过一会再去访问博客网站,这里会有一定的延迟并不是推送失败
+hexo server &#x2F; hexo s : 在本地开启4000端口,方便提前在本地查看博客效果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="3-md文件常用的Front-matter"><a href="#3-md文件常用的Front-matter" class="headerlink" title="3.md文件常用的Front-matter"></a>3.<strong>md文件常用的Front-matter</strong></h1><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但我仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
+<table>
+<thead>
+<tr>
+<th>配置选项</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td><code>Markdown</code> 的文件标题</td>
+<td>文章标题，强烈建议填写此选项</td>
+</tr>
+<tr>
+<td>date</td>
+<td>文件创建时的日期时间</td>
+<td>发布时间，强烈建议填写此选项，且最好保证全局唯一</td>
+</tr>
+<tr>
+<td>author</td>
+<td>根 <code>_config.yml</code> 中的 <code>author</code></td>
+<td>文章作者</td>
+</tr>
+<tr>
+<td>img</td>
+<td><code>featureImages</code> 中的某个值</td>
+<td>文章特征图，推荐使用图床(腾讯云、七牛云、又拍云等)来做图片的路径.如: <code>http://xxx.com/xxx.jpg</code></td>
+</tr>
+<tr>
+<td>top</td>
+<td><code>true</code></td>
+<td>推荐文章（文章是否置顶），如果 <code>top</code> 值为 <code>true</code>，则会作为首页推荐文章</td>
+</tr>
+<tr>
+<td>cover</td>
+<td><code>false</code></td>
+<td><code>v1.0.2</code>版本新增，表示该文章是否需要加入到首页轮播封面中</td>
+</tr>
+<tr>
+<td>coverImg</td>
+<td>无</td>
+<td><code>v1.0.2</code>版本新增，表示该文章在首页轮播封面需要显示的图片路径，如果没有，则默认使用文章的特色图片</td>
+</tr>
+<tr>
+<td>password</td>
+<td>无</td>
+<td>文章阅读密码，如果要对文章设置阅读验证密码的话，就可以设置 <code>password</code> 的值，该值必须是用 <code>SHA256</code> 加密后的密码，防止被他人识破。前提是在主题的 <code>config.yml</code> 中激活了 <code>verifyPassword</code> 选项</td>
+</tr>
+<tr>
+<td>toc</td>
+<td><code>true</code></td>
+<td>是否开启 TOC，可以针对某篇文章单独关闭 TOC 的功能。前提是在主题的 <code>config.yml</code> 中激活了 <code>toc</code> 选项</td>
+</tr>
+<tr>
+<td>mathjax</td>
+<td><code>false</code></td>
+<td>是否开启数学公式支持 ，本文章是否开启 <code>mathjax</code>，且需要在主题的 <code>_config.yml</code> 文件中也需要开启才行</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>无</td>
+<td>文章摘要，自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>无</td>
+<td>文章分类，本主题的分类表示宏观上大的分类，只建议一篇文章一个分类</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>无</td>
+<td>文章标签，一篇文章可以多个标签</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>文章标题</td>
+<td>文章关键字，SEO 时需要</td>
+</tr>
+<tr>
+<td>reprintPolicy</td>
+<td>cc_by</td>
+<td>文章转载规则， 可以是 cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint 或 pay 中的一个</td>
+</tr>
+</tbody></table>
+<p><strong>常用的也就 tags，categories，summary，top，title，date</strong></p>
 
                 
             </div>
@@ -433,7 +633,7 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/20/docker-chang-yong-ming-ling/">https://jcxj.github.io/jcxj/jcxj/2022/09/20/docker-chang-yong-ming-ling/</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/22/hexo-pei-zhi-he-chang-yong-ming-ling/">https://jcxj.github.io/jcxj/jcxj/2022/09/22/hexo-pei-zhi-he-chang-yong-ming-ling/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -471,8 +671,8 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     
                         <div class="article-tag">
                             
-                                <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
-                                    <span class="chip bg-color">总结</span>
+                                <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
+                                    <span class="chip bg-color">解决问题</span>
                                 </a>
                             
                         </div>
@@ -664,17 +864,18 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/">
+                <a href="/jcxj/2022/09/22/hexo-pei-zhi-he-chang-yong-ming-ling/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/23.jpg" class="responsive-img" alt="hexo+github本地和线上图片不显示问题">
+                        <img src="/jcxj/medias/featureimages/22.jpg" class="responsive-img" alt="hexo配置和常用命令">
                         
-                        <span class="card-title">hexo+github本地和线上图片不显示问题</span>
+                        <span class="card-title">hexo配置和常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -684,17 +885,22 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            jcxj
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/hexo%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="post-category">
+                                    hexo常见问题
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -713,13 +919,13 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/jcxj/2022/09/20/ssti/">
+                <a href="/jcxj/2022/09/22/zen-me-fan-qiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/13.jpg" class="responsive-img" alt="ssti">
+                        <img src="/jcxj/medias/featureimages/0.jpg" class="responsive-img" alt="怎么翻墙">
                         
-                        <span class="card-title">ssti</span>
+                        <span class="card-title">怎么翻墙</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -730,7 +936,7 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
                             </span>
                         <span class="publish-author">
                             
@@ -739,6 +945,14 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+                        <span class="chip bg-color">小技巧</span>
+                    </a>
+                    
                 </div>
                 
             </div>

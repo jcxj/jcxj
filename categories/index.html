@@ -97,11 +97,11 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/jcxj/contact" class="waves-effect waves-light">
+    <a href="/jcxj/about" class="waves-effect waves-light">
       
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>Contact</span>
+      <span>About</span>
     </a>
     
   </li>
@@ -178,11 +178,11 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/jcxj/contact" class="waves-effect waves-light">
+		<a href="/jcxj/about" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-comments"></i>
+			    <i class="fa-fw fas fa-user-circle"></i>
 			
-			Contact
+			About
 		</a>
           
         </li>
@@ -264,6 +264,15 @@
                 </a>
                 
                 
+                <a href="/jcxj/categories/hexo%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" title="hexo常见问题: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">hexo常见问题
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
             </div>
         </div>
     </div>
@@ -306,7 +315,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"Docker","max":2}],
+            indicator: [{"name":"Docker","max":2},{"name":"hexo常见问题","max":2}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -317,7 +326,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [1],
+                    value : [1,1],
                     name : 'Number of Categories'
                 }
             ]
@@ -344,7 +353,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">587</span>&nbsp;字
+                class="white-color">2.3k</span>&nbsp;字
             
             
             
@@ -593,3 +602,6 @@ $(function () {
 </body>
 
 </html>
+<script type="text/javascript"> var OriginTitile = document.title, st;
+document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "问题没解决?", clearTimeout(st)) : (document.title = "Made by jcxj", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
+
