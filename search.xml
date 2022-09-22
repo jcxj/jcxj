@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>ip_to_company</title>
+      <link href="/jcxj/2022/09/22/ip-to-company/"/>
+      <url>/jcxj/2022/09/22/ip-to-company/</url>
+      
+        <content type="html"><![CDATA[<h1 id="根据ip找公司"><a href="#根据ip找公司" class="headerlink" title="根据ip找公司"></a>根据ip找公司</h1><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h3 id="正常刷漏洞的流程"><a href="#正常刷漏洞的流程" class="headerlink" title="正常刷漏洞的流程"></a><strong>正常刷漏洞的流程</strong></h3><p>1.用fofa进行信息收集，收集结果一般为ip:端口，结果放在 test.txt中</p><p>2.用自动化脚本判断网站是否存在漏洞,存在漏洞则记录在 test1.txt;不存在则pass</p><p><strong>3.对test1.txt的内容进行资产确认，判断是哪家公司的资产</strong></p><p>第一个工具，网上很多，就不多讲了</p><p>第二个工具，每个漏洞的自动化脚本不一样，也不多说</p><p><strong>第三个工具，也就是我想开发的工具</strong></p><h1 id="为什么需要这么一个工具"><a href="#为什么需要这么一个工具" class="headerlink" title="为什么需要这么一个工具"></a>为什么需要这么一个工具</h1><p>1.根据ip找厂商没什么技术含量而且浪费时间:无非就是不停的用第三方网站去搜索</p><p>2.有这个工具后，这方面浪费的时间就可以节省下来</p><h1 id="该工具的功能"><a href="#该工具的功能" class="headerlink" title="该工具的功能"></a>该工具的功能</h1><p>1.获得厂商名称，所属行业，行业分类，所属地区，厂商联系方式</p><p>这几个都是漏洞报告中所需要的</p><img src="/jcxj/2022/09/22/ip-to-company/image-20220922120101709.png" class="" title="image-20220922120101709">]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>怎么在自己的github上发布项目</title>
+      <link href="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/"/>
+      <url>/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-新建一个仓库"><a href="#1-新建一个仓库" class="headerlink" title="1.新建一个仓库"></a>1.新建一个仓库</h1><img src="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/image-20220922122509160.png" class="" title="image-20220922122509160"><p>没什么好说的，取个名，然后把readme 选中就好</p><h1 id="2-在本地新建文件夹放github文件"><a href="#2-在本地新建文件夹放github文件" class="headerlink" title="2.在本地新建文件夹放github文件"></a>2.在本地新建文件夹放github文件</h1><pre class="line-numbers language-none"><code class="language-none">git clone https:&#x2F;&#x2F;github.com&#x2F;jcxj&#x2F;ip_to_company.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>直接clone就好</p><p><strong>或者</strong>新建一个文件夹然后</p><pre class="line-numbers language-none"><code class="language-none">git init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="3-正常的开发流程"><a href="#3-正常的开发流程" class="headerlink" title="3.正常的开发流程"></a>3.正常的开发流程</h1><p>在开发前，先</p><pre class="line-numbers language-none"><code class="language-none">git pull origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>该写写，该删删</p><h1 id="4-提交到远程仓库"><a href="#4-提交到远程仓库" class="headerlink" title="4.提交到远程仓库"></a>4.提交到远程仓库</h1><p><strong>如果是第一次则需要配置下远程仓库的地址</strong></p><pre class="line-numbers language-none"><code class="language-none">git remote add name address<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>name是你自己随便取一个名字，方便记忆即可</p><p>xxxx为图中画红线的部分</p><img src="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/image-20220922123216188.png" class="" title="image-20220922123216188"><p>以图中仓库为例，命令应该长这样</p><pre class="line-numbers language-none"><code class="language-none">git remote add ip_to_company git@github.com:jcxj&#x2F;ip_to_company.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>添加好远程仓库后，用以下命令查看下</p><pre class="line-numbers language-none"><code class="language-none">git remote -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/image-20220922123447882.png" class="" title="image-20220922123447882"><p>长这样就ok了</p><p><strong>下面开始介绍推送到远程仓库常用的命令</strong></p><h3 id="1-git-add"><a href="#1-git-add" class="headerlink" title="1.git add"></a>1.git add</h3><pre class="line-numbers language-none"><code class="language-none">git add .  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>将文件夹下所有文件提交到本地的缓存区中，也就是.git文件夹</p><h3 id="2-git-commit"><a href="#2-git-commit" class="headerlink" title="2.git commit"></a>2.git commit</h3><pre class="line-numbers language-none"><code class="language-none">git commit -m &quot;test&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/image-20220922123809243.png" class="" title="image-20220922123809243"><p>跟留言有点像，用来解释说明本次改动具体改了什么</p><h3 id="3-git-push"><a href="#3-git-push" class="headerlink" title="3.git push"></a>3.git push</h3><p>把.git缓存中的文件推送到远程仓库</p><pre class="line-numbers language-none"><code class="language-none">git push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>其实，在这些步骤之前还得配置下账号密码什么的，因为我早就配置过了，并且现在给忘了怎么搞，因此就不写了，具体的教程可以去google搜索</strong></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo配置和常用命令</title>
       <link href="/jcxj/2022/09/22/hexo-pei-zhi-he-chang-yong-ming-ling/"/>
       <url>/jcxj/2022/09/22/hexo-pei-zhi-he-chang-yong-ming-ling/</url>
@@ -21,6 +59,8 @@
         <tags>
             
             <tag> 解决问题 </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
       
@@ -93,10 +133,18 @@
         <content type="html"><![CDATA[<p>原文链接：<a href="https://codeantenna.com/a/DBakKFeSq9">https://codeantenna.com/a/DBakKFeSq9</a></p><p>非常感谢原文的作者！！！！！</p><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在搭载好hexo(butterfly)+github博客后，新建博客无法图片问题，多方寻找网上的解决办法仍未解决，大多安装了hexo-asset-image插件来解决，但是本人多项测试后，均为无效，<strong>唯一有效的需要将图片格式转换为这样**，但是以一个一个去转换非常麻烦，因此继续寻求解决办法，最终找到如下帖子：<a href="https://moeci.com/posts/hexo-typora/%EF%BC%8C">https://moeci.com/posts/hexo-typora/，</a></strong>这位大佬开发的插件是hexo-asset-img**，而非hexo-asset-image</p><h1 id="教程："><a href="#教程：" class="headerlink" title="教程："></a>教程：</h1><p>配置 Typora 偏好设置，如下图更改</p><img src="/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/image-20220921183656674.png" class="" title="image-20220921183656674"><p>2.修改_config.yml中的post_asset_folder，false 改为 true</p><p>效果：每次 ‘hexo new page’ 生成新文章，都会在文章文件同级目录创建一个与文章文件名同名的文件夹</p><p>3.安装插件</p><pre class="line-numbers language-none"><code class="language-none">npm install hexo-asset-img --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> hexo常见问题 </category>
+          
+      </categories>
+      
       
         <tags>
             
             <tag> 解决问题 </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
       
@@ -124,19 +172,6 @@
             <tag> 总结 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>ssti</title>
-      <link href="/jcxj/2022/09/20/ssti/"/>
-      <url>/jcxj/2022/09/20/ssti/</url>
-      
-        <content type="html"><![CDATA[<p>总结SSTI题目的流程(以python3为例)<br>类的下标会因为python版本的不同(python2,python3)而不同</p><p>1.找到object类,通过__mro__或__bases__来找<br> //针对不同的网站需要对索引进行修改，直到返回的类为object</p><pre class="line-numbers language-none"><code class="language-none">&#39;&#39;.__class__.__mro__[1]&#123;&#125;.__class__.__bases__[0]().__class__.__bases__[0][].__class__.__bases__[0]request.__class__.__mro__[11]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如下： </p><p><img src="https://img-blog.csdnimg.cn/7117aaeb87f44d5798d97536b3a504e8.png" alt="img"></p>]]></content>
-      
-      
       
     </entry>
     

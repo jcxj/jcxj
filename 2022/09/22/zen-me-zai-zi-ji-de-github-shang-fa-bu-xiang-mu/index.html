@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="docker常用命令, Made by jcxj">
+    <meta name="keywords" content="怎么在自己的github上发布项目, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>docker常用命令 | Made by jcxj</title>
+    <title>怎么在自己的github上发布项目 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">docker常用命令</h1>
+                    <h1 class="description center-align post-title">怎么在自己的github上发布项目</h1>
                 </div>
             </div>
         </div>
@@ -324,23 +324,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
-                                <span class="chip bg-color">总结</span>
+                            <a href="/jcxj/tags/github/">
+                                <span class="chip bg-color">github</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/jcxj/categories/Docker/" class="post-category">
-                                Docker
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -349,21 +340,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-09-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-09-21
+                    2022-09-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    162
+                    356
                 </div>
                 
 
@@ -393,20 +384,50 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-docker-run-创建容器并暴露端口"><a href="#1-docker-run-创建容器并暴露端口" class="headerlink" title="1.docker run 创建容器并暴露端口"></a>1.docker run 创建容器并暴露端口</h1><pre class="line-numbers language-none"><code class="language-none">docker run -p 10001:80 -d nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="1-新建一个仓库"><a href="#1-新建一个仓库" class="headerlink" title="1.新建一个仓库"></a>1.新建一个仓库</h1><img src="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/image-20220922122509160.png" class="" title="image-20220922122509160">
 
-<h1 id="2-停止全部运行的容器，删除全部容器，删除全部镜像"><a href="#2-停止全部运行的容器，删除全部容器，删除全部镜像" class="headerlink" title="2.停止全部运行的容器，删除全部容器，删除全部镜像"></a>2.停止全部运行的容器，删除全部容器，删除全部镜像</h1><pre class="line-numbers language-none"><code class="language-none">docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker stop
-docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker rm
-docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker rmi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>没什么好说的，取个名，然后把readme 选中就好</p>
+<h1 id="2-在本地新建文件夹放github文件"><a href="#2-在本地新建文件夹放github文件" class="headerlink" title="2.在本地新建文件夹放github文件"></a>2.在本地新建文件夹放github文件</h1><pre class="line-numbers language-none"><code class="language-none">git clone https:&#x2F;&#x2F;github.com&#x2F;jcxj&#x2F;ip_to_company.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>直接clone就好</p>
+<p><strong>或者</strong>新建一个文件夹然后</p>
+<pre class="line-numbers language-none"><code class="language-none">git init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="3-正常的开发流程"><a href="#3-正常的开发流程" class="headerlink" title="3.正常的开发流程"></a>3.正常的开发流程</h1><p>在开发前，先</p>
+<pre class="line-numbers language-none"><code class="language-none">git pull origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>该写写，该删删</p>
+<h1 id="4-提交到远程仓库"><a href="#4-提交到远程仓库" class="headerlink" title="4.提交到远程仓库"></a>4.提交到远程仓库</h1><p><strong>如果是第一次则需要配置下远程仓库的地址</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">git remote add name address<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>name是你自己随便取一个名字，方便记忆即可</p>
+<p>xxxx为图中画红线的部分</p>
+<img src="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/image-20220922123216188.png" class="" title="image-20220922123216188">
 
 
 
-<h1 id="3-根据Dockerfile生成镜像"><a href="#3-根据Dockerfile生成镜像" class="headerlink" title="3.根据Dockerfile生成镜像"></a>3.根据Dockerfile生成镜像</h1><pre class="line-numbers language-none"><code class="language-none">docker build -t centos7-nginx:v1 .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>以图中仓库为例，命令应该长这样</p>
+<pre class="line-numbers language-none"><code class="language-none">git remote add ip_to_company git@github.com:jcxj&#x2F;ip_to_company.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>根据当前目录下的Dockerfile文件生成镜像，repository为 centos7-nginx,tag为v1</p>
-<h1 id="4-nginx首页位置"><a href="#4-nginx首页位置" class="headerlink" title="4.nginx首页位置"></a>4.nginx首页位置</h1><p>容器名为nginx-server</p>
-<pre class="line-numbers language-none"><code class="language-none">echo &quot;nginx is working&quot; &gt; &#x2F;opt&#x2F;nginx-server&#x2F;index.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>添加好远程仓库后，用以下命令查看下</p>
+<pre class="line-numbers language-none"><code class="language-none">git remote -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<img src="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/image-20220922123447882.png" class="" title="image-20220922123447882">
+
+<p>长这样就ok了</p>
+<p><strong>下面开始介绍推送到远程仓库常用的命令</strong></p>
+<h3 id="1-git-add"><a href="#1-git-add" class="headerlink" title="1.git add"></a>1.git add</h3><pre class="line-numbers language-none"><code class="language-none">git add .  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将文件夹下所有文件提交到本地的缓存区中，也就是.git文件夹</p>
+<h3 id="2-git-commit"><a href="#2-git-commit" class="headerlink" title="2.git commit"></a>2.git commit</h3><pre class="line-numbers language-none"><code class="language-none">git commit -m &quot;test&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/image-20220922123809243.png" class="" title="image-20220922123809243">
+
+<p>跟留言有点像，用来解释说明本次改动具体改了什么</p>
+<h3 id="3-git-push"><a href="#3-git-push" class="headerlink" title="3.git push"></a>3.git push</h3><p>把.git缓存中的文件推送到远程仓库</p>
+<pre class="line-numbers language-none"><code class="language-none">git push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>其实，在这些步骤之前还得配置下账号密码什么的，因为我早就配置过了，并且现在给忘了怎么搞，因此就不写了，具体的教程可以去google搜索</strong></p>
 
                 
             </div>
@@ -433,7 +454,7 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/20/docker-chang-yong-ming-ling/">https://jcxj.github.io/jcxj/jcxj/2022/09/20/docker-chang-yong-ming-ling/</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/">https://jcxj.github.io/jcxj/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -471,8 +492,8 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     
                         <div class="article-tag">
                             
-                                <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
-                                    <span class="chip bg-color">总结</span>
+                                <a href="/jcxj/tags/github/">
+                                    <span class="chip bg-color">github</span>
                                 </a>
                             
                         </div>
@@ -668,13 +689,13 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/">
+                <a href="/jcxj/2022/09/22/ip-to-company/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/23.jpg" class="responsive-img" alt="hexo+github本地和线上图片不显示问题">
+                        <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="ip_to_company">
                         
-                        <span class="card-title">hexo+github本地和线上图片不显示问题</span>
+                        <span class="card-title">ip_to_company</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -685,8 +706,53 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            jcxj
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/github/">
+                        <span class="chip bg-color">github</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/jcxj/2022/09/22/hexo-pei-zhi-he-chang-yong-ming-ling/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/22.jpg" class="responsive-img" alt="hexo配置和常用命令">
+                        
+                        <span class="card-title">hexo配置和常用命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -708,56 +774,6 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     
                     <a href="/jcxj/tags/hexo/">
                         <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/jcxj/2022/09/20/docker-chang-yong-ming-ling/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/jcxj/medias/featureimages/1.jpg" class="responsive-img" alt="docker常用命令">
-                        
-                        <span class="card-title">docker常用命令</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/jcxj/categories/Docker/" class="post-category">
-                                    Docker
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
-                        <span class="chip bg-color">总结</span>
                     </a>
                     
                 </div>
