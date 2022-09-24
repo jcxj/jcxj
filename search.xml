@@ -4,6 +4,82 @@
   
     
     <entry>
+      <title>怎么使用USDT</title>
+      <link href="/jcxj/2022/09/24/zen-me-shi-yong-usdt/"/>
+      <url>/jcxj/2022/09/24/zen-me-shi-yong-usdt/</url>
+      
+        <content type="html"><![CDATA[<img src="/jcxj/2022/09/24/zen-me-shi-yong-usdt/image-20220924130703429.png" class="" title="image-20220924130703429"><img src="/jcxj/2022/09/24/zen-me-shi-yong-usdt/image-20220924130709415.png" class="" title="image-20220924130709415"><img src="/jcxj/2022/09/24/zen-me-shi-yong-usdt/image-20220924130715374.png" class="" title="image-20220924130715374"><img src="/jcxj/2022/09/24/zen-me-shi-yong-usdt/image-20220924130724094.png" class="" title="image-20220924130724094"><img src="/jcxj/2022/09/24/zen-me-shi-yong-usdt/image-20220924130731160.png" class="" title="image-20220924130731160"><p>OKEx (欧易）👈推荐买U网址<br><a href="https://www.okx.com/">https://www.okx.com/</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python列表相关</title>
+      <link href="/jcxj/2022/09/24/python-lie-biao-xiang-guan/"/>
+      <url>/jcxj/2022/09/24/python-lie-biao-xiang-guan/</url>
+      
+        <content type="html"><![CDATA[<h1 id="列表是什么？"><a href="#列表是什么？" class="headerlink" title="列表是什么？"></a>列表是什么？</h1><p>跟c语言中的数组有点像</p><pre class="line-numbers language-none"><code class="language-none">a&#x3D;[1,2,3,4,5,&#39;1&#39;,&#39;1&#39;,&#39;1&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924105758189.png" class="" title="image-20220924105758189"><p><strong>这里的a就是列表</strong></p><p>内存示意图:</p><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924110247754.png" class="" title="image-20220924110247754"><pre class="line-numbers language-none"><code class="language-none">输出变量的类型: print(type(a))输出变量的id: print(id(a))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h1 id="列表的创建"><a href="#列表的创建" class="headerlink" title="列表的创建"></a>列表的创建</h1><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924110421954.png" class="" title="image-20220924110421954"><h1 id="获取列表中的特定元素或索引"><a href="#获取列表中的特定元素或索引" class="headerlink" title="获取列表中的特定元素或索引"></a>获取列表中的特定元素或索引</h1><p>通过索引值获取:第一个索引是0，最后一个索引是-1</p><pre class="line-numbers language-none"><code class="language-none">list&#x3D;[1,2,3,4,5]a&#x3D;list[0]#a&#x3D;1a&#x3D;list[-5]#a&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>获取特定元素的索引</p><pre class="line-numbers language-none"><code class="language-none">list&#x3D;[&#39;1&#39;,&#39;2&#39;,&#39;33&#39;,&#39;4&#39;,&#39;33&#39;]a&#x3D;list.index(&#39;33&#39;)#a&#x3D;2#从特定位置开始找a&#x3D;list.index(&#39;33&#39;,3,4)#a不存在,因为3,4为[3,4)把3,4改成3,5就好了#index()函数:有的话返回第一个,没有的话抛出异常<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>判断指定元素在列表中是否存在</p><pre class="line-numbers language-none"><code class="language-none">list&#x3D;[1,2,3,4,5]a&#x3D;1print(a in list)#Trueprint(a not in list)#False<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="列表的切片操作"><a href="#列表的切片操作" class="headerlink" title="列表的切片操作"></a>列表的切片操作</h1><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924111616339.png" class="" title="image-20220924111616339"><pre class="line-numbers language-none"><code class="language-none">#step不写的话默认为1#list[a:b:c]#a不写默认第一个元素,b不写默认为最后一个元素,c不写默认为1#c&#x3D;-1的时候逆序输出list&#x3D;[1,2,3,4,5,6,7,8,9]a&#x3D;list[1:]#a&#x3D;[2, 3, 4, 5, 6, 7, 8, 9]a&#x3D;list[1:4]#从下标为1开始,不包括4#a&#x3D;[2, 3, 4]a&#x3D;list[:3]#a&#x3D;[1, 2, 3] 索引值为0-2a&#x3D;list[::-1]#[9, 8, 7, 6, 5, 4, 3, 2, 1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="列表的增删改"><a href="#列表的增删改" class="headerlink" title="列表的增删改"></a>列表的增删改</h1><h3 id="增加操作"><a href="#增加操作" class="headerlink" title="增加操作"></a>增加操作</h3><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924113241627.png" class="" title="image-20220924113241627"><pre class="line-numbers language-none"><code class="language-none">list&#x3D;[1,2,3,4]list.append(5)#list&#x3D;[1, 2, 3, 4, 5]list.extend([7,8,9])#list[1, 2, 3, 4, 5, 7, 8, 9]list.insert(3,&#39;a&#39;)#list&#x3D;[1, 2, 3, &#39;a&#39;, 4, 5, 7, 8, 9] 在索引3的位置插入&#39;a&#39;list[4:]&#x3D;[&#39;b&#39;,&#39;c&#39;]#[1, 2, 3, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924113801770.png" class="" title="image-20220924113801770"><pre class="line-numbers language-none"><code class="language-none">list&#x3D;[1,2,3,4,3]list.remove(3)#[1, 2, 4, 3]list.pop(0)#[2, 4, 3]list.pop()#[2, 4]list&#x3D;[1,2,3,4,3]list[1:3]&#x3D;[]#list&#x3D;[1, 4, 3]list.clear()#list&#x3D;[]del list#list不存在了,b<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h3><pre class="line-numbers language-none"><code class="language-none">list&#x3D;[1,2,3,4,5,6]list[2]&#x3D;33#list&#x3D;[1, 2, 33, 4, 5, 6]list[2:]&#x3D;[11,22,33,44,55,66]#list&#x3D;[1, 2, 11, 22, 33, 44, 55, 66]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="列表排序操作"><a href="#列表排序操作" class="headerlink" title="列表排序操作"></a>列表排序操作</h1><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924135149377.png" class="" title="image-20220924135149377"><p>sort()修改原列表,sorted()不修改原列表返回一个新的列表给你</p><pre class="line-numbers language-none"><code class="language-none">list&#x3D;[4,3,2,1]list.sort()#list&#x3D;[1, 2, 3, 4]a&#x3D;list.sort(reverse&#x3D;True)#list&#x3D;[4, 3, 2, 1],a&#x3D;Nonea&#x3D;sorted(list) #a&#x3D;[1,2,3,4],list&#x3D;[4,3,2,1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h1><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924142806073.png" class="" title="image-20220924142806073"><pre class="line-numbers language-none"><code class="language-none">list&#x3D;[i*i]for i in range(1,10)#list&#x3D;[1, 4, 9, 16, 25, 36, 49, 64, 81]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><img src="/jcxj/2022/09/24/python-lie-biao-xiang-guan/image-20220924143010617.png" class="" title="image-20220924143010617">]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python列表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python基础语法</title>
+      <link href="/jcxj/2022/09/24/python-ji-chu-yu-fa/"/>
+      <url>/jcxj/2022/09/24/python-ji-chu-yu-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="python基础"><a href="#python基础" class="headerlink" title="python基础"></a>python基础</h1><h1 id="基础数据类型"><a href="#基础数据类型" class="headerlink" title="基础数据类型"></a>基础数据类型</h1><pre class="line-numbers language-none"><code class="language-none">数字:1 , 2 , 3 , 4浮点数:1.2 ,1123.777字符串: &quot;1&quot;,&quot;234&quot;boolean: True,False<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><pre class="line-numbers language-none"><code class="language-none">#单行注释&quot;&quot;&quot;多行注释&quot;&quot;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><p>输出内容到显示屏: </p><pre class="line-numbers language-none"><code class="language-none">print()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>输出内容到文件中</p><pre class="line-numbers language-none"><code class="language-none">fp &#x3D; open(&#39;test.txt&#39;,&#39;a+&#39;)print(&#39;hello&#39;,file&#x3D;fp)fp.close()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>不换行输出</p><pre class="line-numbers language-none"><code class="language-none">print(&quot;1&quot;,&quot;1&quot;,&quot;1&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="强制类型转化"><a href="#强制类型转化" class="headerlink" title="强制类型转化"></a>强制类型转化</h1><pre class="line-numbers language-none"><code class="language-none">a&#x3D;1其他类型转化为字符串: a&#x3D;str(a)其他类型强制转化为数字 a&#x3D;int(a)其他类型强制转化为浮点型 a&#x3D;float(a)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h1 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h1><pre class="line-numbers language-none"><code class="language-none">a&#x3D;input(&quot;请输入一个数&quot;)input()返回一个str类型如果输入的值为10,此时a的类型为字符串<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><p>算术运算符</p><img src="/jcxj/2022/09/24/python-ji-chu-yu-fa/image-20220924100118300.png" class="" title="image-20220924100118300"><img src="/jcxj/2022/09/24/python-ji-chu-yu-fa/image-20220924100228812.png" class="" title="image-20220924100228812"><img src="/jcxj/2022/09/24/python-ji-chu-yu-fa/image-20220924100252484.png" class="" title="image-20220924100252484"><img src="/jcxj/2022/09/24/python-ji-chu-yu-fa/image-20220924100332292.png" class="" title="image-20220924100332292"><img src="/jcxj/2022/09/24/python-ji-chu-yu-fa/image-20220924100356142.png" class="" title="image-20220924100356142"><h1 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h1><h2 id="选择结构-if"><a href="#选择结构-if" class="headerlink" title="选择结构:if"></a>选择结构:if</h2><pre class="line-numbers language-none"><code class="language-none">if a&#x3D;&#x3D;1 :a&#x3D;2elif a&#x3D;&#x3D;2 :a&#x3D;3else:a&#x3D;4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="循环结构-for-while"><a href="#循环结构-for-while" class="headerlink" title="循环结构:for,while"></a>循环结构:for,while</h2><h2 id="1-for-in结构"><a href="#1-for-in结构" class="headerlink" title="1.for in结构"></a>1.for in结构</h2><img src="/jcxj/2022/09/24/python-ji-chu-yu-fa/image-20220924100731119.png" class="" title="image-20220924100731119"><pre class="line-numbers language-none"><code class="language-none">r &#x3D; range(10)print(r)print(list(r))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="/jcxj/2022/09/24/python-ji-chu-yu-fa/image-20220924100906812.png" class="" title="image-20220924100906812"><pre class="line-numbers language-none"><code class="language-none">list()函数用于查看range对象中的整数序列<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="2-while结构"><a href="#2-while结构" class="headerlink" title="2.while结构"></a>2.while结构</h2><pre class="line-numbers language-none"><code class="language-none">while true:print(1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="3-break-continue-pass"><a href="#3-break-continue-pass" class="headerlink" title="3.break,continue,pass"></a>3.break,continue,pass</h2><pre class="line-numbers language-none"><code class="language-none">break:跳出当前循环循语句continue: 结束当前循环pass: 语句什么也不做,只是一个占位符,用在语法中需要语句的地方<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python爬虫</title>
+      <link href="/jcxj/2022/09/22/python-pa-chong/"/>
+      <url>/jcxj/2022/09/22/python-pa-chong/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ip_to_company</title>
       <link href="/jcxj/2022/09/22/ip-to-company/"/>
       <url>/jcxj/2022/09/22/ip-to-company/</url>
