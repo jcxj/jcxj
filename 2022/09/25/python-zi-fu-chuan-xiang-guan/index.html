@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="docker常用命令, Made by jcxj">
+    <meta name="keywords" content="python字符串相关, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>docker常用命令 | Made by jcxj</title>
+    <title>python字符串相关 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">docker常用命令</h1>
+                    <h1 class="description center-align post-title">python字符串相关</h1>
                 </div>
             </div>
         </div>
@@ -324,8 +324,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
-                                <span class="chip bg-color">总结</span>
+                            <a href="/jcxj/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/jcxj/tags/python%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">python字符串</span>
                             </a>
                         
                     </div>
@@ -336,8 +340,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/jcxj/categories/Docker/" class="post-category">
-                                Docker
+                            <a href="/jcxj/categories/python/" class="post-category">
+                                python
                             </a>
                         
                     </div>
@@ -349,28 +353,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-09-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-09-21
+                    2022-09-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    162
+                    497
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    2 Min
                 </div>
                 
 
@@ -393,20 +397,109 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-docker-run-创建容器并暴露端口"><a href="#1-docker-run-创建容器并暴露端口" class="headerlink" title="1.docker run 创建容器并暴露端口"></a>1.docker run 创建容器并暴露端口</h1><pre class="line-numbers language-none"><code class="language-none">docker run -p 10001:80 -d nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h3 id="字符串驻留机制"><a href="#字符串驻留机制" class="headerlink" title="字符串驻留机制"></a>字符串驻留机制</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925212858883.png" class="" title="image-20220925212858883">
 
-<h1 id="2-停止全部运行的容器，删除全部容器，删除全部镜像"><a href="#2-停止全部运行的容器，删除全部容器，删除全部镜像" class="headerlink" title="2.停止全部运行的容器，删除全部容器，删除全部镜像"></a>2.停止全部运行的容器，删除全部容器，删除全部镜像</h1><pre class="line-numbers language-none"><code class="language-none">docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker stop
-docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker rm
-docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker rmi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="python的驻留机制"><a href="#python的驻留机制" class="headerlink" title="python的驻留机制"></a>python的驻留机制</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925213724578.png" class="" title="image-20220925213724578">
+
+<p>案例:</p>
+<img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925213755968.png" class="" title="image-20220925213755968">
+
+<img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925214038821.png" class="" title="image-20220925214038821">
+
+<p>这里a!=c的原因是 join是程序运行时调用函数来开辟一块新的空间来存储abc</p>
+<img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925214406402.png" class="" title="image-20220925214406402">
+
+<p>注意</p>
+<pre class="line-numbers language-none"><code class="language-none">join的效率比&quot;+&quot;高,因为+产生了新的对象<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="字符串的常用操作"><a href="#字符串的常用操作" class="headerlink" title="字符串的常用操作"></a>字符串的常用操作</h3><h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925214553969.png" class="" title="image-20220925214553969">
+
+<h3 id="大小写转化"><a href="#大小写转化" class="headerlink" title="大小写转化"></a>大小写转化</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925214729494.png" class="" title="image-20220925214729494">
+
+<pre class="line-numbers language-none"><code class="language-none">s&#x3D;&#39;i loVe asFd&#39;
+print(s.title())
+print(s.swapcase())
+print(s.upper())
+print(s.lower())
+print(s.capitalize())
+&quot;&quot;&quot;
+I Love Asfd
+I LOvE ASfD
+I LOVE ASFD
+i love asfd
+I love asfd
+&quot;&quot;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="内容对其操作"><a href="#内容对其操作" class="headerlink" title="内容对其操作"></a>内容对其操作</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925215139312.png" class="" title="image-20220925215139312">
+
+<h3 id="字符串的劈分"><a href="#字符串的劈分" class="headerlink" title="字符串的劈分"></a>字符串的劈分</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925215237362.png" class="" title="image-20220925215237362">
+
+<h3 id="判断字符串操作的方法"><a href="#判断字符串操作的方法" class="headerlink" title="判断字符串操作的方法"></a>判断字符串操作的方法</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925215341300.png" class="" title="image-20220925215341300">
+
+<img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925215407527.png" class="" title="image-20220925215407527">
+
+<h3 id="字符串的比较"><a href="#字符串的比较" class="headerlink" title="字符串的比较"></a>字符串的比较</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925215443207.png" class="" title="image-20220925215443207">
+
+<p>这里有两个函数需要注意下</p>
+<pre class="line-numbers language-none"><code class="language-none">#ord(char) 返回该字符的ascii值
+#chr(int) 根据ascii数值转化为具体的字符
+print(ord(&quot;a&quot;))
+#97
+print(chr(100))
+#100
+print(&#39;app&#39;&gt;&#39;daa&#39;)
+#False 因为 ord(d)&#x3D;100&gt;ord(a)&#x3D;97<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="字符串的切片操作"><a href="#字符串的切片操作" class="headerlink" title="字符串的切片操作"></a>字符串的切片操作</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925215904294.png" class="" title="image-20220925215904294">
 
 
 
-<h1 id="3-根据Dockerfile生成镜像"><a href="#3-根据Dockerfile生成镜像" class="headerlink" title="3.根据Dockerfile生成镜像"></a>3.根据Dockerfile生成镜像</h1><pre class="line-numbers language-none"><code class="language-none">docker build -t centos7-nginx:v1 .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">#python的特点:左边包含,右边不包含<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>根据当前目录下的Dockerfile文件生成镜像，repository为 centos7-nginx,tag为v1</p>
-<h1 id="4-nginx首页位置"><a href="#4-nginx首页位置" class="headerlink" title="4.nginx首页位置"></a>4.nginx首页位置</h1><p>容器名为nginx-server</p>
-<pre class="line-numbers language-none"><code class="language-none">echo &quot;nginx is working&quot; &gt; &#x2F;opt&#x2F;nginx-server&#x2F;index.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="格式化字符串-format-amp"><a href="#格式化字符串-format-amp" class="headerlink" title="格式化字符串:format&amp;%"></a>格式化字符串:format&amp;%</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925220100877.png" class="" title="image-20220925220100877">
 
+<pre class="line-numbers language-none"><code class="language-none">print(&#39;%10d&#39; % 99)
+print(&#39;%.3f&#39; % 3.1415926)
+print(&#39;%10.3f&#39; % 3.1415926)
+&quot;&quot;&quot;
+        99
+3.142
+     3.142
+&quot;&quot;&quot;
+#%10d,预留是个空格
+#.3f保留三位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">print(&#39;&#123;0:.3&#125;&#39;.format(3.1415926))
+print(&#39;&#123;0:.3f&#125;&#39;.format(3.1415926))
+#3.14
+#3.142
+#&#123;0:.3&#125;中0代表的是占位符位置,可以省略
+print(&#39;&#123;1:.3f&#125;&#39;.format(3.1415926,1.0000))
+#1.000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="字符串的编码转换"><a href="#字符串的编码转换" class="headerlink" title="字符串的编码转换"></a>字符串的编码转换</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925220656008.png" class="" title="image-20220925220656008">
+
+<pre class="line-numbers language-none"><code class="language-none">#######编码
+s&#x3D;&#39;我很傻,真的&#39;
+
+print(s.encode(encoding&#x3D;&#39;GBK&#39;))
+#b&#39;\xce\xd2\xba\xdc\xc9\xb5,\xd5\xe6\xb5\xc4&#39;
+#在gbk中,一个中文占两个字节;&quot;,&quot;没有被编码
+
+print(s.encode(encoding&#x3D;&#39;UTF-8&#39;))
+#b&#39;\xe6\x88\x91\xe5\xbe\x88\xe5\x82\xbb,\xe7\x9c\x9f\xe7\x9a\x84&#39;
+#UTG-8中,一个中文三个字节
+
+#######解码
+b1&#x3D;s.encode(encoding&#x3D;&#39;GBK&#39;)
+print(b1.decode(encoding&#x3D;&#39;GBK&#39;))
+#我很傻,真的
+
+b2&#x3D;s.encode(encoding&#x3D;&#39;UTF-8&#39;
+print(b2,decode(encoding&#x3D;&#39;UTF-8&#39;))
+#我很傻,真的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="字符串总结"><a href="#字符串总结" class="headerlink" title="字符串总结"></a>字符串总结</h3><img src="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/image-20220925221402981.png" class="" title="image-20220925221402981">
 
                 
             </div>
@@ -433,7 +526,7 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/20/docker-chang-yong-ming-ling/">https://jcxj.github.io/jcxj/jcxj/2022/09/20/docker-chang-yong-ming-ling/</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/">https://jcxj.github.io/jcxj/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -471,8 +564,12 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     
                         <div class="article-tag">
                             
-                                <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
-                                    <span class="chip bg-color">总结</span>
+                                <a href="/jcxj/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/jcxj/tags/python%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">python字符串</span>
                                 </a>
                             
                         </div>
@@ -664,70 +761,18 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/jcxj/2022/09/21/hexo-github-ben-di-he-xian-shang-tu-pian-bu-xian-shi-wen-ti/">
+                <a href="/jcxj/2022/09/25/python-zi-fu-chuan-xiang-guan/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/23.jpg" class="responsive-img" alt="hexo+github本地和线上图片不显示问题">
+                        <img src="/jcxj/medias/featureimages/14.jpg" class="responsive-img" alt="python字符串相关">
                         
-                        <span class="card-title">hexo+github本地和线上图片不显示问题</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-21
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/jcxj/categories/hexo%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="post-category">
-                                    hexo常见问题
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
-                        <span class="chip bg-color">解决问题</span>
-                    </a>
-                    
-                    <a href="/jcxj/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/jcxj/2022/09/20/docker-chang-yong-ming-ling/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/jcxj/medias/featureimages/1.jpg" class="responsive-img" alt="docker常用命令">
-                        
-                        <span class="card-title">docker常用命令</span>
+                        <span class="card-title">python字符串相关</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -738,14 +783,14 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/jcxj/categories/Docker/" class="post-category">
-                                    Docker
+                            <a href="/jcxj/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
@@ -756,8 +801,65 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
-                        <span class="chip bg-color">总结</span>
+                    <a href="/jcxj/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/python%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">python字符串</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/4.jpg" class="responsive-img" alt="python元组和集合相关">
+                        
+                        <span class="card-title">python元组和集合相关</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/python%E5%85%83%E7%BB%84%E5%92%8C%E9%9B%86%E5%90%88/">
+                        <span class="chip bg-color">python元组和集合</span>
                     </a>
                     
                 </div>
