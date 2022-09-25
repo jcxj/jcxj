@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ip_to_company, Made by jcxj">
+    <meta name="keywords" content="python字典相关, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ip_to_company | Made by jcxj</title>
+    <title>python字典相关 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ip_to_company</h1>
+                    <h1 class="description center-align post-title">python字典相关</h1>
                 </div>
             </div>
         </div>
@@ -324,14 +324,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/jcxj/tags/github/">
-                                <span class="chip bg-color">github</span>
+                            <a href="/jcxj/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/jcxj/tags/python%E5%AD%97%E5%85%B8/">
+                                <span class="chip bg-color">python字典</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/jcxj/categories/python/" class="post-category">
+                                python
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -340,28 +353,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-22
+                    2022-09-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-09-22
+                    2022-09-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    261
+                    686
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    3 Min
                 </div>
                 
 
@@ -384,17 +397,114 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="根据ip找公司"><a href="#根据ip找公司" class="headerlink" title="根据ip找公司"></a>根据ip找公司</h1><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h3 id="正常刷漏洞的流程"><a href="#正常刷漏洞的流程" class="headerlink" title="正常刷漏洞的流程"></a><strong>正常刷漏洞的流程</strong></h3><p>1.用fofa进行信息收集，收集结果一般为ip:端口，结果放在 test.txt中</p>
-<p>2.用自动化脚本判断网站是否存在漏洞,存在漏洞则记录在 test1.txt;不存在则pass</p>
-<p><strong>3.对test1.txt的内容进行资产确认，判断是哪家公司的资产</strong></p>
-<p>第一个工具，网上很多，就不多讲了</p>
-<p>第二个工具，每个漏洞的自动化脚本不一样，也不多说</p>
-<p><strong>第三个工具，也就是我想开发的工具</strong></p>
-<h1 id="为什么需要这么一个工具"><a href="#为什么需要这么一个工具" class="headerlink" title="为什么需要这么一个工具"></a>为什么需要这么一个工具</h1><p>1.根据ip找厂商没什么技术含量而且浪费时间:无非就是不停的用第三方网站去搜索</p>
-<p>2.有这个工具后，这方面浪费的时间就可以节省下来</p>
-<h1 id="该工具的功能"><a href="#该工具的功能" class="headerlink" title="该工具的功能"></a>该工具的功能</h1><p>1.获得厂商名称，所属行业，行业分类，所属地区，厂商联系方式</p>
-<p>这几个都是漏洞报告中所需要的</p>
-<img src="/jcxj/2022/09/22/ip-to-company/image-20220922120101709.png" class="" title="image-20220922120101709">
+                <h1 id="字典是什么"><a href="#字典是什么" class="headerlink" title="字典是什么"></a>字典是什么</h1><img src="/jcxj/2022/09/24/python-zi-dian-xiang-guan/image-20220924143951357.png" class="" title="image-20220924143951357">
+
+<p>以k-v对的形式存储,跟json有点像</p>
+<h1 id="字典创建"><a href="#字典创建" class="headerlink" title="字典创建"></a>字典创建</h1><p>1.直接创建</p>
+<p>2.利用内置i函数dict()</p>
+<pre class="line-numbers language-none"><code class="language-none">a&#x3D;&#123;&quot;result&quot;:1,&quot;re1&quot;:&#39;a&#39;&#125;
+b&#x3D;dict(name&#x3D;&#39;ja&#39;,age&#x3D;20)
+c&#x3D;&#123;&#125;
+#a&#x3D;&#123;&#39;result&#39;: 1, &#39;re1&#39;: &#39;a&#39;&#125;,b&#x3D;&#123;&#39;name&#39;: &#39;ja&#39;, &#39;age&#39;: 20&#125;,c&#x3D;&#123;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="字典元素的获取"><a href="#字典元素的获取" class="headerlink" title="字典元素的获取"></a>字典元素的获取</h1><img src="/jcxj/2022/09/24/python-zi-dian-xiang-guan/image-20220924145749805.png" class="" title="image-20220924145749805">
+
+<p>1.通过[key]来获取,单引号跟双引号都无所谓</p>
+<pre class="line-numbers language-none"><code class="language-none">dic&#x3D;&#123;&quot;a&quot;:&#39;1&#39;,&#39;b&#39;:2&#125;
+a&#x3D;dic[&#39;a&#39;]
+#a&#x3D;&#39;1&#39;
+b&#x3D;dic[&#39;1111&#39;]
+#此时报错，因为1111不存在<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2.通过get()来获取</p>
+<pre class="line-numbers language-none"><code class="language-none">dic&#x3D;&#123;&quot;a&quot;:&#39;1&#39;,&#39;b&#39;:2&#125;
+a&#x3D;dic.get(&#39;a&#39;)
+#a&#x3D;&#39;1&#39;
+b&#x3D;dic.get(&#39;111&#39;)
+#此时b&#x3D;None
+b&#x3D;dic.get(&#39;111&#39;,1234)
+#b&#x3D;1234,1234是当111不存在时的默认值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="字典常用操作"><a href="#字典常用操作" class="headerlink" title="字典常用操作"></a>字典常用操作</h1><h2 id="1-in-not-in"><a href="#1-in-not-in" class="headerlink" title="1.in /not in"></a>1.in /not in</h2><pre class="line-numbers language-none"><code class="language-none">#对key进行判断
+dic&#x3D;&#123;&#39;a&#39;:&#39;11&#39;,&#39;b&#39;:&#39;111&#39;&#125;
+f&#x3D;&#39;a&#39; in dic
+c&#x3D; &#39;c&#39; not in dic
+#f&#x3D;True,c&#x3D;True<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2-删除操作"><a href="#2-删除操作" class="headerlink" title="2.删除操作"></a>2.删除操作</h2><p>**del:**根据key删除kv对</p>
+<pre class="line-numbers language-none"><code class="language-none">dic&#x3D;&#123;&#39;a&#39;:&#39;11&#39;,&#39;b&#39;:&#39;111&#39;&#125;
+del dic[&#39;a&#39;]
+#dic&#x3D;&#123;&#39;b&#39;: &#39;111&#39;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>clear()</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">dic&#x3D;&#123;&#39;a&#39;:&#39;11&#39;,&#39;b&#39;:&#39;111&#39;&#125;
+dic.clear()
+#dic&#x3D;&#123;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-增加-改操作"><a href="#3-增加-改操作" class="headerlink" title="3.增加,改操作"></a>3.增加,改操作</h2><p>如果key存在就是修改,key不存在就是添加</p>
+<pre class="line-numbers language-none"><code class="language-none">dic&#x3D;&#123;&#39;a&#39;:&#39;11&#39;,&#39;b&#39;:&#39;111&#39;&#125;
+dic[&#39;c&#39;]&#x3D;&#39;asdf&#39;
+dic[&#39;a&#39;]&#x3D;&#39;as&#39;
+#dic&#x3D;&#123;&#39;a&#39;: &#39;as&#39;, &#39;b&#39;: &#39;111&#39;, &#39;c&#39;: &#39;asdf&#39;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="4-字典视图操作"><a href="#4-字典视图操作" class="headerlink" title="4.字典视图操作"></a>4.字典视图操作</h2><p>字典对象的三种函数</p>
+<pre class="line-numbers language-none"><code class="language-none">keys():返回字典中所有的key
+values():获取字典中所有value
+items():获取字典中所有的key,value对<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">dic&#x3D;&#123;&#39;a&#39;:&#39;11&#39;,&#39;b&#39;:&#39;111&#39;&#125;
+
+print(dic.keys())
+print(dic.values())
+print(dic.items())
+
+#dict_keys([&#39;a&#39;, &#39;b&#39;])
+#dict_values([&#39;11&#39;, &#39;111&#39;])
+#dict_items([(&#39;a&#39;, &#39;11&#39;), (&#39;b&#39;, &#39;111&#39;)])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">print(list(dic.keys()))
+print(list(dic.values()))
+print(list(dic.items()))
+
+#[&#39;a&#39;, &#39;b&#39;]
+#[&#39;11&#39;, &#39;111&#39;]
+#[(&#39;a&#39;, &#39;11&#39;), (&#39;b&#39;, &#39;111&#39;)] (&#39;a&#39;,&#39;11&#39;)类型为元组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5-字典元素的遍历"><a href="#5-字典元素的遍历" class="headerlink" title="5.字典元素的遍历"></a>5.字典元素的遍历</h2><pre class="line-numbers language-none"><code class="language-none">scores&#x3D;&#123;&#39;张三&#39;:&#39;name&#39;, &#39;age&#39;:&#39;a&#39;&#125;
+for item in scores:
+#item为key
+	print(item,scores[item])
+#张三 name
+#age a
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="字典的特点"><a href="#字典的特点" class="headerlink" title="字典的特点"></a>字典的特点</h1><img src="/jcxj/2022/09/24/python-zi-dian-xiang-guan/image-20220924152032458.png" class="" title="image-20220924152032458">
+
+
+
+<h1 id="字典生成式"><a href="#字典生成式" class="headerlink" title="字典生成式"></a>字典生成式</h1><pre class="line-numbers language-none"><code class="language-none">items&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;]
+prices&#x3D;[1,2,3]
+d&#x3D;&#123;item:price for item,price in zip(items,prices)&#125;
+#d&#x3D;&#123;&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>数量不一致的时候,以短的为基准</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><img src="/jcxj/2022/09/24/python-zi-dian-xiang-guan/image-20220924152520322.png" class="" title="image-20220924152520322">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 
@@ -422,7 +532,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/22/ip-to-company/">https://jcxj.github.io/jcxj/jcxj/2022/09/22/ip-to-company/</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/24/python-zi-dian-xiang-guan/">https://jcxj.github.io/jcxj/jcxj/2022/09/24/python-zi-dian-xiang-guan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -460,8 +570,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/jcxj/tags/github/">
-                                    <span class="chip bg-color">github</span>
+                                <a href="/jcxj/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/jcxj/tags/python%E5%AD%97%E5%85%B8/">
+                                    <span class="chip bg-color">python字典</span>
                                 </a>
                             
                         </div>
@@ -657,13 +771,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/jcxj/2022/09/22/python-pa-chong/">
+                <a href="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/3.jpg" class="responsive-img" alt="python爬虫">
+                        <img src="/jcxj/medias/featureimages/4.jpg" class="responsive-img" alt="python元组和集合相关">
                         
-                        <span class="card-title">python爬虫</span>
+                        <span class="card-title">python元组和集合相关</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -674,15 +788,31 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            jcxj
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/python%E5%85%83%E7%BB%84%E5%92%8C%E9%9B%86%E5%90%88/">
+                        <span class="chip bg-color">python元组和集合</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -694,13 +824,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/">
+                <a href="/jcxj/2022/09/24/zen-me-shi-yong-usdt/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="怎么在自己的github上发布项目">
+                        <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="怎么使用USDT">
                         
-                        <span class="card-title">怎么在自己的github上发布项目</span>
+                        <span class="card-title">怎么使用USDT</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -711,7 +841,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
                             </span>
                         <span class="publish-author">
                             
@@ -720,14 +850,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/jcxj/tags/github/">
-                        <span class="chip bg-color">github</span>
-                    </a>
-                    
                 </div>
                 
             </div>

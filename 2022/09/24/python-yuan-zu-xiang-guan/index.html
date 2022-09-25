@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ip_to_company, Made by jcxj">
+    <meta name="keywords" content="python元组和集合相关, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ip_to_company | Made by jcxj</title>
+    <title>python元组和集合相关 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ip_to_company</h1>
+                    <h1 class="description center-align post-title">python元组和集合相关</h1>
                 </div>
             </div>
         </div>
@@ -324,14 +324,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/jcxj/tags/github/">
-                                <span class="chip bg-color">github</span>
+                            <a href="/jcxj/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/jcxj/tags/python%E5%85%83%E7%BB%84%E5%92%8C%E9%9B%86%E5%90%88/">
+                                <span class="chip bg-color">python元组和集合</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/jcxj/categories/python/" class="post-category">
+                                python
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -340,28 +353,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-22
+                    2022-09-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-09-22
+                    2022-09-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    261
+                    607
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    3 Min
                 </div>
                 
 
@@ -384,18 +397,106 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="根据ip找公司"><a href="#根据ip找公司" class="headerlink" title="根据ip找公司"></a>根据ip找公司</h1><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h3 id="正常刷漏洞的流程"><a href="#正常刷漏洞的流程" class="headerlink" title="正常刷漏洞的流程"></a><strong>正常刷漏洞的流程</strong></h3><p>1.用fofa进行信息收集，收集结果一般为ip:端口，结果放在 test.txt中</p>
-<p>2.用自动化脚本判断网站是否存在漏洞,存在漏洞则记录在 test1.txt;不存在则pass</p>
-<p><strong>3.对test1.txt的内容进行资产确认，判断是哪家公司的资产</strong></p>
-<p>第一个工具，网上很多，就不多讲了</p>
-<p>第二个工具，每个漏洞的自动化脚本不一样，也不多说</p>
-<p><strong>第三个工具，也就是我想开发的工具</strong></p>
-<h1 id="为什么需要这么一个工具"><a href="#为什么需要这么一个工具" class="headerlink" title="为什么需要这么一个工具"></a>为什么需要这么一个工具</h1><p>1.根据ip找厂商没什么技术含量而且浪费时间:无非就是不停的用第三方网站去搜索</p>
-<p>2.有这个工具后，这方面浪费的时间就可以节省下来</p>
-<h1 id="该工具的功能"><a href="#该工具的功能" class="headerlink" title="该工具的功能"></a>该工具的功能</h1><p>1.获得厂商名称，所属行业，行业分类，所属地区，厂商联系方式</p>
-<p>这几个都是漏洞报告中所需要的</p>
-<img src="/jcxj/2022/09/22/ip-to-company/image-20220922120101709.png" class="" title="image-20220922120101709">
+                <h3 id="元组-tuple"><a href="#元组-tuple" class="headerlink" title="元组:tuple"></a>元组:tuple</h3><img src="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/image-20220924152917057.png" class="" title="image-20220924152917057">
 
+<h3 id="元组创建"><a href="#元组创建" class="headerlink" title="元组创建"></a>元组创建</h3><pre class="line-numbers language-none"><code class="language-none">t&#x3D;(1,2,3,4)
+t1&#x3D;tuple((3,2,1,3))
+t2 &#x3D; &#39;1&#39;,&#39;2&#39;,&#39;5&#39;,&#39;6&#39; #和第一行相比，省略了小括号
+t3 &#x3D; &#39;1&#39;,
+t4&#x3D;()
+t5&#x3D;tuple()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="元组的遍历-索引"><a href="#元组的遍历-索引" class="headerlink" title="元组的遍历,索引"></a>元组的遍历,索引</h3><pre class="line-numbers language-none"><code class="language-none">t&#x3D;(1,2,3,4)
+t1&#x3D;t[0]
+for item in t:
+	print(item)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>元组和字符串一样，不能进行增删改查的操作</p>
+<h3 id="集合-set"><a href="#集合-set" class="headerlink" title="集合:set"></a>集合:set</h3><img src="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/image-20220925193126275.png" class="" title="image-20220925193126275">
+
+<h3 id="集合的创建"><a href="#集合的创建" class="headerlink" title="集合的创建"></a>集合的创建</h3><p>set()函数,将其他类型强制转化为set类型</p>
+<pre class="line-numbers language-none"><code class="language-none">s&#x3D;&#123;&#39;1,&#39;,&#39;2&#39;,&#39;3&#39;,5,6,5,6&#125;
+#s&#x3D;&#123;&#39;2&#39;, 5, &#39;3&#39;, 6, &#39;1,&#39;&#125;,自动去重了
+
+s&#x3D;set(range(6))
+s&#x3D;set([1,2,3,4,5])
+s&#x3D;set((2,1,2,3,4,5,1))
+#s&#x3D;&#123;1, 2, 3, 4, 5&#125;
+
+s&#x3D;set((&#39;asdfasdfasdpasugobn f&#39;))
+#&#123;&#39;f&#39;, &#39;g&#39;, &#39;s&#39;, &#39;d&#39;, &#39;u&#39;, &#39;n&#39;, &#39;o&#39;, &#39;b&#39;, &#39;p&#39;, &#39; &#39;, &#39;a&#39;&#125;
+
+s&#x3D;set(&#123;1,2,3,4&#125;)
+#&#123;1, 2, 3, 4&#125;
+s&#x3D;set()
+#&#123;&#125;
+#直接使用s&#x3D;&#123;&#125;,此时,s是dict类型<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="集合的相关操作"><a href="#集合的相关操作" class="headerlink" title="集合的相关操作"></a>集合的相关操作</h3><img src="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/image-20220925194203734.png" class="" title="image-20220925194203734">
+
+<h3 id="判断操作-in-not-in"><a href="#判断操作-in-not-in" class="headerlink" title="判断操作:in / not in"></a>判断操作:in / not in</h3><pre class="line-numbers language-none"><code class="language-none">s&#x3D;&#123;1,2,3,4,6&#125;
+print(1 in s)
+print(5 in s)
+print(1 not in s)
+# True,False,False<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="新增操作-add-update"><a href="#新增操作-add-update" class="headerlink" title="新增操作:add() / update()"></a>新增操作:add() / update()</h3><pre class="line-numbers language-none"><code class="language-none">s&#x3D;&#123;1,2,3,4,6&#125;
+s.add(5)
+#&#123;1, 2, 3, 4, 5, 6&#125;
+s.update(&#123;100,200,300&#125;)
+#&#123;1, 2, 3, 4, 5, 6, 100, 200, 300&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="删除操作-remove-discard-pop-clear"><a href="#删除操作-remove-discard-pop-clear" class="headerlink" title="删除操作:remove() / discard() / pop() / clear()"></a>删除操作:remove() / discard() / pop() / clear()</h3><pre class="line-numbers language-none"><code class="language-none">s&#x3D;&#123;1,2,3,4,6&#125;
+s.remove(6)
+s.discard(4)
+s.discard(100)#不抛异常，remove(100)抛异常
+#&#123;1, 2, 3&#125;
+s.pop()#删除第一个
+s.clear()#清空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="集合间的操作"><a href="#集合间的操作" class="headerlink" title="集合间的操作"></a>集合间的操作</h3><img src="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/image-20220925200034628.png" class="" title="image-20220925200034628">
+
+<pre class="line-numbers language-none"><code class="language-none">s1&#x3D;&#123;1,2,3,4,5,6,7,8,9&#125;
+s2&#x3D;&#123;1,2,3&#125;
+print(s1 &#x3D;&#x3D; s2)
+#False
+print(s1.issubset(s2))
+#False
+print(s1.issuperset(s2))
+#True 说明s1包含了s2
+print(s1.isdisjoint(s2))
+#False 说明有交集<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="集合的数学操作-操作不会影响到集合本身"><a href="#集合的数学操作-操作不会影响到集合本身" class="headerlink" title="集合的数学操作:操作不会影响到集合本身"></a>集合的数学操作:操作不会影响到集合本身</h3><img src="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/image-20220925201702689.png" class="" title="image-20220925201702689">
+
+<pre class="line-numbers language-none"><code class="language-none">###交集
+s1&#x3D;&#123;10,20,30,40&#125;
+s2&#x3D;&#123;20,30,40,50&#125;
+print(s1.intersection(s2))
+print(s1 &amp; s2)
+#&#123;40, 20, 30&#125;
+###并集
+print(s1.union(s2))
+print(s1 | s2)
+#&#123;40, 10, 50, 20, 30&#125;
+###差集
+print(s1.difference(s2))
+print(s1-s2)
+#&#123;10&#125; 相当于s1-s2
+###对称差集
+print(s1.symmetric_difference(s2))
+print(s1 ^ s2)
+#&#123;10,50&#125; 相当于 a|b - a&amp;b<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="集合生成式"><a href="#集合生成式" class="headerlink" title="集合生成式"></a>集合生成式</h3><img src="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/image-20220925201735394.png" class="" title="image-20220925201735394">
+
+<pre class="line-numbers language-none"><code class="language-none">s&#x3D;&#123;i*i for i in range(10)&#125;
+print(s)
+#&#123;0, 1, 64, 4, 36, 9, 16, 49, 81, 25&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h3><img src="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/image-20220925201952314.png" class="" title="image-20220925201952314">
+
+<h3 id="总结-列表，字典，元组，集合"><a href="#总结-列表，字典，元组，集合" class="headerlink" title="总结:列表，字典，元组，集合"></a>总结:列表，字典，元组，集合</h3><img src="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/image-20220925201902202.png" class="" title="image-20220925201902202">
 
                 
             </div>
@@ -422,7 +523,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/22/ip-to-company/">https://jcxj.github.io/jcxj/jcxj/2022/09/22/ip-to-company/</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/24/python-yuan-zu-xiang-guan/">https://jcxj.github.io/jcxj/jcxj/2022/09/24/python-yuan-zu-xiang-guan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -460,8 +561,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/jcxj/tags/github/">
-                                    <span class="chip bg-color">github</span>
+                                <a href="/jcxj/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/jcxj/tags/python%E5%85%83%E7%BB%84%E5%92%8C%E9%9B%86%E5%90%88/">
+                                    <span class="chip bg-color">python元组和集合</span>
                                 </a>
                             
                         </div>
@@ -653,17 +758,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/jcxj/2022/09/22/python-pa-chong/">
+                <a href="/jcxj/2022/09/24/python-yuan-zu-xiang-guan/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/3.jpg" class="responsive-img" alt="python爬虫">
+                        <img src="/jcxj/medias/featureimages/4.jpg" class="responsive-img" alt="python元组和集合相关">
                         
-                        <span class="card-title">python爬虫</span>
+                        <span class="card-title">python元组和集合相关</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -673,16 +779,33 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            jcxj
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/python%E5%85%83%E7%BB%84%E5%92%8C%E9%9B%86%E5%90%88/">
+                        <span class="chip bg-color">python元组和集合</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -694,13 +817,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/">
+                <a href="/jcxj/2022/09/24/python-zi-dian-xiang-guan/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="怎么在自己的github上发布项目">
+                        <img src="/jcxj/medias/featureimages/8.jpg" class="responsive-img" alt="python字典相关">
                         
-                        <span class="card-title">怎么在自己的github上发布项目</span>
+                        <span class="card-title">python字典相关</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -711,12 +834,16 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            jcxj
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -724,8 +851,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/jcxj/tags/github/">
-                        <span class="chip bg-color">github</span>
+                    <a href="/jcxj/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/python%E5%AD%97%E5%85%B8/">
+                        <span class="chip bg-color">python字典</span>
                     </a>
                     
                 </div>
