@@ -356,14 +356,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-09-21
+                    2022-09-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    162
+                    202
                 </div>
                 
 
@@ -393,19 +393,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-docker-run-创建容器并暴露端口"><a href="#1-docker-run-创建容器并暴露端口" class="headerlink" title="1.docker run 创建容器并暴露端口"></a>1.docker run 创建容器并暴露端口</h1><pre class="line-numbers language-none"><code class="language-none">docker run -p 10001:80 -d nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h3 id="1-docker-run-创建容器并暴露端口"><a href="#1-docker-run-创建容器并暴露端口" class="headerlink" title="1.docker run 创建容器并暴露端口"></a>1.docker run 创建容器并暴露端口</h3><pre class="line-numbers language-none"><code class="language-none">docker run -p 10001:80 -d nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="2-停止全部运行的容器，删除全部容器，删除全部镜像"><a href="#2-停止全部运行的容器，删除全部容器，删除全部镜像" class="headerlink" title="2.停止全部运行的容器，删除全部容器，删除全部镜像"></a>2.停止全部运行的容器，删除全部容器，删除全部镜像</h1><pre class="line-numbers language-none"><code class="language-none">docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker stop
+<h3 id="2-停止全部运行的容器，删除全部容器，删除全部镜像"><a href="#2-停止全部运行的容器，删除全部容器，删除全部镜像" class="headerlink" title="2.停止全部运行的容器，删除全部容器，删除全部镜像"></a>2.停止全部运行的容器，删除全部容器，删除全部镜像</h3><pre class="line-numbers language-none"><code class="language-none">docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker stop
 docker ps -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker rm
 docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#39; | xargs docker rmi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h1 id="3-根据Dockerfile生成镜像"><a href="#3-根据Dockerfile生成镜像" class="headerlink" title="3.根据Dockerfile生成镜像"></a>3.根据Dockerfile生成镜像</h1><pre class="line-numbers language-none"><code class="language-none">docker build -t centos7-nginx:v1 .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="3-根据Dockerfile生成镜像"><a href="#3-根据Dockerfile生成镜像" class="headerlink" title="3.根据Dockerfile生成镜像"></a>3.根据Dockerfile生成镜像</h3><pre class="line-numbers language-none"><code class="language-none">docker build -t centos7-nginx:v1 .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>根据当前目录下的Dockerfile文件生成镜像，repository为 centos7-nginx,tag为v1</p>
-<h1 id="4-nginx首页位置"><a href="#4-nginx首页位置" class="headerlink" title="4.nginx首页位置"></a>4.nginx首页位置</h1><p>容器名为nginx-server</p>
+<h3 id="4-nginx首页位置"><a href="#4-nginx首页位置" class="headerlink" title="4.nginx首页位置"></a>4.nginx首页位置</h3><p>容器名为nginx-server</p>
 <pre class="line-numbers language-none"><code class="language-none">echo &quot;nginx is working&quot; &gt; &#x2F;opt&#x2F;nginx-server&#x2F;index.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="5-进入容器中"><a href="#5-进入容器中" class="headerlink" title="5.进入容器中"></a>5.进入容器中</h3><pre class="line-numbers language-none"><code class="language-none">docker exec -it container_id &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="6-退出并使容器保持运行状态"><a href="#6-退出并使容器保持运行状态" class="headerlink" title="6.退出并使容器保持运行状态"></a>6.退出并使容器保持运行状态</h3><pre class="line-numbers language-none"><code class="language-none">ctrl + p  + q<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="7-vulhub中启动容器"><a href="#7-vulhub中启动容器" class="headerlink" title="7.vulhub中启动容器"></a>7.vulhub中启动容器</h3><pre class="line-numbers language-none"><code class="language-none">docker-compose up -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
                 
@@ -938,7 +944,7 @@ docker images -a | awk &#39;&#123;if(NR&gt;&#x3D;2)&#123;print $1&#125;&#125;&#3
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.6k</span>&nbsp;字
+                class="white-color">8.8k</span>&nbsp;字
             
             
             
