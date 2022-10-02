@@ -363,14 +363,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    4
+                    419
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    2 Min
                 </div>
                 
 
@@ -394,6 +394,91 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h1><img src="/jcxj/2022/09/30/java-fan-xu-lie-hua/image-20220930170654817.png" class="" title="image-20220930170654817">
+
+<img src="/jcxj/2022/09/30/java-fan-xu-lie-hua/image-20220930182901589.png" class="" title="image-20220930182901589">
+
+<img src="/jcxj/2022/09/30/java-fan-xu-lie-hua/image-20220930184407814.png" class="" title="image-20220930184407814">
+
+<p><strong>反序列化后生成二进制文件,需要用能够查看二进制文件的工具打开,如winhex</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">public class TestToFile &#123;
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException &#123;
+        Person obj&#x3D; new Person(&quot;kkkk&quot;, 666);
+        String filePath &#x3D; &quot;.&#x2F;a.xxx&quot;;
+
+        &#x2F;&#x2F; 序列化
+        ObjectOutputStream  outStream &#x3D; new ObjectOutputStream(new FileOutputStream(filePath));
+        outStream.writeObject(obj);
+
+        &#x2F;&#x2F; 反序列化
+        ObjectInputStream  inStream &#x3D; new ObjectInputStream(new FileInputStream(filePath));
+        &#x2F;&#x2F; readObject 方法
+        Person readObject &#x3D; (Person)inStream.readObject();
+        System.out.println(&quot;反序列化后:name&#x3D;&quot;+readObject.name +&quot;,age&#x3D;&quot;+readObject.age);
+    &#125;
+
+&#125;
+&#x2F;*代码中反序列化类person和源码处于同一个文件夹,如果不是处于同一个文件夹,就需要引用一下
+import ........
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/jcxj/2022/09/30/java-fan-xu-lie-hua/image-20220930205851631.png" class="" title="image-20220930205851631">
+
+<h1 id="漏洞触发原理"><a href="#漏洞触发原理" class="headerlink" title="漏洞触发原理"></a>漏洞触发原理</h1><p>重写readObject()方法</p>
+<img src="/jcxj/2022/09/30/java-fan-xu-lie-hua/image-20220930210213246.png" class="" title="image-20220930210213246">
+
+<p>当反序列化的时候,在执行默认的readObject()基础上执行了cmd命令</p>
+<p>相关代码如下</p>
+<p>UnsafeTest.java</p>
+<pre class="line-numbers language-none"><code class="language-none">package asdf;
+
+import java.io.*;
+
+public class UnsafeTest &#123;
+    public static void main(String args[]) throws Exception &#123;
+        UnsafeClass Unsafe &#x3D; new UnsafeClass();
+        Unsafe.name &#x3D; &quot;hacked by aa&quot;;
+        &#x2F;&#x2F; 序列化
+        FileOutputStream fos &#x3D; new FileOutputStream(&quot;aa.yyy&quot;);
+        ObjectOutputStream os &#x3D; new ObjectOutputStream(fos);
+        os.writeObject(Unsafe);
+        os.close();
+
+        &#x2F;&#x2F;从 反序列化
+        FileInputStream fis &#x3D; new FileInputStream(&quot;aa.yyy&quot;);
+        ObjectInputStream ois &#x3D; new ObjectInputStream(fis);
+        UnsafeClass objectFromDisk &#x3D; (UnsafeClass) ois.readObject();
+        &#x2F;&#x2F;关键在与反序列化的时候调用了UnsafeClass中重写过的readObject()函数,导致了漏洞
+        System.out.println(objectFromDisk.name);
+        ois.close();
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>UnsafeClass</p>
+<pre class="line-numbers language-none"><code class="language-none">package asdf;
+
+import java.io.IOException;
+import java.io.Serializable;
+
+public class UnsafeClass implements Serializable &#123;
+    public String name;
+
+    &#x2F;&#x2F;重写readObject()方法
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException &#123;
+        &#x2F;&#x2F;执行默认的readObject()方法
+        in.defaultReadObject();
+        &#x2F;&#x2F;执行命令
+        Runtime.getRuntime().exec(&quot;calc.exe&quot;);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在UnsafeTest.java执行之后,会自动调用计算器</p>
+<img src="/jcxj/2022/09/30/java-fan-xu-lie-hua/image-20220930210528331.png" class="" title="image-20220930210528331">
+
+<h3 id="利用思路"><a href="#利用思路" class="headerlink" title="利用思路"></a>利用思路</h3><img src="/jcxj/2022/09/30/java-fan-xu-lie-hua/image-20220930211046452.png" class="" title="image-20220930211046452">
+
+<img src="/jcxj/2022/09/30/java-fan-xu-lie-hua/image-20220930211409834.png" class="" title="image-20220930211409834">
+
 
                 
             </div>
@@ -651,18 +736,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/jcxj/2022/09/30/java-fan-xu-lie-hua/">
+                <a href="/jcxj/2022/09/30/zen-me-zai-zi-ji-wang-zhan-shang-bu-shu-hexo-bo-ke/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/3.jpg" class="responsive-img" alt="java反序列化">
+                        <img src="/jcxj/medias/featureimages/3.jpg" class="responsive-img" alt="怎么在自己网站上部署hexo博客">
                         
-                        <span class="card-title">java反序列化</span>
+                        <span class="card-title">怎么在自己网站上部署hexo博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -672,27 +756,30 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/jcxj/categories/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="post-category">
-                                    反序列化
+                            <a href="/jcxj/categories/hexo/" class="post-category">
+                                    hexo
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/jcxj/tags/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-                        <span class="chip bg-color">java反序列化</span>
+                    <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">解决问题</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
@@ -918,7 +1005,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11k</span>&nbsp;字
+                class="white-color">15.3k</span>&nbsp;字
             
             
             
