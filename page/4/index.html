@@ -255,32 +255,33 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/jcxj/2022/10/04/gong-fang-shi-jie-zhuanxv/">
+                    <a href="/jcxj/2022/10/03/rce-rao-guo-zong-jie/">
                         <div class="card-image">
                             
                             
-                            <img src="/jcxj/medias/featureimages/13.jpg" class="responsive-img" alt="攻防世界Zhuanxv-sql注入">
+                            <img src="/jcxj/medias/featureimages/14.jpg" class="responsive-img" alt="rce绕过总结">
                             
-                            <span class="card-title">攻防世界Zhuanxv-sql注入</span>
+                            <span class="card-title">rce绕过总结</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                sql注入
+                                导致漏洞的函数PHP代码执行函数：
+eval()、assert()、preg_replace()、create_function()、array_map()、call_user_func()、call_user_func_array()、a
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-03
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/jcxj/categories/ctf/" class="post-category">
-                                    ctf
+                                <a href="/jcxj/categories/rce/" class="post-category">
+                                    rce
                                 </a>
                                 
                                 
@@ -291,12 +292,12 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/jcxj/tags/ctf/">
-                            <span class="chip bg-color">ctf</span>
+                        <a href="/jcxj/tags/%E6%80%BB%E7%BB%93/">
+                            <span class="chip bg-color">总结</span>
                         </a>
                         
-                        <a href="/jcxj/tags/sql%E6%B3%A8%E5%85%A5/">
-                            <span class="chip bg-color">sql注入</span>
+                        <a href="/jcxj/tags/rce/">
+                            <span class="chip bg-color">rce</span>
                         </a>
                         
                     </div>
@@ -306,32 +307,35 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/jcxj/2022/10/05/gong-fang-shi-jie-easyphp/">
+                    <a href="/jcxj/2022/10/02/ssrf-gopher-xie-yi/">
                         <div class="card-image">
                             
                             
-                            <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="攻防世界easyphp">
+                            <img src="/jcxj/medias/featureimages/11.jpg" class="responsive-img" alt="ssrf-gopher协议">
                             
-                            <span class="card-title">攻防世界easyphp</span>
+                            <span class="card-title">ssrf-gopher协议</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                intval()+科学计数法,md5碰撞,array_search()漏洞,
+                                ssrf利用gopher发包运用场景:需要向某个文件发送数据并且要求是本地访问
+要求本地访问有两种：1.x-forwarded-for；2.client-ip
+这两种都不行就得用ssrf来
+注意事项：1.第一次编码后记得利用记事本将%0a换
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/jcxj/categories/ctf/" class="post-category">
-                                    ctf
+                                <a href="/jcxj/categories/ssrf/" class="post-category">
+                                    ssrf
                                 </a>
                                 
                                 
@@ -342,8 +346,8 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/jcxj/tags/ctf/">
-                            <span class="chip bg-color">ctf</span>
+                        <a href="/jcxj/tags/ssrf/">
+                            <span class="chip bg-color">ssrf</span>
                         </a>
                         
                     </div>
@@ -353,34 +357,37 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/jcxj/2022/10/05/gong-fang-shi-jie-easyupload/">
+                    <a href="/jcxj/2022/10/27/tinyproxy-da-jian-dai-li-fu-wu-qi/">
                         <div class="card-image">
                             
                             
-                            <img src="/jcxj/medias/featureimages/8.jpg" class="responsive-img" alt="攻防世界easyupload">
+                            <img src="/jcxj/medias/featureimages/2.jpg" class="responsive-img" alt="tinyproxy搭建代理服务器">
                             
-                            <span class="card-title">攻防世界easyupload</span>
+                            <span class="card-title">tinyproxy搭建代理服务器</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1.fastcgi的.user.ini特性;2.利用短标签绕过(检查文件内容是否有php字符串);3.检查头部信息;4.mime类型
+                                 目录
+一.下载tinyproxy（服务器))
+二.修改配置文件
+三.修改步骤(可以不用改,具体改哪里看个人需求)
+1.设置服务端提供服务的端口
+[2. 给客户端放行](#2. 给客户端放行)
+编辑
+[ 3.修改报文（非必要）](# 3.修
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-27
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/jcxj/categories/ctf/" class="post-category">
-                                    ctf
-                                </a>
-                                
+                                <i class="fas fa-user fa-fw"></i>
+                                jcxj
                                 
                             </span>
                         </div>
@@ -389,12 +396,8 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/jcxj/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
-                            <span class="chip bg-color">文件上传</span>
-                        </a>
-                        
-                        <a href="/jcxj/tags/ctf/">
-                            <span class="chip bg-color">ctf</span>
+                        <a href="/jcxj/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+                            <span class="chip bg-color">小技巧</span>
                         </a>
                         
                     </div>
@@ -404,32 +407,35 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/jcxj/2022/10/06/wen-jian-bao-han-wei-xie-yi-zhong-jia-mi-qi-de-shi-yong/">
+                    <a href="/jcxj/2022/09/29/typecho-fan-xu-lie-hua-lou-dong-fen-xi/">
                         <div class="card-image">
                             
                             
-                            <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="文件包含伪协议中-加密器的使用">
+                            <img src="/jcxj/medias/featureimages/10.jpg" class="responsive-img" alt="typecho反序列化漏洞分析">
                             
-                            <span class="card-title">文件包含伪协议中-加密器的使用</span>
+                            <span class="card-title">typecho反序列化漏洞分析</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                php://filter/convert加密器的使用
+                                php-typecho反序列化漏洞一.配置好环境cve-2018-18753
+
+
+https:&#x2F;&#x2F;github.com&#x2F;typecho&#x2F;typecho&#x2F;releases&#x2F;tag&#
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-29
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/jcxj/categories/ctf/" class="post-category">
-                                    ctf
+                                <a href="/jcxj/categories/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="post-category">
+                                    反序列化
                                 </a>
                                 
                                 
@@ -440,16 +446,415 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/jcxj/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-                            <span class="chip bg-color">伪协议</span>
+                        <a href="/jcxj/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                            <span class="chip bg-color">php反序列化</span>
                         </a>
                         
-                        <a href="/jcxj/tags/ctf/">
-                            <span class="chip bg-color">ctf</span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/jcxj/2022/09/27/weblogic-ruo-kou-ling/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/jcxj/medias/featureimages/0.jpg" class="responsive-img" alt="weblogic弱口令">
+                            
+                            <span class="card-title">weblogic弱口令</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                weblogic漏洞weblogic简介WebLogic是美国Oracle公司出品的一个application server,确切的说是一个基于JAVAEE架构的中间件,WebLogic是用于开发,集成,部署和管理大型分布式Web应用,网络
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/jcxj/categories/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/" class="post-category">
+                                    解析漏洞
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/jcxj/tags/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/">
+                            <span class="chip bg-color">解析漏洞</span>
                         </a>
                         
-                        <a href="/jcxj/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
-                            <span class="chip bg-color">文件包含</span>
+                        <a href="/jcxj/tags/weblogic/">
+                            <span class="chip bg-color">weblogic</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/jcxj/2022/10/07/fan-dan-lian-jie/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="反弹连接">
+                            
+                            <span class="card-title">反弹连接</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                为什么要用反弹连接1.内网,私有ip
+2.IP动态变化
+3.一句话木马被杀软删除
+4.对方服务器没有开http服务或访问不了一句话木马文件
+
+反弹连接Reverse TCP
+
+反弹连接的实现1.控制机监听一个端口
+2.靶机连接控制机的端口
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                jcxj
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/jcxj/tags/%E5%8F%8D%E5%BC%B9shell/">
+                            <span class="chip bg-color">反弹shell</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/jcxj/2022/10/25/chang-jian-de-dos-ddos/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/jcxj/medias/featureimages/14.jpg" class="responsive-img" alt="常见的DOS/DDOS">
+                            
+                            <span class="card-title">常见的DOS/DDOS</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1.SYN Flood漏洞原理: 在建立TCP链接的时候,第三次握手时,攻击者恶意的不发ACK包导致服务器处于等待状态而导致资源耗尽
+在正常情况下,建立TCP连接应该是这样的
+
+
+客户端向服务器发送SYN数据包,服务端接收到后返回SYN-A
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                jcxj
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/jcxj/tags/dos-ddos/">
+                            <span class="chip bg-color">-dos/ddos</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/jcxj/2022/09/28/zen-me-shi-yong-you-hou-jiao-ben/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/jcxj/medias/featureimages/0.jpg" class="responsive-img" alt="怎么使用油猴脚本">
+                            
+                            <span class="card-title">怎么使用油猴脚本</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                如何使用油猴脚本干坏事?油猴脚本能干的事:1.刷学习通的课；
+2.淘宝,京东等电商平台自动抢商品,优惠券;
+3.破解腾讯视频,实现免费看vip视频
+一.安装油猴脚本打开google浏览器或者edge浏览器（这里以google浏览器为例）
+1
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-28
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/jcxj/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-category">
+                                    小技巧
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/jcxj/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+                            <span class="chip bg-color">小技巧</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/jcxj/2022/10/11/wireshark-de-shi-yong/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="wireshark的使用">
+                            
+                            <span class="card-title">wireshark的使用</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                为什么要学流量分析?站在防御方的角度,看看攻击流量,判断他是否攻击,攻击是否成功
+知识点:1.Wireshark介绍
+2.Wireshark安装
+3.Wireshark界面介绍
+4.Wireshark导航栏
+5.Wireshark菜单栏
+6
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/jcxj/categories/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" class="post-category">
+                                    流量分析
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/jcxj/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">
+                            <span class="chip bg-color">流量分析</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/jcxj/2022/09/24/zen-me-shi-yong-usdt/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="怎么使用USDT">
+                            
+                            <span class="card-title">怎么使用USDT</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+
+
+
+
+
+
+
+
+OKEx (欧易）👈推荐买U网址https://www.okx.com/
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                jcxj
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/jcxj/2022/09/22/zen-me-zai-zi-ji-de-github-shang-fa-bu-xiang-mu/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/jcxj/medias/featureimages/17.jpg" class="responsive-img" alt="怎么在自己的github上发布项目">
+                            
+                            <span class="card-title">怎么在自己的github上发布项目</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1.新建一个仓库
+
+没什么好说的，取个名，然后把readme 选中就好
+2.在本地新建文件夹放github文件git clone https:&#x2F;&#x2F;github.com&#x2F;jcxj&#x2F;ip_to_compa
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                jcxj
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/jcxj/tags/github/">
+                            <span class="chip bg-color">github</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/jcxj/2022/09/30/zen-me-zai-zi-ji-wang-zhan-shang-bu-shu-hexo-bo-ke/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/jcxj/medias/featureimages/3.jpg" class="responsive-img" alt="怎么在自己网站上部署hexo博客">
+                            
+                            <span class="card-title">怎么在自己网站上部署hexo博客</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                前提条件:已经在github部署好了hexo1.在自己服务器中开一个端口,这里使用宝塔面板进行演示
+
+这里的域名随便写
+
+
+
+
+这里的ip地址填写你服务器的ip地址,端口填写你要开放给别人访问的端口
+注意:这里的端口需要去防火墙放行一下
+
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/jcxj/categories/hexo/" class="post-category">
+                                    hexo
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/jcxj/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">解决问题</span>
+                        </a>
+                        
+                        <a href="/jcxj/tags/hexo/">
+                            <span class="chip bg-color">hexo</span>
                         </a>
                         
                     </div>
@@ -474,11 +879,12 @@
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">4 / 4</div>
+            <div class="center-align b-text-gray">4 / 5</div>
         </div>
         <div class="col s6 m4 l4">
             
-            <a class="right btn-floating btn-large disabled">
+            <a href="/jcxj/page/5/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
                 <i class="fas fa-angle-right"></i>
             </a>
             
@@ -501,7 +907,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.1k</span>&nbsp;字
+                class="white-color">36.2k</span>&nbsp;字
             
             
             

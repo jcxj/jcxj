@@ -1,0 +1,1438 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="wireshark的使用, Made by jcxj">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>wireshark的使用 | Made by jcxj</title>
+    <link rel="icon" type="image/png" href="/jcxj/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/css/my.css">
+
+    <script src="/jcxj/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/jcxj/" class="waves-effect waves-light">
+                    
+                    <img src="/jcxj/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Made by jcxj</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/jcxj/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Made by jcxj</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">wireshark的使用</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/jcxj/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/jcxj/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">
+                                <span class="chip bg-color">流量分析</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/jcxj/categories/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" class="post-category">
+                                流量分析
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-10-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-10-26
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    7 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/jcxj/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="为什么要学流量分析"><a href="#为什么要学流量分析" class="headerlink" title="为什么要学流量分析?"></a>为什么要学流量分析?</h3><p>站在防御方的角度,看看攻击流量,判断他是否攻击,攻击是否成功</p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点:"></a>知识点:</h3><pre class="line-numbers language-none"><code class="language-none">1.Wireshark介绍
+2.Wireshark安装
+3.Wireshark界面介绍
+4.Wireshark导航栏
+5.Wireshark菜单栏
+6.Wireshark过滤方式<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="一-Wireshark介绍和安装"><a href="#一-Wireshark介绍和安装" class="headerlink" title="一.Wireshark介绍和安装"></a>一.Wireshark介绍和安装</h2><img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221011095156209.png" class="" title="image-20221011095156209">
+
+<pre class="line-numbers language-none"><code class="language-none">主要应用:
+1.实时抓取数据包并进行分析(抓包模块)
+2.对已获取的数据包进行流量分析
+安装: 浏览器搜一下wireshark官网,直接在官网下载安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="二-Wire界面介绍"><a href="#二-Wire界面介绍" class="headerlink" title="二.Wire界面介绍"></a>二.Wire界面介绍</h3><p>哪个有波动就是哪个网卡有流量，双击即可进入查看实时流量</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025160247124.png" class="" title="image-20221025160247124">
+
+<p>在这个界面中有3部分的流量数据,分别为<strong>分组列表,分组详情,分组字节流</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025160643089.png" class="" title="image-20221025160643089">
+
+<h4 id="1-分组列表"><a href="#1-分组列表" class="headerlink" title="1.分组列表"></a>1.分组列表</h4><p>作用:将流量以分组的形式,简单的呈现出来</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025160819274.png" class="" title="image-20221025160819274">
+
+<p>可以单击分组形式来按顺序查看数据包</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025160932463.png" class="" title="image-20221025160932463">
+
+<pre class="line-numbers language-none"><code class="language-none">No: 第几个数据包
+time: 时间
+Source: 源地址
+Destination: 目标地址
+Protocol: 协议名称
+Length: 包长度
+Info: 基础信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在分组中右键即可取消或者添加分组</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025161123101.png" class="" title="image-20221025161123101">
+
+<h4 id="2-分组详情"><a href="#2-分组详情" class="headerlink" title="2.分组详情"></a>2.分组详情</h4><p>位于界面的中间</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025161309108.png" class="" title="image-20221025161309108">
+
+<p>作用:将流量以TCP/IP 5层模式形式展现出来</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025161249486.png" class="" title="image-20221025161249486">
+
+<p>为了更清楚的分析这五层中有哪些内容,可以尝试浏览器打开几个网页,然后停止wireshark抓白并利用过滤器将采用http协议的流量过滤出来</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025161935567.png" class="" title="image-20221025161935567">
+
+<p><strong>第一层</strong>: <strong>物理层</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025162300314.png" class="" title="image-20221025162300314">
+
+<p><strong>第二层: 数据链路层</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025162346237.png" class="" title="image-20221025162346237">
+
+<p>这里有二层(具体有几层需要看使用什么交换机,二层交换机这里就有两层，三层交换机这里就有三层),</p>
+<p>这里的两层分别存放 <strong>源 和 目标 的 mac地址</strong></p>
+<p><strong>第三层: 网络层</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025162603598.png" class="" title="image-20221025162603598">
+
+<p>网络层中主要放: <strong>协议版本号，数据包长度，存活时间（ttl值），源ip，目的ip，</strong></p>
+<p>把包中的英文翻译为中文即可</p>
+<p><strong>第四层: 传输层</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025163056979.png" class="" title="image-20221025163056979">
+
+<p><strong>传输层中存放: 端口(源端口,目的端口),tcp滑动窗口的大小,flags(标记位,可以清晰的看到三次握手四次挥手)</strong></p>
+<p><strong>第五层:应用层</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025163325623.png" class="" title="image-20221025163325623">
+
+<p>应用层中存放: <strong>协议相关的内容,如head,Cookie,User-Agent</strong></p>
+<h3 id="3-分组字节流"><a href="#3-分组字节流" class="headerlink" title="3.分组字节流"></a>3.分组字节流</h3><p>位于界面的最下方,如</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025163510204.png" class="" title="image-20221025163510204">
+
+<p><strong>主要作用:将流量以16进制的方式呈现</strong></p>
+<h3 id="4-导航栏"><a href="#4-导航栏" class="headerlink" title="4.导航栏"></a>4.导航栏</h3><p>导航栏就是快捷工具栏,共20个功能</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025163738221.png" class="" title="image-20221025163738221">
+
+<p><strong>第一个是捕获分组: 点击后开始捕获</strong></p>
+<p><strong>第二个是停止捕获: 点击后停止捕获</strong></p>
+<p><strong>第三个是重新捕获: 点击后重新捕获</strong></p>
+<p><strong>第四个是捕获选项: 点击后配置信息（如重新选择要捕获的网卡）</strong></p>
+<p><strong>第五个是打开保存已捕获的文件</strong></p>
+<p><strong>第六个是保存已捕获的文件: 即将这些流量包保存到电脑本地</strong></p>
+<h5 id="第七个查找一个分组-可以理解为搜索关键字-可以利用ctrl-f-调出-重点"><a href="#第七个查找一个分组-可以理解为搜索关键字-可以利用ctrl-f-调出-重点" class="headerlink" title="第七个查找一个分组: 可以理解为搜索关键字,可以利用ctrl + f 调出(重点)"></a><strong>第七个查找一个分组: 可以理解为搜索关键字,可以利用ctrl + f 调出</strong>(重点)</h5><img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025164623850.png" class="" title="image-20221025164623850">
+
+<p>需要配置好相关信息后才能搜索</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025164711687.png" class="" title="image-20221025164711687">
+
+<p>使用案例:利用正则表达式在分组详情中搜索以.php结尾的文件</p>
+<p><strong>搜的时候记得把滚动条拉到最上面并选中第一个数据包,因为这个搜索是从当前选中的数据包开始往下搜</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025164950909.png" class="" title="image-20221025164950909">
+
+<p><strong>第八第九个:  控制光标的移动 和鼠标的作用是一样的</strong></p>
+<p><strong>第十个: 快速回到第一个数据包</strong></p>
+<p><strong>第十一个: 快速回到最后一个数据包</strong></p>
+<p><strong>第十二个: 在捕获的时候,自动将滚动条拉到新的数据包位置</strong></p>
+<p><strong>第十三个: 利用分组来标记颜色</strong></p>
+<p><strong>最后几个放大镜就是控制字体大小,恢复默认字体大小</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025170644566.png" class="" title="image-20221025170644566">
+
+<h3 id="5-菜单栏"><a href="#5-菜单栏" class="headerlink" title="5.菜单栏"></a>5.菜单栏</h3><p>这些就是菜单栏的内容</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025170821971.png" class="" title="image-20221025170821971">
+
+<h4 id="1-文件"><a href="#1-文件" class="headerlink" title="(1)文件"></a><strong>(1)文件</strong></h4><img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025170855297.png" class="" title="image-20221025170855297">
+
+<p><strong>合并: 将两个保存好的数据包文件合并成同一个</strong></p>
+<p><strong>从Hex转入: 导入一个16进制的数据包</strong></p>
+<p><strong>导出特定分组</strong>: 可以导出特定的分组,组号就是No这个列下面的数值</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025172452436.png" class="" title="image-20221025172452436">
+
+<h5 id="导出分组解析结果：-重点"><a href="#导出分组解析结果：-重点" class="headerlink" title="导出分组解析结果：(重点)"></a><strong>导出分组解析结果：(重点)</strong></h5><img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025172515539.png" class="" title="image-20221025172515539">
+
+<p>具体导出哪种格式看你的需求,如脚本能识别哪种文件就导出哪种</p>
+<h5 id="导出分组字节流：（重点"><a href="#导出分组字节流：（重点" class="headerlink" title="导出分组字节流：（重点)"></a><strong>导出分组字节流</strong>：（重点)</h5><p>需要提前选中一下分组字节流,选中哪些就导出哪些，并不是全部导出</p>
+<h5 id="导出对象-（重点"><a href="#导出对象-（重点" class="headerlink" title="**导出对象:**（重点)"></a>**导出对象:**（重点)</h5><img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025173054807.png" class="" title="image-20221025173054807">
+
+
+
+<p>以导出http为例</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025173155148.png" class="" title="image-20221025173155148">
+
+<p>可以在文本过滤器快速过滤出你想要的数据包，如jpg,zip,php;然后点击Save保存即可</p>
+<p><strong>这里有个技巧:如你在网站上保存图片的时候,网站提示你要付费,你就可以到这里将其导出来</strong></p>
+<h4 id="2-编辑"><a href="#2-编辑" class="headerlink" title="(2)编辑"></a>(2)编辑</h4><img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025173817586.png" class="" title="image-20221025173817586">
+
+<p><strong>标记/取消标记 分组</strong>: <strong>当你觉的这个流量可能有问题的时候，就可以标记一下,等全部标记完后再依次查看</strong></p>
+<p><strong>分组注释: 先选中，然后用快捷键或者编辑-分组注释添加注释</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025174420231.png" class="" title="image-20221025174420231">
+
+<p><strong>注释后可以双击该数据包进行查看注释</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025174337109.png" class="" title="image-20221025174337109">
+
+<p><strong>配置文件: wireshark有自己的配置和主题,在这个文件中可以修改</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025174837394.png" class="" title="image-20221025174837394">
+
+<p><strong>首选项: 也是修改跟配置有关的信息,如列数,颜色等</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025175019108.png" class="" title="image-20221025175019108">
+
+<p><strong>(3)视图</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025183030738.png" class="" title="image-20221025183030738">
+
+<p>使用案例:修改分组颜色</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025183646557.png" class="" title="image-20221025183646557">
+
+<p><strong>(5)跳转</strong></p>
+<p>跟快捷栏里的一样</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025183743705.png" class="" title="image-20221025183743705">
+
+<p><strong>(6)捕获</strong></p>
+<p>就字面意思</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025183806324.png" class="" title="image-20221025183806324">
+
+<p><strong>(7)分析</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025183954617.png" class="" title="image-20221025183954617">
+
+<h5 id="应用为列-Ctrl-Shift-l-重点"><a href="#应用为列-Ctrl-Shift-l-重点" class="headerlink" title="应用为列:  Ctrl+Shift+l(重点)"></a><strong>应用为列:</strong>  <strong>Ctrl+Shift+l</strong>(重点)</h5><p><strong>应用场景: 比如我想将端口显示到主界面,就可以用这个功能</strong></p>
+<p>先选中端口,然后点击应用为列即可</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025184328615.png" class="" title="image-20221025184328615">
+
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026082125261.png" class="" title="image-20221026082125261">
+
+<p>新添加了一条Source Port(同理，我们也可以添加其他的，如Destination Port)</p>
+<p>取消添加的列:在快捷栏右键，然后取消掉即可</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026082413814.png" class="" title="image-20221026082413814">
+
+<h5 id="追踪流（重点）"><a href="#追踪流（重点）" class="headerlink" title="追踪流（重点）"></a>追踪流（重点）</h5><p>选中一个TCP数据包-右键-追踪流-TCP流</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026083023099.png" class="" title="image-20221026083023099">
+
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026083113155.png" class="" title="image-20221026083113155">
+
+<p><strong>(8)统计</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026083432683.png" class="" title="image-20221026083432683">
+
+<h5 id="协议分级（重点）"><a href="#协议分级（重点）" class="headerlink" title="协议分级（重点）"></a>协议分级（重点）</h5><img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026083516824.png" class="" title="image-20221026083516824">
+
+<h5 id="会话（重点）"><a href="#会话（重点）" class="headerlink" title="会话（重点）"></a><strong>会话（重点）</strong></h5><img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026083909556.png" class="" title="image-20221026083909556">
+
+<p><strong>(9)过滤表达式</strong> </p>
+<p>这里面把所有的过滤表达式都写出来了</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026085448652.png" class="" title="image-20221026085448652">
+
+<p>举例: 搜下TCP，然后在出现的过滤规则中找你想要的，会自动生成表达式并且右边会给出他能用的关系</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026085828986.png" class="" title="image-20221026085828986">
+
+<p>常用的有:</p>
+<p><strong>协议名+字段名+判断+值</strong></p>
+<p><strong>协议名: ip , tcp , http</strong></p>
+<p><strong>字段名: src, srcport</strong></p>
+<p><strong>判断:  ==(eq)  &lt;=  &gt;=</strong></p>
+<p><strong>连接符 and or</strong> </p>
+<table>
+<thead>
+<tr>
+<th>过滤ip</th>
+<th>ip.src eq 1.1.1.1(过滤出源ip为1.1.1.1)</th>
+<th>ip.dst eq 1.1.1.1(过滤出目的ip为1.1.1.1)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>过滤端口</strong></td>
+<td><strong>tcp.srcport eq 80 (过滤源端口为80)</strong></td>
+<td>先去看端口在哪个协议中(tcp协议),然后输入字段名src.port</td>
+</tr>
+<tr>
+<td>过滤协议</td>
+<td>tcp/arp/http/udp</td>
+<td>直接找协议名即可</td>
+</tr>
+<tr>
+<td>过滤mac地址</td>
+<td>ech.add eq 1.1.1.1.1.1</td>
+<td>mac地址在以太网头部，协议名就是以太网,字段名为addr</td>
+</tr>
+<tr>
+<td>包长度</td>
+<td>udp.length == 26 / tcp.len &gt;= 7</td>
+<td></td>
+</tr>
+<tr>
+<td>http模式过滤</td>
+<td>http.request.method == “GET”</td>
+<td>http.request.method == “POST”</td>
+</tr>
+<tr>
+<td>连接符</td>
+<td>ip.src eq 1.1.1.1 and ip.destination eq 1.1.1.4</td>
+<td>简单的逻辑判断</td>
+</tr>
+</tbody></table>
+<p>快捷键:选中一个包，然后找到他的端口，接着将其<strong>作为过滤器应用</strong>即可</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026085911496.png" class="" title="image-20221026085911496">
+
+<p>想要同时选择两个作为过滤器</p>
+<p>选择<strong>且选中</strong></p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026090043756.png" class="" title="image-20221026090043756">
+
+<p>可以发现，在快捷栏下方，已经自动生成了表达式</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026090126702.png" class="" title="image-20221026090126702">
+
+<p>如果想看TCP第三次握手，找到TCP包中的数据链路层下的Flags里的ACK并将其作为过滤器即可</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026090259691.png" class="" title="image-20221026090259691">
+
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221026090315809.png" class="" title="image-20221026090315809">
+
+<h2 id="补充-WireShark安装geoip来获取ip地址的经纬度"><a href="#补充-WireShark安装geoip来获取ip地址的经纬度" class="headerlink" title="**补充:**WireShark安装geoip来获取ip地址的经纬度"></a>**补充:**WireShark安装geoip来获取ip地址的经纬度</h2><p>去geoip官网注册一个账号,</p>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;dev.maxmind.com&#x2F;geoip&#x2F;geolite2-free-geolocation-data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后把这些数据库都下载下来,并放到同一个文件夹中</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025181200779.png" class="" title="image-20221025181200779">
+
+<p>添加路径</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025181255841.png" class="" title="image-20221025181255841">
+
+<p>添加好后点击OK并重新启动wireshark即可</p>
+<p><strong>去哪里看?</strong> 统计-端点-ipv4</p>
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025181350010.png" class="" title="image-20221025181350010">
+
+<img src="/jcxj/2022/10/11/wireshark-de-shi-yong/image-20221025181421156.png" class="" title="image-20221025181421156">
+
+<p>还可以安装自动更新工具来进行更新数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;dev.maxmind.com&#x2F;geoip&#x2F;updating-databases?lang&#x3D;en<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>其实还可以显示经纬度</strong>，不过得用wireshark3.0以下的版本或者用python安装一个库即可</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/jcxj/about" rel="external nofollow noreferrer">jcxj</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/10/11/wireshark-de-shi-yong/">https://jcxj.github.io/jcxj/jcxj/2022/10/11/wireshark-de-shi-yong/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/jcxj/about" target="_blank">jcxj</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/jcxj/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">
+                                    <span class="chip bg-color">流量分析</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/jcxj/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/jcxj/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">有没有好心人(dayuanzhong)v_me_50</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/jcxj/medias/reward/alipay1.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/jcxj/medias/reward/wechat1.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/jcxj/2022/10/18/newstar-unsafe-apache/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/4.jpg" class="responsive-img" alt="newstar-Unsafe_Apache">
+                        
+                        <span class="card-title">newstar-Unsafe_Apache</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/ctf/" class="post-category">
+                                    ctf
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/ctf/">
+                        <span class="chip bg-color">ctf</span>
+                    </a>
+                    
+                    <a href="/jcxj/tags/apache/">
+                        <span class="chip bg-color">apache</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/jcxj/2022/10/10/apache-shiro-jie-shao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/18.jpg" class="responsive-img" alt="Apache_Shiro介绍">
+                        
+                        <span class="card-title">Apache_Shiro介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/jcxj/categories/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="post-category">
+                                    反序列化
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                        <span class="chip bg-color">反序列化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: Made by jcxj<br />'
+            + 'Author: jcxj<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归jcxj所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/jcxj/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">36.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "09";
+                    var startDate = "20";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/jcxj/jcxj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:971748776@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=971748776" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 971748776" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/jcxj/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/jcxj/libs/materialize/materialize.min.js"></script>
+    <script src="/jcxj/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/jcxj/libs/aos/aos.js"></script>
+    <script src="/jcxj/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/jcxj/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/jcxj/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/jcxj/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/jcxj/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
+<script type="text/javascript"> var OriginTitile = document.title, st;
+document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "问题没解决?", clearTimeout(st)) : (document.title = "Made by jcxj", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
+
