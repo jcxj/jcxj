@@ -1,3 +1,8 @@
+git更新：
+git add .
+git commit -m ""
+git push -u blog master
+
 hexo new xxx
 hexo clean
 hexo g
