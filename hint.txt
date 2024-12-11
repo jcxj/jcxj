@@ -1,0 +1,8 @@
+hexo new xxx
+hexo clean
+hexo g
+hexo d
+
+.git/object 过大的话直接把他删掉
+
+hexo d报错就把.git删了再hexo d
